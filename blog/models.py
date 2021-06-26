@@ -12,13 +12,12 @@ from django.utils.translation import gettext_lazy as _
 
 from django_extensions.db.fields import AutoSlugField
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
-from wagtail.core.models import Page, Orderable
+from wagtail.core.models import Page
 from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image as WagtailImage
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 from modelcluster.contrib.taggit import ClusterTaggableManager

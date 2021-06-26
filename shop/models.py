@@ -1,6 +1,7 @@
 import logging
 import json
 
+from django import forms
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
@@ -301,7 +302,7 @@ class ProductSize(models.Model):
 		FieldPanel('name'),
 		FieldPanel('slug'),
 		FieldPanel('order_sequence'),
-		FieldPanel('size_categories'),
+		FieldPanel('size_categories', widget=forms.CheckboxSelectMultiple),
 	]
 
 	class Meta:
