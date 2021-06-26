@@ -1,0 +1,15 @@
+celery
+Django==3.2.4
+django-extensions
+django-livereload
+django-modeltranslation
+django_redis
+django-rosetta
+mysqlclient
+paypal-checkout-serversdk
+psycopg2
+pdfkit
+selenium
+stripe
+wagtail==2.13.2
+wagtail-modeltranslation

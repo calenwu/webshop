@@ -1,0 +1,291 @@
+{% load i18n static wagtailcore_tags shop_template_tags %}
+{% get_product self.product.id as page %}
+<div>
+	{% for block in page.content %}
+		{% include_block block %}
+	{% endfor %}
+</div>
+<div id="product-{{ self.product.id }}">
+	<div class="flex flex-col md:flex-row mb-12">
+		<div class="w-full md:w-2/3 md:pr-4 mb-4">
+			<div class="max-w-3xl m-auto">
+				<div id="productCarouselPrimary" class="splide product-carousel">
+					<div class="splide__track">
+						<ul id="productCarouselListPrimary" class="splide__list pswp-gallery cursor-zoom-in">
+						</ul>
+					</div>
+				</div>
+				<div id="productCarouselSecondary" class="splide mt-8">
+					<div class="splide__track">
+						<ul id="productCarouselListSecondary" class="splide__list">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="w-full md:w-1/3 md:pl-4 md:border-gray-200 md:border-l">
+			<h3 class="mb-0">
+				{{ page.title }}
+			</h3>
+			<h6>
+				{{ page.product_category }}
+			</h6>
+			<h6>
+				{{ page.id }}
+			</h6>
+			<div class="flex flex-row mb-4 {% if not page.show_color %}hidden{% endif %}" id="colors">
+				{% for product_color in page.product_colors.all %}
+					<div id="{{ product_color.slug }}" onClick="changeProductColor(this);" data="{{ product_color.get_info }}"
+						class="flex justify-center align-start cursor-pointer rounded-full border border-transparent">
+						<div class="flex justify-center items-center rounded-full h-6 w-6 m-1 border border-gray-400" 
+								style="background-color: {{ product_color.hex }};">
+								{% if product_color.hex2 %}
+									<div class="rounded-full h-3 w-3" style="background-color: {{ product_color.hex2 }};">
+									</div>
+								{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div>
+				<form id="addToCartForm" method="POST">
+					<div class="mb-4 {% if not page.show_size %}hidden{% endif %}">
+						<select class="w-full bg-white border border-gray-400 rounded p-4" id="size" name="size">
+						</select>
+					</div>
+					<div class="my-4">
+						<label for="quantity" class="block mb-2">{% trans 'Quantity' %}</label>
+						<div class="inline-flex flex-row border border-gray-400 rounded">
+							<div class="flex justify-center items-center w-12 h-12 cursor-pointer rounded-l
+									bg-white hover:bg-gray-200 transition-all" 
+									onclick="decrementQuantity();">
+								<i class="fal fa-minus"></i>
+							</div>
+							<input id="quantity" class="w-16 h-12 text-center"
+									name="quantity" type="number" min="1" value="1"/>
+							<div class="flex justify-center items-center w-12 h-12 cursor-pointer rounded-r
+									bg-white hover:bg-gray-200 transition-all" 
+									onclick="incrementQuantity();">
+								<i class="fal fa-plus"></i>
+							</div>
+							<script>
+								function decrementQuantity() {
+									if (parseInt(quantity.value) > 1) {
+										quantity.value = parseInt(quantity.value) + -1;
+									}
+								}
+								function incrementQuantity() {
+									quantity.value = parseInt(quantity.value) + 1;
+								}
+							</script>
+						</div>
+					</div>
+					<div class="w-full text-center pt-4 mb-4 text-xl border-t border-gray-200">
+						{% if page.on_sale %}
+							<s>{{ page.get_display_price_original }}</s>
+							<span class="text-red-500">{{ page.get_display_price }}</span>
+						{% else %}
+							{{ page.get_display_price }}
+						{% endif %}
+					</div>
+					<button id="addToCartBtn"
+						class="button-red-outline-no-hover w-full rounded p-3 text-lg">
+						{% trans 'Add to cart' %}
+					</button>
+				</form>
+				{% for reference_button in page.reference_buttons %}
+					<div class="mt-4">
+						{% include_block reference_button %}
+					</div>
+				{% endfor %}
+				{% if page.details %}
+					<div class="mt-8">
+						<div class="collapsible cursor-pointer">
+							<i class="fal fa-chevron-right mr-1"></i>
+							{% trans 'Details' %}
+						</div>
+						<div class="w-full max-h-0 overflow-hidden transition-all duration-300 mt-4">
+							{{ page.details|richtext }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	const size = document.getElementById('size');
+	const colors = document.getElementById('colors');
+	const quantity = document.getElementById('quantity');
+	const addToCartBtn = document.getElementById('addToCartBtn');
+	const addToCartForm = document.getElementById('addToCartForm');
+	const productImagesOverlay = document.getElementById('productImagesOverlay');
+	const primaryCarouselUl = document.getElementById('productCarouselListPrimary');
+	let productImages = JSON.parse("{{ page.get_images }}".replaceAll("&quot;", '"'))['images'];
+	addToCartForm.onsubmit = function(event) {
+		event.preventDefault();
+		addToCart();
+		return false;
+	}
+	size.addEventListener('change', sizeChanged);
+	changeProductColor(colors.firstElementChild);
+	async function addToCart() {
+			let url = "{% url 'cart:add' product_color_quantity_id=12345 quantity=12345 %}";
+			url = url.replace(/12345/, size.value);
+			url = url.replace(/12345/, quantity.value);
+			let innerHtml = addToCartBtn.innerHTML;
+			addToCartBtn.innerHTML = '';
+			addToCartBtn.disabled = true;
+			addToCartBtn.classList.add('btn-loading');
+			addToCartBtn.appendChild(getSpinnerDots('bg-primary-400'));
+			await fetch(url)
+				.then(response => response.json())
+				.then((data) => {
+					data = data['data'];
+					while(addToCartBtn.firstChild) {addToCartBtn.firstChild.remove();}
+					if (data['success']){
+						cartIconDot.classList.remove('hidden');
+						addToCartBtn.innerHTML = '{% trans "Added" %}';
+						setTimeout(function(){
+							addToCartBtn.innerHTML = '<i class="fal fa-shopping-cart mr-2"></i>' + "{% trans 'Add to cart' %}";
+						}, 1000);
+						if (data['message']) {
+							createFancyAlert(data['message']['tag'], data['message']['title'], data['message']['innerHtml'], 5000);
+						}
+						getCart();
+					} else {
+						createFancyAlert(data['message']['tag'], data['message']['title'], data['message']['innerHtml']);
+						while(addToCartBtn.firstChild) {addToCartBtn.firstChild.remove();}
+						addToCartBtn.innerHTML = '{% trans "Error" %}';
+						setTimeout(function() {
+							addToCartBtn.innerHTML = innerHtml;
+						}, 1000);
+					}
+				})
+				.catch((error) => {
+					createFancyAlert('error', "{% trans 'Error' %}", error.toString());
+					while(addToCartBtn.firstChild) {addToCartBtn.firstChild.remove();}
+					addToCartBtn.innerHTML = "{% trans 'Error' %}";
+					setTimeout(function() {
+						addToCartBtn.innerHTML = innerHtml;
+					}, 1000);
+				});
+			addToCartBtn.disabled = false;
+		}
+		function changeProductColor(element) {
+			const data = JSON.parse(element.getAttribute('data'));
+			currentProductImages = data['images'].concat(productImages);
+			primarySlider = initProductDetailCarousel(
+				'{{ page.aspect_ratio }}',
+				'productCarouselPrimary',
+				'productCarouselSecondary',
+				'productCarouselListPrimary',
+				'productCarouselListSecondary',
+				currentProductImages
+			);
+			let primaryCarousel = document.getElementById('productCarouselListPrimary');
+			for (let i = 0; i < primaryCarousel.children.length; i++) {
+				primaryCarousel.children[i].style.setProperty('background-size', 'contain', 'important');
+				primaryCarousel.children[i].onclick = function(){showProductImageOverlay(i)};
+			}
+			removeSelectedColor();
+			element.classList.add('border-black');
+			size.value = '';
+			removeSizeOption();
+			data['quantity'].forEach((quantity) => {
+				const option = document.createElement('option');
+				if (quantity.quantity <= 0) {
+					option.text = quantity.size + ' ({% trans "Sold out" %})';
+					option.disabled = true;
+				} else {
+					option.text = quantity.size;
+				}
+				option.value = quantity.id;
+				option.setAttribute('data', quantity.quantity);
+				size.appendChild(option);
+			});
+			size.selectedIndex = 0;
+			if ('createEvent' in document) {
+				var evt = document.createEvent('HTMLEvents');
+				evt.initEvent('change', false, true);
+				size.dispatchEvent(evt);
+			} else {
+				size.fireEvent('onchange');
+			}
+		}
+		function removeSelectedColor() {
+			Array.from(colors.children).forEach((child) => {
+				child.classList.remove('border-black');
+				child.classList.add('border-transparent');
+			});
+		}
+		function removeSizeOption() {
+			while (size.firstChild) {size.firstChild.remove()}
+		}
+		function sizeChanged(event) {
+			if (event.target.selectedIndex == -1) {
+				event.target.selectedIndex = 0;
+			}
+			while (event.target.selectedIndex != -1) {
+				if (size.options[event.target.selectedIndex].getAttribute('data') == '0') {
+					event.target.selectedIndex++;
+				} else {
+					break;
+				}
+			}
+			if (event.target.selectedIndex == -1) {
+				event.target.selectedIndex = 0;
+			}
+			const option = size.options[event.target.selectedIndex];
+			addToCartBtn.classList.remove('button-primary-outline');
+			addToCartBtn.classList.remove('button-red-outline-no-hover');
+			if (option.getAttribute('data') <= parseInt('0')) {
+				addToCartBtn.disabled = true;
+				addToCartBtn.classList.add('button-red-outline-no-hover');
+				addToCartBtn.innerText = "{% trans 'Sold out' %}";
+			} else { 
+				addToCartBtn.disabled = false;
+				addToCartBtn.classList.add('button-primary-outline');
+				addToCartBtn.innerHTML = '<i class="fal fa-shopping-cart mr-2"></i>' + "{% trans 'Add to cart' %}";
+			}
+		}
+		function showProductImageOverlay() {
+			primaryCarouselUl.children[primarySlider.index].click();
+		}
+		function showHideOverlayButtons() {
+			const mag = document.getElementsByClassName('img-magnifier-glass')[0];
+			if (overlayButtons.classList.contains('invisible')) {
+				mag.classList.add('invisible');
+				overlayButtons.classList.remove('invisible');
+				overlayButtons.classList.add('opacity-100');
+				overlayMagnifier.classList.remove('hidden');
+				overlayProductImage.style.cursor = 'zoom-in';
+				overlayExitInfo.classList.add('hidden');
+			} else {
+				overlayMagnifier.classList.add('hidden');
+				mag.classList.remove('invisible');
+				overlayProductImage.style.cursor = 'none';
+				overlayButtons.classList.add('invisible');
+				overlayButtons.classList.remove('opacity-100');
+				overlayExitInfo.classList.remove('hidden');
+			}
+		}
+	</script>
+	<script type="module">
+		// Include Lightbox 
+		import PhotoSwipeLightbox from '{% static "vendors/photo_swipe/photoswipe-lightbox.esm.js" %}';
+		const lightbox = new PhotoSwipeLightbox({
+			// may select multiple "galleries"
+			gallerySelector: '#productCarouselListPrimary',
+			// Elements within gallerySelector (slides)
+			childSelector: 'li',
+			// Include PhotoSwipe Core
+			// and use absolute path (that starts with http(s)://)
+			pswpModule: '{% static "vendors/photo_swipe/photoswipe.esm.js" %}',
+			// Include CSS file,
+			// (if you haven't included in via <link>)
+			// pswpCSS: '{% static "vendors/photo_swipe/photoswipe.css" %}'
+		});
+		lightbox.init();
+	</script>
+</script>

@@ -1,0 +1,28 @@
+[
+	{
+		"model": "shop.setting", 
+		"fields": {
+			"key": "PAGE_RANGE", 
+			"value": "2"
+		}
+	}, {
+		"model": "shop.setting",
+		"fields": {
+			"key": "PRODUCTS_PER_PAGE", 
+			"value": "2"
+		}
+	}, {
+		"model": "shop.setting", 
+		"fields": {
+			"key": "CURRENCY", 
+			"value": "€"
+		}
+	}, {
+		"model": "shop.setting", 
+		"fields": {
+			"key": "CURRENCY_CODE", 
+			"value": "EUR"
+		}
+	}
+	
+]

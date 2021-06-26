@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Error 404' %}{% endblock %}
+{% block bodytag %}style="background-color: #ffffff; color: #000000"{% endblock %}
+{% block content %}
+<div class="pt-5 pl-2 pr-2 p-sm-4 ml-auto mr-auto mt-5 text-center max-w-6xl flex flex-col md:flex-row justify-center">
+  <div class="text-left">
+    <h2 class="text-4xl font-semibold mb-5">
+      {% trans 'Oops!' %}
+    </h2>
+    <h3 class="mb-4">
+      {% trans "We can't seem to find the page you're looking for." %}
+    </h3>
+    <p class="font-sm mb-4">
+      {% trans 'Error code: ' %}
+      <span class="unset font-semibold font-sm">
+        404
+      </span>
+    </p>
+    <div class="flex flex-col">
+      {% trans 'Here are some helpful links instead:' %}
+      <a class="link-primary" href="/">
+        {% trans 'Home' %}
+      </a>
+      <a class="link-primary" href="{% url 'contact:contact' %}">
+        {% trans 'Contact' %}
+      </a>
+    </div>
+  </div>
+  <div class="flex justify-center w-full sm:w-auto">
+    <img style="height: 428px; width: 313px;" src="{% static 'img/error/error_image.gif' %}" 
+				alt="{% trans 'Error image' %}" />
+  </div>
+</div>
+{% endblock %}

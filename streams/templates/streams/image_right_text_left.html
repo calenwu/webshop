@@ -1,0 +1,11 @@
+<div class="flex flex-col md:flex-row justify-between mb-16 items-center w-full">
+	<div class="flex flex-col items-center justify-center text-center mb-4 w-full">
+		<h3 class="">
+			{{ self.title }}
+		</h3>
+		{{ self.text }}
+	</div>
+	<div class="md:ml-4">
+		<img src="{{ self.image.file.url }}" alt="{{ self.image.file.name }}" />
+	</div>
+</div>

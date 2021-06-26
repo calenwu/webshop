@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load shop_template_tags cart_template_tags i18n %}
+{% block content %}
+	{% get_currency as currency %}
+	<div class="md:hidden px-2 sm:px-4 w-full py-4 bg-primary-400 text-primary-bg collapsible cursor-pointer">
+		<div class="flex justify-between self-center items-center max-w-screen-2xl m-auto">
+			<div class="text-sm">
+				<i class="fal fa-shopping-cart mr-2"></i>{% trans 'Show order' %}
+			</div>
+			<div>
+				{{ order.get_display_total_price }}
+			</div>
+		</div>
+	</div>
+	<div class="px-2 sm:px-4 w-full max-h-0 overflow-hidden duration-500 
+			transition-all border-b border-gray-200 md:hidden">
+		<div class="w-full">
+			{% for item in order.order_items.all %}
+				<div class="flex items-center mt-4 pb-4 border-b border-gray-200">
+					<a href="{{ item.product_color_quantity.product_color.product.link }}"  aria-label="{% trans 'Product' %}"
+							class="cursor-pointer mr-4">
+						<div class="flex items-center justify-center w-20 relative">
+							<div class="absolute w-6 h-6 bg-gray-500 text-white -top-2 -right-2 rounded-full text-center">
+								{{ item.quantity }}
+							</div>
+							<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
+								style="background-image: url('{{ item.product_color_quantity.product_color.image.file.url }}')";>
+							</div>
+						</div>
+					</a>
+					<div class="flex justify-between w-full relative">
+						<div class="flex flex-col">
+							<h4 class="text-lg leading-5">{{ item.get_name }}</h4>
+							<h6 class="text-xs">{{ item.color }} / {{ item.size }}</h6>
+							<h6 class="text-xs">{{ item.get_display_price }}</h6>
+						</div>
+						<div class="text-sm flex items-center">
+							{{ item.get_display_total_price }}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			<div class="mt-4 flex justify-between pb-4 border-b border-gray-200">
+				<div>
+					{% trans 'Subtotal' %}
+				</div>
+				<div>
+					{{ order.get_display_pre_sum }}
+				</div>
+			</div>
+			{% if order.coupon_name %}
+				<div class="my-4 flex justify-between coupon-class">
+					<div class="flex align-center items-center">
+						{{ order.coupon_name }}
+					</div>
+					<div>
+						- {{ order.get_display_discount }}
+					</div>
+				</div>
+			{% endif %}
+			<div class="flex justify-between my-4 ">
+				<div class="d-inline-block mr-8">
+					{{ order.shipping_method_name }}
+				</div>
+				<div class="d-inline-block pl-2">
+					{{ order.get_display_shipping_price }}
+				</div>
+			</div>
+			<div class="border-t border-gray-200 pt-4 flex justify-between pb-4">
+				<h5 class="text-xl">{% trans 'Total' %}</h5>
+				<h5 class="text-xl">{{ order.get_display_total_price }}</h5>
+			</div>
+		</div>
+	</div>
+	<div class="max-w-screen-2xl m-auto flex">
+		<div class="w-full md:w-7/12 p-2 pt-8 md:p-4lg:p-8">
+			<div class="flex mb-8">
+				<div>
+					<div class="border border-primary rounded-full w-12 h-12 flex justify-center self-center items-center mr-4">
+						<i class="fal fa-check"></i>
+					</div>
+				</div>
+				<div class="flex flex-col justify-center">
+					<div class="leading-3">
+						{% trans 'Order' %} {{ order.order_number }}
+					</div>
+					<div class="text-xl">
+						<strong>{% trans 'Thank you' %} {{ order.first_name }}!</strong>
+					</div>
+				</div>
+			</div>
+			<div class="border border border-gray-200 rounded mb-8 p-6">
+        <strong>
+					<div class="text-lg">
+						{% if order.tracking_number %}
+							{% trans 'Your shipment is confirmed' %}
+						{% else %}
+							{% trans 'Your order is confirmed' %}
+						{% endif %}
+					</div>
+				</strong>
+        <div class="">
+          {% trans "We've accepted your order, and we're getting it ready." %}
+          {% trans 'A confirmation email has been sent to' %}
+          <strong>{{ order.email }}</strong>.
+          {% trans "Come back to this page for updates on your shipment status." %}
+        </div>
+			</div>
+			{% if order.tracking_number %}
+				<div class="border border border-gray-200 rounded mb-8 p-6">
+					<strong>
+						<div class="text-lg">
+							{% trans 'Your order has been shipped' %}
+						</div>
+					</strong>
+					<div class="">
+						{% trans "You can track your order here: " %}
+						<a class="link-primary" href="{{ order.tracking_number_link }}" target="_blank" >
+							{{ order.tracking_number }}
+						</a>
+					</div>
+				</div>
+			{% endif %}
+			<div class="border border border-gray-200 rounded mb-8 p-6">
+				<div>
+					<h3 class="mb-4">{% trans 'Customer information' %}</h2>
+					<div class="grid grid-cols-2 gap-4">
+						<div class="col-span-2 sm:col-span-1">
+							<div class="mb-1">
+								<strong>{% trans 'Shipping address' %}</strong>
+							</div>
+							<p class="mb-0">{{ order.first_name }} {{ order.last_name }}</p>
+							<p class="mb-0">{{ order.address }} {{ order.address2 }}</p>
+							<p class="mb-0">{{ order.postal_code }}
+								{{ order.city }}{% if order.state %},{{ order.state }}{% endif %}</p>
+							<p class="mb-0">{{ order.get_country_readable }}</p>
+							<p class="mb-0">{{ order.telephone }}</p>
+						</div>
+						<div class="col-span-2 sm:col-span-1">
+							<div class="mb-1">
+								<strong>{% trans 'Billing address' %}</strong>
+								<p class="mb-0">{{ order.first_name }} {{ order.last_name }}</p>
+								<p class="mb-0">{{ order.address }} {{ order.address2 }}</p>
+								<p class="mb-0">{{ order.postal_code }}
+									{{ order.city }}{% if order.state %},{{ order.state }}{% endif %}</p>
+								<p class="mb-0">{{ order.get_country_readable }}</p>
+								<p class="mb-0">{{ order.telephone }}</p>
+							</div>
+						</div>
+						<div class="col-span-2 sm:col-span-1">
+							<div class="mb-1">
+								<strong>{% trans 'Shipping method' %}</strong>
+							</div>
+							<p class="mb-0">{{ order.shipping_method_name }}</p>
+						</div>
+						<div class="col-span-2 sm:col-span-1">
+							<div class="mb-1">
+								<strong>{% trans 'Payment method' %}</strong>
+							</div>
+							<p class="mb-0">{{ order.get_payment_method }}</p>
+						</div>
+						{% if order.comment %}
+							<div class="col-span-2 sm:col-span-1">
+								<div class="mb-1">
+									<strong>{% trans 'Comment' %}</strong>
+									<p class="mb-0">{{ order.comment }}</p>
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden md:flex w-5/12 md:p-4 lg:p-8">
+			<div class="w-full">
+				{% for item in order.order_items.all %}
+					<div class="flex items-center mt-4 pb-4 border-b border-gray-200">
+						<a href="{{ item.product_color_quantity.product_color.product.link }}"  aria-label="{% trans 'Product' %}"
+								class="cursor-pointer mr-4">
+							<div class="flex items-center justify-center w-20 relative">
+								<div class="absolute w-6 h-6 bg-gray-500 text-white -top-2 -right-2 rounded-full text-center">
+									{{ item.quantity }}
+								</div>
+								<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
+									style="background-image: url('{{ item.product_color_quantity.product_color.image.file.url }}')";>
+								</div>
+							</div>
+						</a>
+						<div class="flex justify-between w-full relative">
+							<div class="flex flex-col">
+								<h4 class="text-lg leading-5">{{ item.get_name }}</h4>
+								<h6 class="text-xs">{{ item.color }} / {{ item.size }}</h6>
+								<h6 class="text-xs">{{ item.get_display_price }}</h6>
+							</div>
+							<div class="text-sm flex items-center">
+								{{ item.get_display_total_price }}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				<div class="mt-4 flex justify-between pb-4 border-b border-gray-200">
+					<div>
+						{% trans 'Subtotal' %}
+					</div>
+					<div>
+						{{ order.get_display_pre_sum }}
+					</div>
+				</div>
+				{% if order.coupon_name %}
+					<div class="my-4 flex justify-between coupon-class">
+						<div class="flex align-center items-center">
+							{{ order.coupon_name }}
+						</div>
+						<div>
+							- {{ order.get_display_discount }}
+						</div>
+					</div>
+				{% endif %}
+				<div class="flex justify-between my-4 ">
+					<div class="d-inline-block mr-8">
+						{{ order.shipping_method_name }}
+					</div>
+					<div class="d-inline-block pl-2">
+						{{ order.get_display_shipping_price }}
+					</div>
+				</div>
+				<div class="border-t border-gray-200 pt-4 flex justify-between pb-4">
+					<h5 class="text-xl">{% trans 'Total' %}</h5>
+					<h5 class="text-xl">{{ order.get_display_total_price }}</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

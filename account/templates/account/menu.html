@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load shop_template_tags cart_template_tags i18n %}
+{% block content %}
+	<div class="flex flex-col items-center text-center p-2 sm:p-4">
+		<h1 class="my-16">
+			{% trans 'My account' %}
+		</h1>
+		<div class="w-full max-w-lg my-auto mb-4">
+			<a class="button-primary-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:orders' %}">
+				{% trans 'My orders' %}
+			</a>
+		</div>
+		<div class="w-full max-w-lg my-auto mb-4">
+			<a class="button-primary-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:change_address' %}">
+				{% trans 'My address' %}
+			</a>
+		</div>
+		<div class="w-full max-w-lg my-auto mb-4">
+			<a class="button-primary-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:change_email' %}">
+				{% trans 'Change email' %}
+			</a>
+		</div>
+		<div class="w-full max-w-lg my-auto mb-16">
+			<a class="button-primary-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:change_password' %}">
+				{% trans 'Change password' %}
+			</a>
+		</div>
+		<div class="w-full max-w-lg my-auto">
+			<a class="button-red-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:logout' %}">
+				{% trans 'Logout' %}
+			</a>
+		</div>
+	</div>
+{% endblock %}

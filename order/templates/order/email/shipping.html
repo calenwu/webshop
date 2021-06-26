@@ -1,0 +1,53 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="" style="max-width: 500px;">
+			<h1>{% trans 'Your order has been shipped!' %}</h1>
+			<div style="margin-bottom: 8px;">
+				{% blocktrans with f_name=first_name %}
+					Hi {{ f_name }} your order has been shipped. Click on the link below to track your order.
+				{% endblocktrans %}
+			</div>
+			<div style="
+          display: flex;
+					flex-direction: column;
+          justify-content: center;
+          align-items: center;">
+				<a href="{{ tracking_link }}" style="text-decoration: none;">
+					<div style="
+						font-size: 14px;
+						text-align: center;
+						border-radius: 4px;
+						padding: 8px 12px 8px 12px;
+						background-color: {{ email_button_color }};
+						color: {{ email_button_text_color }};
+            margin-right: 12px;
+            text-decoration: none;">
+						{% trans 'Track order' %}
+					</div>
+				</a>
+				<div style="margin-top: 4px">
+					or
+				</div>
+				<a href="{{ order_link }}" style="text-decoration: none;">
+					<div style="
+						font-size: 14px;
+						text-align: center;
+						border-radius: 4px;
+						padding: 8px 12px 8px 12px;
+						background-color: {{ email_button_color }};
+						color: {{ email_button_text_color }};
+						margin-left: 12px;
+						text-decoration: none;">
+						{% trans 'View order' %}
+					</div>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>

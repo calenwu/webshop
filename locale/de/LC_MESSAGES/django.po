@@ -1,0 +1,1370 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-25 01:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/forms.py:151
+#: account/templates/registration/password_reset_confirm.html:9
+#: account/templates/registration/password_reset_email.html:27
+msgid "Reset password"
+msgstr ""
+
+#: account/forms.py:161 account/forms.py:181 account/forms.py:188
+#: contact/forms.py:25 contact/templates/contact/contact.html:40
+#: contact/templates/contact/contact.html:44 newsletter/forms.py:8
+#: order/forms.py:14 order/forms.py:150
+#: order/templates/order/invoice_pdf.html:53
+msgid "Email"
+msgstr ""
+
+#: account/templates/account/change_address.html:6
+msgid "Edit address"
+msgstr ""
+
+#: account/templates/account/change_address.html:195
+#: account/templates/account/change_email.html:27
+#: account/templates/account/change_password.html:38
+#: account/templates/registration/password_reset_confirm.html:53
+msgid "Save"
+msgstr ""
+
+#: account/templates/account/change_address.html:202
+#: account/templates/account/change_email.html:34
+#: account/templates/account/change_password.html:45
+#: account/templates/account/orders.html:48
+msgid "Return to menu"
+msgstr ""
+
+#: account/templates/account/change_email.html:6
+#: account/templates/account/menu.html:23
+msgid "Change email"
+msgstr ""
+
+#: account/templates/account/change_password.html:6
+#: account/templates/account/menu.html:29
+msgid "Change password"
+msgstr ""
+
+#: account/templates/account/menu.html:6
+msgid "My account"
+msgstr ""
+
+#: account/templates/account/menu.html:11
+#: account/templates/account/orders.html:6
+msgid "My orders"
+msgstr ""
+
+#: account/templates/account/menu.html:17
+msgid "My address"
+msgstr ""
+
+#: account/templates/account/menu.html:35
+msgid "Logout"
+msgstr ""
+
+#: account/templates/account/orders.html:13 order/templates/order/view.html:85
+msgid "Order"
+msgstr ""
+
+#: account/templates/account/orders.html:14
+#: order/templates/order/invoice_pdf.html:59
+msgid "Date"
+msgstr ""
+
+#: account/templates/account/orders.html:15
+#: order/templates/order/admin/detail.html:58
+#: order/templates/order/admin/detail.html:83
+#: order/templates/order/invoice_pdf.html:111
+#: order/templates/order/invoice_pdf.html:173
+msgid "Sum"
+msgstr ""
+
+#: account/templates/account/orders.html:35
+msgid "Your order history is empty"
+msgstr ""
+
+#: account/templates/account/orders.html:36
+msgid "It seems like you have not made a purchase yet"
+msgstr ""
+
+#: account/templates/account/orders.html:40
+#: cart/templates/cart/cart_overlay.html:138
+#: cart/templates/cart/details.html:146
+msgid "View Shop"
+msgstr ""
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: newsletter/templates/newsletter/unsubscribe.html:3
+msgid "Login"
+msgstr ""
+
+#: account/templates/registration/password_reset_done.html:3
+#: contact/admin.py:24 contact/templates/contact/contact.html:3
+#: contact/templates/contact/contact.html:8
+#: order/templates/order/payment.html:58 order/templates/order/shipping.html:39
+msgid "Contact"
+msgstr ""
+
+#: account/templates/registration/password_reset_email.html:10
+msgid "Reset your password"
+msgstr ""
+
+#: account/templates/registration/password_reset_email.html:12
+msgid ""
+"Would you like to reset your password? If that is not the case someone else "
+"has requested a password reset and you can ignore this email."
+msgstr ""
+
+#: account/views.py:61
+msgid ""
+"Please enter a correct email address and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+
+#: account/views.py:104
+msgid "Address updated"
+msgstr ""
+
+#: account/views.py:105
+msgid "You updated your address successfully"
+msgstr ""
+
+#: account/views.py:129
+msgid "Email updated"
+msgstr ""
+
+#: account/views.py:130
+msgid "You updated your email successfully"
+msgstr ""
+
+#: account/views.py:153
+msgid "Paasword changed"
+msgstr ""
+
+#: account/views.py:154
+msgid "You changed your password successfully"
+msgstr ""
+
+#: blog/admin.py:10
+msgid "Blog settings"
+msgstr ""
+
+#: blog/forms.py:7 blog/forms.py:8 shop/forms.py:8 shop/forms.py:13
+msgid "Search"
+msgstr ""
+
+#: blog/models.py:36 order/models.py:49
+msgid "January"
+msgstr ""
+
+#: blog/models.py:37 order/models.py:50
+msgid "February"
+msgstr ""
+
+#: blog/models.py:38 order/models.py:51
+msgid "March"
+msgstr ""
+
+#: blog/models.py:39 order/models.py:52
+msgid "April"
+msgstr ""
+
+#: blog/models.py:40 order/models.py:53
+msgid "May"
+msgstr ""
+
+#: blog/models.py:41 order/models.py:54
+msgid "June"
+msgstr ""
+
+#: blog/models.py:42 order/models.py:55
+msgid "July"
+msgstr ""
+
+#: blog/models.py:43 order/models.py:56
+msgid "August"
+msgstr ""
+
+#: blog/models.py:44 order/models.py:57
+msgid "September"
+msgstr ""
+
+#: blog/models.py:45 order/models.py:58
+msgid "October"
+msgstr ""
+
+#: blog/models.py:46 order/models.py:59
+msgid "November"
+msgstr ""
+
+#: blog/models.py:47 order/models.py:60
+msgid "December"
+msgstr ""
+
+#: blog/models.py:79 blog/models.py:95 cart/models.py:34 cart/models.py:53
+#: contact/models.py:39 contact/models.py:57 order/models.py:97
+#: order/models.py:113 order/models.py:128 order/models.py:144
+#: order/models.py:160 order/models.py:179 order/models.py:195
+#: order/models.py:211 order/models.py:227 order/models.py:243
+#: order/models.py:259 order/models.py:275 order/models.py:291
+#: order/models.py:306 order/models.py:322 order/models.py:338
+#: order/models.py:354 order/models.py:373 order/models.py:392
+#: order/models.py:411 shop/models.py:65 shop/models.py:84 shop/models.py:103
+#: shop/models.py:122
+msgid "Run python manage.py migrate"
+msgstr ""
+
+#: blog/models.py:268
+msgid "Author(s)"
+msgstr ""
+
+#: blog/models.py:273
+msgid "Categories"
+msgstr ""
+
+#: blog/templates/blog/details.html:25
+msgid "Back to articles"
+msgstr ""
+
+#: blog/templates/blog/listing.html:23 blog/templates/blog/listing.html:47
+#: blog/templates/blog/listing.html:69 shop/templates/shop/listing.html:21
+#: shop/templates/shop/listing.html:72 shop/templates/shop/listing.html:95
+msgid "Filter"
+msgstr ""
+
+#: blog/templates/blog/listing.html:43 shop/templates/shop/listing.html:68
+msgid "Reset filter"
+msgstr ""
+
+#: blog/templates/blog/listing.html:94
+msgid "Continue reading"
+msgstr ""
+
+#: blog/templates/blog/listing.html:136
+msgid "No blog posts found"
+msgstr ""
+
+#: blog/templates/blog/listing.html:140
+msgid "There are no blog posts matching youre search critia."
+msgstr ""
+
+#: blog/templates/blog/listing.html:142 shop/templates/shop/listing.html:134
+msgid "Remove a few tags and try again."
+msgstr ""
+
+#: blog/templates/blog/listing.html:146
+msgid "We havent added any blog posts yet."
+msgstr ""
+
+#: blog/templates/blog/listing.html:148 shop/templates/shop/listing.html:140
+msgid "Check back later!"
+msgstr ""
+
+#: cart/admin.py:11
+msgid "Cart settings"
+msgstr ""
+
+#: cart/cart.py:13
+#, python-format
+msgid "The maximum order quantity per item  is  %(quantity)s"
+msgstr ""
+
+#: cart/cart.py:148
+msgid "Invalid quantity"
+msgstr ""
+
+#: cart/cart.py:149
+msgid "Please enter a valid quantity."
+msgstr ""
+
+#: cart/cart.py:175 cart/templates/cart/details.html:63
+msgid "Out of stock"
+msgstr ""
+
+#: cart/cart.py:176
+msgid "Sorry we are out of stock"
+msgstr ""
+
+#: cart/cart.py:192
+#, python-format
+msgid "Only  %(quantity)s left"
+msgstr ""
+
+#: cart/cart.py:193
+#, python-format
+msgid "Sorry we only have  %(quantity)s left in stock"
+msgstr ""
+
+#: cart/cart.py:210
+msgid "Exceeded maximum order quantity"
+msgstr ""
+
+#: cart/forms.py:24 shop/templates/shop/details.html:227
+#: shop/templates/shop/details.html:277
+#: streams/templates/streams/hero_product.html:198
+#: streams/templates/streams/hero_product.html:245
+msgid "Sold out"
+msgstr ""
+
+#: cart/forms.py:31 cart/forms.py:42
+msgid "Enter a positive quantity"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:8
+#: cart/templates/cart/cart_overlay.html:124
+#: cart/templates/cart/details.html:14
+msgid "Your cart"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:21 cart/templates/cart/details.html:26
+#: order/templates/cart/cart_checkout_right.html:9
+#: order/templates/cart/cart_checkout_top.html:9
+#: order/templates/order/admin/detail.html:53
+#: order/templates/order/view.html:20 order/templates/order/view.html:178
+msgid "Product"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:38 cart/templates/cart/details.html:50
+#: order/templates/order/admin/detail.html:57
+#: order/templates/order/invoice_pdf.html:109
+#: shop/templates/shop/details.html:66
+#: streams/templates/streams/hero_product.html:57
+msgid "Quantity"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:41 cart/templates/cart/details.html:53
+#: cart/templates/cart/details.html:74
+msgid "Update quantity"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:66 cart/templates/cart/details.html:88
+#: coupon/views.py:33 order/templates/cart/cart_checkout_right.html:37
+#: order/templates/cart/cart_checkout_top.html:37
+msgid "The code you entered seems to be invalid"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:71 cart/templates/cart/details.html:93
+#: order/templates/cart/cart_checkout_right.html:42
+#: order/templates/cart/cart_checkout_top.html:42
+msgid "Coupon"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:73 cart/templates/cart/details.html:95
+#: order/templates/cart/cart_checkout_right.html:44
+#: order/templates/cart/cart_checkout_top.html:44
+msgid "Apply"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:82
+#: cart/templates/cart/details.html:104
+#: order/templates/cart/cart_checkout_right.html:53
+#: order/templates/cart/cart_checkout_top.html:53
+#: order/templates/order/view.html:45 order/templates/order/view.html:203
+msgid "Subtotal"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:106
+#: cart/templates/cart/details.html:128
+#: order/templates/cart/cart_checkout_right.html:91
+#: order/templates/cart/cart_checkout_top.html:91
+#: order/templates/order/view.html:70 order/templates/order/view.html:228
+msgid "Total"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:112 cart/templates/cart/details.html:8
+#: order/templates/order/information.html:25
+#: order/templates/order/payment.html:40 order/templates/order/shipping.html:23
+msgid "Cart"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:116
+#: cart/templates/cart/details.html:134
+msgid "Checkout"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:133
+#: cart/templates/cart/details.html:141
+msgid "Your cart is empty"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:134
+#: cart/templates/cart/details.html:142
+msgid "It seems like you have not added any items to your cart"
+msgstr ""
+
+#: cart/templates/cart/details.html:58
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t(Only %(stock)s left)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+msgstr ""
+
+#: cart/views.py:24 cart/views.py:41 cart/views.py:53 cart/views.py:64
+msgid "Error while adding to cart"
+msgstr ""
+
+#: cart/views.py:25 cart/views.py:85
+msgid "Please enter a number greater than 0"
+msgstr ""
+
+#: cart/views.py:42 cart/views.py:102
+msgid "There is no product with the id %(product_color_quantity_id)"
+msgstr ""
+
+#: cart/views.py:54 cart/views.py:114 order/admin.py:221
+msgid "Please enter a valid number"
+msgstr ""
+
+#: cart/views.py:84 cart/views.py:101 cart/views.py:113 cart/views.py:124
+msgid "Error while updating cart"
+msgstr ""
+
+#: cart/views.py:166
+msgid "Update cart"
+msgstr ""
+
+#: cart/views.py:167
+msgid ""
+"There is not enough stock available for your order, please update your cart."
+msgstr ""
+
+#: contact/admin.py:13
+msgid "Contact settings"
+msgstr ""
+
+#: contact/forms.py:17 contact/forms.py:20
+#: contact/templates/contact/contact.html:22
+#: contact/templates/contact/contact.html:26 order/models.py:482
+msgid "Name"
+msgstr ""
+
+#: contact/forms.py:34 contact/templates/contact/contact.html:59
+#: contact/templates/contact/contact.html:63
+msgid "Message"
+msgstr ""
+
+#: contact/forms.py:50
+msgid "New message from webshop"
+msgstr ""
+
+#: contact/forms.py:57
+msgid "New contact: "
+msgstr ""
+
+#: contact/templates/contact/contact.html:80
+msgid "Send message"
+msgstr ""
+
+#: contact/templates/contact/contact_page.html:31
+msgid "Hello"
+msgstr ""
+
+#: contact/views.py:24 contact/views.py:45 contact/views.py:73
+msgid "Message not sent"
+msgstr ""
+
+#: contact/views.py:25
+msgid "Please complete the captcha"
+msgstr ""
+
+#: contact/views.py:46
+msgid "We think that you are a robot"
+msgstr ""
+
+#: contact/views.py:62
+msgid "Message sent"
+msgstr ""
+
+#: contact/views.py:63
+msgid "We received your message and will respond as soon as possible"
+msgstr ""
+
+#: coupon/models.py:27
+msgid "Percentage"
+msgstr ""
+
+#: coupon/views.py:32
+msgid "Invalid Code"
+msgstr ""
+
+#: home/admin.py:12
+msgid "Favicon"
+msgstr ""
+
+#: home/admin.py:22 home/models.py:220
+msgid "Footer"
+msgstr ""
+
+#: home/admin.py:33 streams/blocks.py:44 streams/blocks.py:79
+#: streams/blocks.py:89 streams/blocks.py:100 streams/blocks.py:112
+#: streams/blocks.py:125 streams/blocks.py:147
+msgid "Title"
+msgstr ""
+
+#: home/admin.py:44 home/models.py:138
+msgid "Menu"
+msgstr ""
+
+#: home/admin.py:55
+msgid "Information bar"
+msgstr ""
+
+#: home/models.py:93
+msgid "Either logo or text has to be set"
+msgstr ""
+
+#: home/models.py:199 home/models.py:280
+msgid "Either link_page or link_url has to be set"
+msgstr ""
+
+#: newsletter/admin.py:11 newsletter/models.py:42
+msgid "Newsletter campaign"
+msgstr ""
+
+#: newsletter/admin.py:21
+msgid "Newsletter subscribers"
+msgstr ""
+
+#: newsletter/models.py:28
+msgid "Title for the popup after subscribing"
+msgstr ""
+
+#: newsletter/models.py:29
+msgid "Text for the popup after subscribing"
+msgstr ""
+
+#: newsletter/models.py:43
+msgid "Newsletter campaigns"
+msgstr ""
+
+#: newsletter/models.py:62
+msgid "Subscriber"
+msgstr ""
+
+#: newsletter/models.py:63
+msgid "Subscribers"
+msgstr ""
+
+#: newsletter/templates/newsletter/footer.html:4
+msgid "Abboniere unseren Newsletter"
+msgstr ""
+
+#: newsletter/templates/newsletter/footer.html:6
+msgid "Abonniert"
+msgstr ""
+
+#: newsletter/templates/newsletter/footer.html:17
+msgid "Abonnieren"
+msgstr ""
+
+#: newsletter/templates/newsletter/popup.html:19
+msgid "Close"
+msgstr ""
+
+#: newsletter/templates/newsletter/popup.html:47
+msgid "Subscribe"
+msgstr ""
+
+#: newsletter/templates/newsletter/unsubscribe.html:9
+msgid "Unsubscribed"
+msgstr ""
+
+#: newsletter/templates/newsletter/unsubscribe.html:12
+msgid "You have unsubscribed from our newsletter"
+msgstr ""
+
+#: order/admin.py:50
+msgid "Order settings"
+msgstr ""
+
+#: order/admin.py:86
+#, python-format
+msgid "Add %s"
+msgstr ""
+
+#: order/admin.py:88
+#, python-format
+msgid "Add a new %s"
+msgstr ""
+
+#: order/admin.py:151
+msgid "Invoice sent"
+msgstr ""
+
+#: order/admin.py:153
+msgid "Invoice could not be sent"
+msgstr ""
+
+#: order/admin.py:163
+msgid "Shipping notification sent"
+msgstr ""
+
+#: order/admin.py:165
+msgid "Shipping notification could not be sent"
+msgstr ""
+
+#: order/admin.py:173
+msgid "Cant refund this order"
+msgstr ""
+
+#: order/admin.py:175
+msgid "Maximum refund amount: "
+msgstr ""
+
+#: order/admin.py:177
+msgid "Minimum refund amount: 0"
+msgstr ""
+
+#: order/admin.py:184
+msgid "Refunded"
+msgstr ""
+
+#: order/admin.py:188
+msgid "Unknown error"
+msgstr ""
+
+#: order/admin.py:190
+msgid "Send an invoice"
+msgstr ""
+
+#: order/admin.py:191
+msgid "Send an invoice via celery"
+msgstr ""
+
+#: order/forms.py:17 order/forms.py:153
+msgid "example@gmail.com"
+msgstr ""
+
+#: order/forms.py:22 order/forms.py:158
+msgid "First name"
+msgstr ""
+
+#: order/forms.py:25 order/forms.py:161
+msgid "Luke"
+msgstr ""
+
+#: order/forms.py:30 order/forms.py:166
+msgid "Last name"
+msgstr ""
+
+#: order/forms.py:33 order/forms.py:169
+msgid "Skywalker"
+msgstr ""
+
+#: order/forms.py:38 order/forms.py:42 order/forms.py:174 order/forms.py:178
+msgid "Company (optional)"
+msgstr ""
+
+#: order/forms.py:47 order/forms.py:50 order/forms.py:183 order/forms.py:186
+msgid "Street and house number"
+msgstr ""
+
+#: order/forms.py:55 order/forms.py:58 order/forms.py:191 order/forms.py:194
+msgid "Additional address (optional)"
+msgstr ""
+
+#: order/forms.py:64 order/forms.py:67 order/forms.py:200 order/forms.py:203
+msgid "City"
+msgstr ""
+
+#: order/forms.py:72 order/forms.py:75 order/forms.py:208 order/forms.py:211
+msgid "Country"
+msgstr ""
+
+#: order/forms.py:80 order/forms.py:83 order/forms.py:217 order/forms.py:220
+msgid "State"
+msgstr ""
+
+#: order/forms.py:90 order/forms.py:93 order/forms.py:227 order/forms.py:230
+msgid "Postal code"
+msgstr ""
+
+#: order/forms.py:98 order/forms.py:101 order/forms.py:235 order/forms.py:238
+msgid "Phone"
+msgstr ""
+
+#: order/forms.py:107
+msgid "Keep me up to date on news and exclusive offers"
+msgstr ""
+
+#: order/forms.py:111
+msgid "Comment (optional)"
+msgstr ""
+
+#: order/forms.py:114 order/templates/order/view.html:165
+msgid "Comment"
+msgstr ""
+
+#: order/forms.py:140 order/forms.py:265
+msgid "Please select a state"
+msgstr ""
+
+#: order/models.py:483 order/templates/order/invoice_pdf.html:108
+msgid "Description"
+msgstr ""
+
+#: order/models.py:484
+msgid "Minimum weight"
+msgstr ""
+
+#: order/models.py:485
+msgid "Maximum weight"
+msgstr ""
+
+#: order/models.py:486 order/templates/order/admin/detail.html:56
+msgid "Price"
+msgstr ""
+
+#: order/models.py:487
+msgid "Active"
+msgstr ""
+
+#: order/models.py:552
+msgid "name"
+msgstr ""
+
+#: order/models.py:553
+msgid "label"
+msgstr ""
+
+#: order/models.py:615 order/templates/order/admin/detail.html:27
+msgid "Created"
+msgstr ""
+
+#: order/models.py:616
+msgid "Processing"
+msgstr ""
+
+#: order/models.py:617
+msgid "Shipped"
+msgstr ""
+
+#: order/models.py:618
+msgid "Canceled"
+msgstr ""
+
+#: order/models.py:619
+msgid "Returned"
+msgstr ""
+
+#: order/models.py:631 order/models.py:859
+msgid "e-mail"
+msgstr ""
+
+#: order/models.py:632 order/models.py:856
+msgid "first name"
+msgstr ""
+
+#: order/models.py:633 order/models.py:857
+msgid "last name"
+msgstr ""
+
+#: order/models.py:634 order/models.py:858
+msgid "company"
+msgstr ""
+
+#: order/models.py:635 order/models.py:860
+msgid "address"
+msgstr ""
+
+#: order/models.py:636 order/models.py:861
+msgid "address2"
+msgstr ""
+
+#: order/models.py:637 order/models.py:862
+msgid "postal code"
+msgstr ""
+
+#: order/models.py:638 order/models.py:863
+msgid "country"
+msgstr ""
+
+#: order/models.py:639 order/models.py:864
+msgid "city"
+msgstr ""
+
+#: order/models.py:640 order/models.py:865
+msgid "state"
+msgstr ""
+
+#: order/models.py:641 order/models.py:866
+msgid "telephone"
+msgstr ""
+
+#: order/models.py:642
+msgid "comment"
+msgstr ""
+
+#: order/models.py:651
+msgid "Shipping method name"
+msgstr ""
+
+#: order/models.py:652
+msgid "Shipping method price"
+msgstr ""
+
+#: order/models.py:661
+msgid "Coupon name"
+msgstr ""
+
+#: order/models.py:662
+msgid "Discount on order"
+msgstr ""
+
+#: order/models.py:686 order/templates/order/view.html:126
+msgid "Customer information"
+msgstr ""
+
+#: order/models.py:701
+msgid "Payment info"
+msgstr ""
+
+#: order/models.py:799
+msgid "unique_paid_number has to be unique"
+msgstr ""
+
+#: order/models.py:801
+msgid "Cannot change unique_paid_number once set"
+msgstr ""
+
+#: order/models.py:803
+msgid "A paid order has to have a self.unique_paid_number"
+msgstr ""
+
+#: order/models.py:805
+msgid "An unpaid order cannot have a unique_paid_number"
+msgstr ""
+
+#: order/templates/cart/cart_checkout_right.html:80
+#: order/templates/cart/cart_checkout_top.html:80
+#: order/templates/order/information.html:30
+#: order/templates/order/payment.html:48 order/templates/order/shipping.html:30
+msgid "Shipping"
+msgstr ""
+
+#: order/templates/order/admin/admin_change_form.html:6
+msgid "View in web"
+msgstr ""
+
+#: order/templates/order/admin/admin_change_form.html:10
+msgid "Send invoice"
+msgstr ""
+
+#: order/templates/order/admin/admin_change_form.html:14
+msgid "Send invoice via celery"
+msgstr ""
+
+#: order/templates/order/admin/admin_change_form.html:18
+msgid "Send shipping notification"
+msgstr ""
+
+#: order/templates/order/admin/admin_change_form.html:22
+msgid "Send shipping notification via celery"
+msgstr ""
+
+#: order/templates/order/admin/admin_change_form.html:27
+msgid "Refund"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:13
+msgid "Home"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:14
+msgid "Detail"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:31
+msgid "Customer"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:35
+msgid "E-mail"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:39
+msgid "Address"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:43
+msgid "Total amount"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:54
+msgid "Color"
+msgstr ""
+
+#: order/templates/order/admin/detail.html:55
+msgid "Size"
+msgstr ""
+
+#: order/templates/order/email/order.html:10
+msgid "Thank you for your purchase!"
+msgstr ""
+
+#: order/templates/order/email/order.html:12
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\tHi %(f_name)s we are preparing your order. We will notify you when "
+"its shipped.\n"
+"\t\t\t\t"
+msgstr ""
+
+#: order/templates/order/email/order.html:16
+msgid "Your invoice is attached"
+msgstr ""
+
+#: order/templates/order/email/order.html:33
+#: order/templates/order/email/shipping.html:47
+msgid "View order"
+msgstr ""
+
+#: order/templates/order/email/order.html:49
+msgid "Visit our store"
+msgstr ""
+
+#: order/templates/order/email/shipping.html:10
+msgid "Your order has been shipped!"
+msgstr ""
+
+#: order/templates/order/email/shipping.html:12
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\tHi %(f_name)s your order has been shipped. Click on the link below "
+"to track your order.\n"
+"\t\t\t\t"
+msgstr ""
+
+#: order/templates/order/email/shipping.html:31
+msgid "Track order"
+msgstr ""
+
+#: order/templates/order/information.html:7
+#: order/templates/order/payment.html:24 order/templates/order/shipping.html:7
+#: order/templates/order/view.html:8
+msgid "Show order"
+msgstr ""
+
+#: order/templates/order/information.html:28
+#: order/templates/order/payment.html:44 order/templates/order/shipping.html:27
+msgid "Information"
+msgstr ""
+
+#: order/templates/order/information.html:32
+#: order/templates/order/payment.html:51 order/templates/order/shipping.html:32
+msgid "Payment"
+msgstr ""
+
+#: order/templates/order/information.html:45
+#: order/templates/order/shipping.html:132
+msgid "Contact information"
+msgstr ""
+
+#: order/templates/order/information.html:48
+msgid "Logged in as"
+msgstr ""
+
+#: order/templates/order/information.html:50
+msgid "Already have account?"
+msgstr ""
+
+#: order/templates/order/information.html:52
+msgid "Log in"
+msgstr ""
+
+#: order/templates/order/information.html:85
+#: order/templates/order/view.html:130
+msgid "Shipping address"
+msgstr ""
+
+#: order/templates/order/information.html:273
+msgid "Back to cart"
+msgstr ""
+
+#: order/templates/order/information.html:278
+#: order/templates/order/shipping.html:70 order/templates/order/view.html:152
+msgid "Shipping method"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:5
+msgid "Rechnung"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:15
+msgid "Logo"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:23
+msgid "Client"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:45
+msgid "You can reach us here"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:50
+msgid "Internet"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:56
+msgid "UStID-Nr"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:62
+msgid "Invoice number"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:88
+msgid "Your order nr."
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:88
+msgid "from"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:91
+msgid "Invoice"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:94
+msgid "The invoice date corresponds to the performance date"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:106
+msgid "Pos"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:107
+msgid "SKU"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:110
+msgid "Unit price"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:142
+msgid "Discount"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:157
+msgid "Net amount"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:165
+msgid "Tax"
+msgstr ""
+
+#: order/templates/order/payment.html:12
+msgid "Thank you for your purchase"
+msgstr ""
+
+#: order/templates/order/payment.html:14
+msgid "We are confirming your payment, please dont refresh the page"
+msgstr ""
+
+#: order/templates/order/payment.html:65 order/templates/order/payment.html:83
+#: order/templates/order/payment.html:96 order/templates/order/shipping.html:46
+#: order/templates/order/shipping.html:64
+msgid "Change"
+msgstr ""
+
+#: order/templates/order/payment.html:71 order/templates/order/shipping.html:52
+msgid "Ship to"
+msgstr ""
+
+#: order/templates/order/payment.html:89
+msgid "Method"
+msgstr ""
+
+#: order/templates/order/payment.html:102
+#: order/templates/order/shipping.html:138 order/templates/order/view.html:158
+msgid "Payment method"
+msgstr ""
+
+#: order/templates/order/payment.html:118
+msgid "Credit card"
+msgstr ""
+
+#: order/templates/order/payment.html:134
+msgid "and more .."
+msgstr ""
+
+#: order/templates/order/payment.html:171
+msgid "Back to shipping method"
+msgstr ""
+
+#: order/templates/order/payment.html:189
+msgid ""
+"There has been an error while trying to process your payment, please refresh "
+"the page and try again or contact our support"
+msgstr ""
+
+#: order/templates/order/payment.html:259
+msgid "Your checkout session has expired. Please reload the page."
+msgstr ""
+
+#: order/templates/order/payment.html:286
+#: order/templates/order/payment.html:290 shop/templates/shop/details.html:188
+#: shop/templates/shop/details.html:195 shop/templates/shop/details.html:197
+#: streams/templates/streams/hero_product.html:159
+#: streams/templates/streams/hero_product.html:166
+#: streams/templates/streams/hero_product.html:168
+msgid "Error"
+msgstr ""
+
+#: order/templates/order/shipping.html:122
+msgid ""
+"We currently cannot provide shipping for the products in your cart to your "
+"address. Please "
+msgstr ""
+
+#: order/templates/order/shipping.html:123
+msgid "contact us"
+msgstr ""
+
+#: order/templates/order/view.html:88
+msgid "Thank you"
+msgstr ""
+
+#: order/templates/order/view.html:96
+msgid "Your shipment is confirmed"
+msgstr ""
+
+#: order/templates/order/view.html:98
+msgid "Your order is confirmed"
+msgstr ""
+
+#: order/templates/order/view.html:103
+msgid "We've accepted your order, and we're getting it ready."
+msgstr ""
+
+#: order/templates/order/view.html:104
+msgid "A confirmation email has been sent to"
+msgstr ""
+
+#: order/templates/order/view.html:106
+msgid "Come back to this page for updates on your shipment status."
+msgstr ""
+
+#: order/templates/order/view.html:113
+msgid "Your order has been shipped"
+msgstr ""
+
+#: order/templates/order/view.html:117
+msgid "You can track your order here: "
+msgstr ""
+
+#: order/templates/order/view.html:141
+msgid "Billing address"
+msgstr ""
+
+#: shop/admin.py:30
+msgid "Shop settings"
+msgstr ""
+
+#: shop/forms.py:18
+msgid "Category"
+msgstr ""
+
+#: shop/forms.py:23 shop/models.py:225
+msgid "Show all"
+msgstr ""
+
+#: shop/models.py:376
+msgid "Use the smallest unit possible (e.g. cents for EUR/USD)"
+msgstr ""
+
+#: shop/models.py:381
+msgid "Use the smallest unit possible (e.g. gram)"
+msgstr ""
+
+#: shop/models.py:419
+msgid "Images"
+msgstr ""
+
+#: shop/models.py:428
+msgid "Product color"
+msgstr ""
+
+#: shop/templates/shop/details.html:8
+msgid "Back to products"
+msgstr ""
+
+#: shop/templates/shop/details.html:102 shop/templates/shop/details.html:179
+#: shop/templates/shop/details.html:281
+#: streams/templates/streams/hero_product.html:93
+#: streams/templates/streams/hero_product.html:150
+#: streams/templates/streams/hero_product.html:249
+msgid "Add to cart"
+msgstr ""
+
+#: shop/templates/shop/details.html:114
+#: streams/templates/streams/hero_product.html:105
+msgid "Details"
+msgstr ""
+
+#: shop/templates/shop/details.html:177
+#: streams/templates/streams/hero_product.html:148
+msgid "Added"
+msgstr ""
+
+#: shop/templates/shop/listing.html:128
+msgid "No products found"
+msgstr ""
+
+#: shop/templates/shop/listing.html:132
+msgid "There are no products matching youre search critia."
+msgstr ""
+
+#: shop/templates/shop/listing.html:138
+msgid "We havent added any products yet."
+msgstr ""
+
+#: streams/blocks.py:20
+msgid "Richtext"
+msgstr ""
+
+#: streams/blocks.py:29
+msgid "Html"
+msgstr ""
+
+#: streams/blocks.py:34
+msgid "Programming language"
+msgstr ""
+
+#: streams/blocks.py:40
+msgid "Code"
+msgstr ""
+
+#: streams/blocks.py:61
+msgid "Card"
+msgstr ""
+
+#: streams/blocks.py:65 streams/blocks.py:66 streams/blocks.py:80
+#: streams/blocks.py:90 streams/blocks.py:101 streams/blocks.py:113
+#: streams/blocks.py:126 streams/blocks.py:137
+msgid "Text"
+msgstr ""
+
+#: streams/blocks.py:75
+msgid "Reference button"
+msgstr ""
+
+#: streams/blocks.py:85
+msgid "Centered Title with text"
+msgstr ""
+
+#: streams/blocks.py:91 streams/blocks.py:111 streams/blocks.py:124
+#: streams/blocks.py:146
+msgid "Image"
+msgstr ""
+
+#: streams/blocks.py:96
+msgid "Image left text right"
+msgstr ""
+
+#: streams/blocks.py:102
+msgid "image"
+msgstr ""
+
+#: streams/blocks.py:107
+msgid "Image right text left"
+msgstr ""
+
+#: streams/blocks.py:114 streams/blocks.py:127 streams/blocks.py:171
+msgid "Button text"
+msgstr ""
+
+#: streams/blocks.py:115 streams/blocks.py:128
+msgid "Button url"
+msgstr ""
+
+#: streams/blocks.py:120
+msgid "Hero block text left"
+msgstr ""
+
+#: streams/blocks.py:133
+msgid "Hero block text right"
+msgstr ""
+
+#: streams/blocks.py:142
+msgid "Centered Header"
+msgstr ""
+
+#: streams/blocks.py:153
+msgid "Banner"
+msgstr ""
+
+#: streams/blocks.py:157
+msgid "Url"
+msgstr ""
+
+#: streams/blocks.py:162
+msgid "Youtube"
+msgstr ""
+
+#: streams/blocks.py:169
+msgid "Image when width is big"
+msgstr ""
+
+#: streams/blocks.py:170
+msgid "Image when width is small"
+msgstr ""
+
+#: streams/blocks.py:172
+msgid "Button text color"
+msgstr ""
+
+#: streams/blocks.py:173
+msgid "Button background_color"
+msgstr ""
+
+#: streams/blocks.py:174
+msgid "Button border color"
+msgstr ""
+
+#: streams/blocks.py:175
+msgid "Page it redirects to on button click"
+msgstr ""
+
+#: streams/blocks.py:176
+msgid "Url it redirect to on button click"
+msgstr ""
+
+#: streams/blocks.py:184
+msgid "Banner Carousel"
+msgstr ""
+
+#: streams/blocks.py:206
+msgid "Hero product"
+msgstr ""
+
+#: streams/blocks.py:214 streams/blocks.py:216 streams/blocks.py:243
+msgid "Please select a product page"
+msgstr ""
+
+#: streams/blocks.py:232
+msgid "Products"
+msgstr ""
+
+#: streams/blocks.py:241
+msgid "Please only select a product page"
+msgstr ""

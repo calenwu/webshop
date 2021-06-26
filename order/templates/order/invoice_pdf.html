@@ -1,0 +1,184 @@
+{% load static i18n shop_template_tags cart_template_tags %}
+{% get_currency as currency %}
+<html>
+  <head>
+    <title>{{ company_name }} - {% trans 'Rechnung' %} #{{ order.order_number }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow, noarchive">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+		<div class="flex flex-col w-full">
+			<div class="flex flex-row-reverse mb-8">
+				<img src="{{ logo }}" alt="{% trans 'Logo' %}" style="max-width: 100%; height:auto"/>
+			</div>
+			<div class="mb-4">
+				{{ company_signature }}
+			</div>
+			<div class="flex row justify-between">
+				<div class="flex flex-col">
+					<div class="underline">
+						<strong>{% trans 'Client' %}</strong>
+					</div>
+					<div class="">
+						{{ order.first_name }} {{ order.last_name }}
+					</div>
+					{% if order.company %}
+					<div class="">
+						{{ order.company }}
+					</div>
+					{% endif %}
+					<div class="">
+						{{ order.address }} {% if order.address2 %}{{ order.address2 }}{% endif %}
+					</div>
+					<div class="">
+						{% if order.state %}{{ order.state }}, {% endif %}{{ order.postal_code }} {{ order.city }}
+					</div>
+					<div class="">
+						{{ order.get_country_readable }}
+					</div>
+				</div>
+				<div class="flex flex-col mb-8">
+					<div class="underline">
+						<strong>{% trans 'You can reach us here' %}</strong>
+					</div>
+					<div class="flex flex-row">
+						<div class="mr-4">
+							<div>
+								{% trans 'Internet' %}
+							</div>
+							<div>
+								{% trans 'Email' %}
+							</div>
+							<div>
+								{% trans 'UStID-Nr' %}
+							</div>
+							<div>
+								{% trans 'Date' %}
+							</div>
+							<div>
+								{% trans 'Invoice number' %}
+							</div>
+						</div>
+						<div>
+							<div>
+								{{ website }}
+							</div>
+							<div>
+								{{ email }}
+							</div>
+							<div>
+								{{ business_id }}
+							</div>
+							<div>
+								{{ order.get_date_readable }}
+							</div>
+							<div>
+								{{ order.invoice_number }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>
+					<div class="text-sm mb-4">
+						{% trans 'Your order nr.' %} {{ order.order_number }} {% trans 'from' %} {{ order.get_date_readable }}
+					</div>
+					<div class="">
+						<strong>{% trans 'Invoice' %} {{ order.invoice_number }}</strong>
+					</div>
+					<div class="text-xs mb-3">
+						{% trans 'The invoice date corresponds to the performance date' %}
+					</div>
+				</div>
+        <div class="border-2-t-b-black">
+          <table style="width:100%">
+            <col width="5%">
+            <col width="15%">
+            <col width="50%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <tr>
+              <th class="border border-black p-1">{% trans 'Pos' %}</th>
+              <th class="border border-black p-1">{% trans 'SKU' %}</th> 
+              <th class="border border-black p-1">{% trans 'Description' %}</th>
+              <th class="border border-black p-1">{% trans 'Quantity' %}</th>
+              <th class="border border-black p-1">{% trans 'Unit price' %}</th> 
+              <th class="border border-black p-1">{% trans 'Sum' %}</th>
+            </tr>
+            {% with 1 as pos_counter %}
+            {% for item in order.order_items.all %}
+              <tr class="border border-black">
+                <td class="border border-black p-1 text-right">{{ pos_counter }}</td>
+                <td class="border border-black p-1 text-right">{{ item.get_sku }}</td> 
+                <td class="border border-black p-1">{{ item.get_description }}</td>
+                <td class="border border-black p-1 text-right">{{ item.quantity }}</td>
+                <td class="border border-black p-1 text-right">{{ item.get_display_price }}</td>
+                <td class="border border-black p-1 text-right">{{ item.get_display_total_price }}</td>
+              </tr>
+              {% increment pos_counter as pos_counter %}
+            {% endfor %}
+						{% increment_by pos_counter order.order_items.all|length as pos_counter %}
+						<tr class="border border-black">
+              <td class="border border-black p-1 text-right">{{ pos_counter }}</td>
+              <td></td> 
+              <td class="border border-black p-1">
+								{{ order.shipping_method_name }}
+              </td>
+              <td class="border border-black p-1 text-right"></td>
+              <td class="border border-black p-1 text-right">{{ order.get_display_shipping_price }}</td>
+              <td class="border border-black p-1 text-right">{{ order.get_display_shipping_price }}</td>
+            </tr>
+            {% increment pos_counter as pos_counter %}
+            {% if order.coupon %}
+							<tr class="border border-black">
+                <td class="border border-black p-1 text-right">{{ pos_counter }}</td>
+                <td></td> 
+                <td class="border border-black p-1">
+									{% trans 'Discount' %}:
+									{{ order.coupon_name }}
+                </td>
+                <td class="border border-black p-1 text-right"></td>
+                <td class="border border-black p-1 text-right">- {{ order.get_display_discount }}</td>
+                <td class="border border-black p-1 text-right">- {{ order.get_display_discount }}</td>
+              </tr>
+            {% endif %}
+            {% endwith %}
+          </table>
+        </div>
+        <div class="flex flex-row-reverse">
+          <div style="width: 40%;" class="pt-2">
+            <div class="flex justify-between w-full py-2 border-b border-black">
+              <div class="">
+                {% trans 'Net amount' %}
+              </div>
+              <div class="">
+                {{ order.get_display_pre_tax }}
+              </div>
+            </div>
+            <div class="flex justify-between w-full py-2 border-b border-black">
+              <div class="">
+                {% trans 'Tax' %} ({{ tax_percentage }} %)
+              </div>
+              <div class="">
+                {{ order.get_display_tax_amount }}
+              </div>
+            </div>
+						<div class="flex justify-between w-full py-2">
+              <div class="">
+                <strong>{% trans 'Sum' %}</strong>
+              </div>
+              <div class="font-weight-bold">
+                <storng>{{ order.get_display_total_price }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+			</div>
+		</div>
+  </body>
+</html>

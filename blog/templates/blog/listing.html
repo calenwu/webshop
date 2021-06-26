@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags home_template_tags %}
+{% block title %}
+{% endblock %}
+{% block extra_css %}
+	<link rel="stylesheet" href="{% static 'vendors/tagify/node_modules/@yaireo/tagify/dist/tagify.css' %}">
+{% endblock %}
+{% block overlay %}
+	<div id="filterOverlayBackground" 
+		class="cursor-pointer fixed top-0 left-0 w-full h-full bg-white bg-opacity-80 transition-opacity duration-500
+			opacity-0 -z-1"
+		onclick="hideFilter();">
+	</div>
+	<div id="filterOverlay"
+		class="flex flex-row-reverse fixed overflow-y-auto h-full bg-transparent z-40 shadow cursor-pointer
+			top-0 w-full sm:w-96 2xl:w-1/3 left-0 -left-full sm:-left-96 2xl:-left-1/3 transition-all duration-500"
+			onclick="hideFilter();">
+		<div class="w-full max-w-2xl lg:max-w-xl h-full shadow pt-4 bg-white px-2 sm:px-4 cursor-default" 
+			onclick="event.stopPropagation();">
+			<div class="flex justify-between">
+				<h3 class="">{% trans 'Filter' %}</h1>
+				<div class="flex self-center">
+					<span class="cursor-pointer" onclick="hideFilter();">
+						<i class="fal fa-times hoverable-gray-black text-2xl pl-4 pb-4"></i>
+					</span>
+				</div>
+			</div>
+			<div class="h-5/6 align-center flex flex-col">
+				<form id="blogFilterForm" class="" action="." method="GET">
+					<label class="mb-2" for="{{ filterForm.search.id_for_label }}">
+						{{ filterForm.search.label }}
+					</label>
+					<div class="form-label-group">
+						<input id="{{ filterForm.search.id_for_label }}"
+							class="tagify-input" name="{{ filterForm.search.html_name }}"
+							{% if filterForm.search.initial %}value="{{ filterForm.search.initial }}"{% endif %}
+							placeholder="{{ filterForm.search.field.widget.attrs.placeholder }}">
+					</div>
+					<div class="flex flex-row-reverse mb-2">
+						<div class="cursor-pointer text-gray-400 hover:text-black transition-all py-4" onclick="resetFilter();">
+							<i class="fal fa-undo"></i> {% trans 'Reset filter' %}
+						</div>
+					</div>
+					<button class="button-primary rounded p-3 w-full" submit="true">
+						{% trans 'Filter' %}
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+	{% if page.content %}
+		{% for block in page.content %}
+			{% include_block block %}
+		{% endfor %}
+	{% else %}
+		<div class="text-center">
+			<h1 class="md:text-4xl mt-8 mb-4 md:mt-16 md:mb-12">
+				{{ page.title }}
+			</h1>
+		</div>
+	{% endif %}
+	<div class="relative max-w-screen-2xl p-2 sm:p-4 m-auto mx-auto">
+		<button class="inline-block rounded z-0 shadow-md  pl-4 pr-5 py-2 mt-1 button-white "
+				onclick="showFilter();">
+			<i class="fal fa-filter"></i> {% trans 'Filter' %}
+		</button>
+		<div id="searchTags" class="flex flex-wrap my-4">
+		</div>
+		{% if not empty %}
+			<div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+				{% for article in articles %}
+					<a href="{{ article.link }}" class="opacity-100 transition-all hover:opacity-60">
+						{% if article.preview_image %}
+							<div class="aspect-2-3 bg-center bg-cover mb-2 rounded"
+									style="background-image: url({{ article.preview_image.file.url }});">
+							</div>
+						{% else %}
+							<div class="aspect-2-3 bg-center bg-cover mb-2 rounded"
+									style="background-image: url({% static 'img/geometry.svg' %});">
+							</div>
+						{% endif %}
+						<div class="">
+							<div class="text-lg font-semibold mb-1">
+								{{ article.title }}
+							</div>
+							<div>
+								{{ article.preview_text }}
+							</div>
+							<div class="flex flex-row-reverse text-sm mt-2">
+								<i class="fal fa-long-arrow-right pt-1 ml-2"></i> {% trans 'Continue reading' %} 
+							</div>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+			{% if articles.paginator.num_pages > 1 %}
+				<div class="flex flex-row justify-center items-center mt-12">
+					{% if articles.has_previous %}
+						<a href="{% change_page request.get_full_path articles.previous_page_number %}" 
+								class="flex w-10 h-10 button-primary-outline justify-center items-center">
+							<i class="fal fa-arrow-left"></i>
+						</a>
+					{% endif %}
+					{% for page_num in previous %}
+						<a href="{% change_page request.get_full_path page_num %}" class="flex w-10 h-10 button-primary-outline justify-center items-center 
+								ml-2">
+							{{ page_num }}
+						</a>
+					{% endfor %}
+					<div class="flex w-10 h-10 border border-primary-400 bg-primary-400 text-primary-bg justify-center items-center 
+									hover:unset cursor-default ml-2">
+						{{ articles.number }}
+					</div>
+					{% for page_num in next %}
+						<a href="{% change_page request.get_full_path page_num %}" class="flex w-10 h-10 button-primary-outline justify-center items-center 
+								ml-2">
+							{{ page_num }}
+						</a>
+					{% endfor %}
+					{% if articles.has_next %}
+						<a href="{% change_page request.get_full_path articles.next_page_number %}" 
+								class="flex w-10 h-10 button-primary-outline justify-center items-center ml-2">
+							<i class="fal fa-arrow-right"></i>
+						</a>
+					{% endif %}
+				</div>
+			{% endif %}
+		{% else %}
+			<div class="flex flex-col md:flex-row items-center md:items-start justify-center mt-4">
+				<div class="md: mr-8 mb-8">
+					<h2 class="mb-8">
+						<strong>{% trans 'No blog posts found' %}</strong>
+					</h2>
+					{% if filterForm.search.initial %}
+						<p>
+							{% trans 'There are no blog posts matching youre search critia.' %}
+							<br/>
+							{% trans 'Remove a few tags and try again.' %}
+						</p>
+					{% else %}
+						<p>
+							{% trans 'We havent added any blog posts yet.' %}
+							<br/>
+							{% trans 'Check back later!' %}
+						</p>
+					{% endif %}
+				</div>
+				<img class="w-full h-full" src="{% static 'img/empty.svg' %}" style="max-width: 400px"/>
+			</div>
+		{% endif %}
+	</div>
+	<script>
+		const filterOverlay = document.getElementById('filterOverlay');
+		const filterOverlayBackground = document.getElementById('filterOverlayBackground');
+		function showFilter() {
+			filterOverlay.classList.remove('-left-full');
+			filterOverlay.classList.remove('sm:-left-96');
+			filterOverlay.classList.remove('2xl:-left-1/3');
+			filterOverlayBackground.classList.remove('-z-1');
+			filterOverlayBackground.classList.add('z-30');
+			filterOverlayBackground.classList.add('opacity-100');
+		}
+		function hideFilter() {
+			filterOverlay.classList.add('-left-full');
+			filterOverlay.classList.add('sm:-left-96');
+			filterOverlay.classList.add('2xl:-left-1/3');
+			filterOverlayBackground.classList.remove('opacity-100');
+			filterOverlayBackground.classList.remove('z-30');
+			filterOverlayBackground.classList.add('-z-1');
+		}
+	</script>
+{% endblock %}
+{% block extra_js %}
+	<script type="text/javascript" src="{% static 'vendors/tagify/tagify.min.js' %}"></script>
+	<script>
+		const searchTags = document.getElementById('searchTags');
+		const blogFilterForm = document.getElementById('blogFilterForm');
+		let initialTags = [];
+		let tagify;
+		fetch('{% url "blog:tagify_query" %}', {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
+		})
+			.then(res => res.json())
+			.then((res) => {
+				let availableTags = [];
+				res.authors.forEach((name) => {
+					availableTags.push('author: ' + name);
+				})
+				res.categories.forEach((name) => {
+					availableTags.push('category: ' + name);
+				})
+				res.tags.forEach((name) => {
+					availableTags.push('tag: ' + name);
+				})
+				res.articles.forEach((name) => {
+					availableTags.push('article: ' + name);
+				})
+				tagify = new Tagify(
+					document.getElementById('id_search'),
+					{
+						whitelist: availableTags
+					}
+				);
+				let temp = tagify.value;
+				for (let i = 0; i < temp.length; i++) {
+					initialTags.push(temp[i]['value']);
+					createSearchTag(initialTags[i], i);
+				}
+			});
+		function resetFilter() {
+			tagify.removeAllTags();
+		}
+		function createSearchTag(text, index) {
+			const tag = document.createElement('i');
+			tag.classList.add('fal');
+			tag.classList.add('fa-tags');
+			tag.classList.add('mr-1');
+			const content = document.createElement('p');
+			content.classList.add('mb-0');
+			content.innerText = text;
+			const remove = document.createElement('i');
+			remove.classList.add('fal');
+			remove.classList.add('fa-times');
+			remove.classList.add('ml-1');
+			const container = document.createElement('div');
+			container.classList.add('inline-flex');
+			container.classList.add('items-center');
+			container.classList.add('justify-center');
+			container.appendChild(tag);
+			container.appendChild(content);
+			container.appendChild(remove);
+			const btn = document.createElement('button');
+			btn.classList.add('button-primary');
+			btn.classList.add('rounded');
+			btn.classList.add('px-2');
+			btn.classList.add('py-1');
+			btn.classList.add('mr-2');
+			btn.classList.add('mb-2');
+			btn.appendChild(container);
+			btn.setAttribute('onclick', 'removeTag("' + text + '", ' + index +')');
+			searchTags.appendChild(btn);
+		}
+		async function removeTag(text, index) {
+			const temp = initialTags.slice(0, index).concat(initialTags.slice(index + 1, initialTags.length))
+			await tagify.removeAllTags();
+			await tagify.addTags(temp);
+			blogFilterForm.submit();
+		}
+	</script>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
+{% endblock %}
+
+{% block title %}Order {{ order.id }} {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}
+	<div class="breadcrumbs">
+		<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> &rsaquo;
+			{% trans 'Detail' %}
+	</div>
+{% endblock %}
+
+{% block content %}
+	<h1>Order {{ order.order_number }}</h1>
+	<ul class="object-tools">
+		<li>
+			<a href="#" onclick="window.print();">Print order</a>
+		</li>
+	</ul>
+	<table>
+		<tr>
+			<th>{% trans 'Created' %}</th>
+			<td>{{ order.created }}</td>
+		</tr>
+		<tr>
+			<th>{% trans 'Customer' %}</th>
+			<td>{{ order.first_name }} {{ order.last_name }}</td>
+		</tr>
+		<tr>
+			<th>{% trans 'E-mail' %}</th>
+			<td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
+		</tr>
+		<tr>
+			<th>{% trans 'Address' %}</th>
+			<td>{{ order.address }}, {{ order.postal_code }} {{ order.city }}</td>
+		</tr>
+		<tr>
+			<th>{% trans 'Total amount' %}</th>
+			<td>{{ order.get_display_total_price }}</td>
+		</tr>
+	</table>
+
+	<div class="module">
+		<div class="tabular inline-related last-related">
+			<table>
+				<thead>
+					<tr>
+						<th>{% trans 'Product' %}</th>
+						<th>{% trans 'Color' %}</th>
+						<th>{% trans 'Size' %}</th>
+						<th>{% trans 'Price' %}</th>
+						<th>{% trans 'Quantity' %}</th>
+						<th>{% trans 'Sum' %}</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for item in order.order_items.all %}
+					<tr class="row{% cycle '1' '2' %}">
+						<td>{{ item.get_name }}</td>
+						<td>{{ item.color }}</th>
+						<td>{{ item.size }}</td>
+						<td class="num">{{ item.get_display_price }}</td>
+						<td class="num">{{ item.quantity }}</td>
+						<td class="num">{{ item.get_display_total_price }}</td>
+					</tr>
+				{% endfor %}
+				{% if order.coupon_name %}
+					<tr class="coupon">
+						<td colspan="5">{{ order.coupon_name }}</td>
+						<td class="num">{{ order.get_display_discount }}</td>
+					</tr>
+				{% endif %}
+					<tr class="shipping">
+						<td colspan="5">{{ order.shipping_method_name }}</td>
+						<td class="num">{{ order.get_display_shipping_price }}</td>
+					</tr>
+					<tr class="total">
+						<td colspan="5">{% trans 'Sum' %}</td>
+						<td class="num">{{ order.get_display_total_price }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

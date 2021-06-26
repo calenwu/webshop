@@ -1,0 +1,15 @@
+[
+	{
+		"model": "blog.setting", 
+		"fields": {
+			"key": "ARTICLES_PER_PAGE",
+			"value": "2"
+		}
+	}, {
+		"model": "blog.setting",
+		"fields": {
+			"key": "PAGE_RANGE",
+			"value": "2"
+		}
+	}
+]

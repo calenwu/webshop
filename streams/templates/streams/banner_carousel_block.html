@@ -1,0 +1,85 @@
+{% load static i18n wagtailcore_tags streams_template_tags %}
+<div class="sm:flex justify-center items-center w-full h-full hidden">
+	<div id="bannerCarousel" class="splide w-full h-full">
+		<div class="splide__track">
+			<ul class="splide__list" id="bannerCarouselList">
+				{% for slide in self.slides %}
+					<li class="splide__slide">
+						<div class="w-full h-full contain bg-contain relative" 
+								style="background-image: url({{ slide.image.file.url }});">
+							{% if slide.button_text %}
+								<a class="absolute right-8 bottom-8 hover:pb-4 transition-all"
+										href="{% get_banner_carousel_block_url slide %}">
+									<button class="p-4 hover:bg-green-400 rounded"
+											style="color: {{ slide.text_color }}; 
+													border-color: {{ slide.button_border_color }};
+													background-color: {{ slide.button_background_color }};">
+										{{ slide.button_text }}
+									</button>
+								</a>
+							{% endif %}
+						</div>
+					</li>
+				{% endfor%}
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="flex justify-center items-center w-full h-full sm:hidden">
+	<div id="bannerCarouselSmall" class="splide w-full h-full">
+		<div class="splide__track">
+			<ul class="splide__list" id="bannerCarouselSmallList">
+				{% for slide in self.slides %}
+					<li class="splide__slide">
+						<div class="w-full h-full contain bg-contain relative" 
+								style="background-image: url({{ slide.image_small.file.url }});">
+							{% if slide.button_text %}
+								<a class="absolute right-8 bottom-8 hover:pb-4 transition-all"
+										href="{% get_banner_carousel_block_url slide %}">
+									<button class="p-4 hover:bg-green-400 rounded"
+											style="color: {{ slide.text_color }}; 
+													border-color: {{ slide.button_border_color }};
+													background-color: {{ slide.button_background_color }};">
+										{{ slide.button_text }}
+									</button>
+								</a>
+							{% endif %}
+						</div>
+					</li>
+				{% endfor%}
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+	const bannerCarouselList = document.getElementById('bannerCarouselList');
+	let bannerCarousel = new Splide('#bannerCarousel', {
+		type       : 'fade',
+		heightRatio: '{{ self.slides.0.image.height }}' / '{{ self.slides.0.image.width }}',
+		pagination : true,
+		arrows     : false,
+		cover      : false,
+		rewind     : true,
+		autoplay   : true,
+		interval   : 3000,
+	});
+	bannerCarousel.mount();
+	for (let i = 0; i < bannerCarouselList.children.length; i++) {
+		bannerCarouselList.children[i].style.setProperty('background-size', 'contain', 'important');
+	}
+	const bannerCarouselSmallList = document.getElementById('bannerCarouselSmall');
+	let bannerCarouselSmall = new Splide('#bannerCarouselSmall', {
+		type       : 'fade',
+		heightRatio: '{{ self.slides.0.image_small.height }}' / '{{ self.slides.0.image_small.width }}',
+		pagination : true,
+		arrows     : false,
+		cover      : false,
+		autoplay   : true,
+		rewind     : true,
+		interval   : 3000,
+	});
+	bannerCarouselSmall.mount();
+	for (let i = 0; i < bannerCarouselSmallList.children.length; i++) {
+		bannerCarouselSmallList.children[i].style.setProperty('background-size', 'contain', 'important');
+	}
+</script>

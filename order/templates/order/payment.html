@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+{% load static shop_template_tags cart_template_tags i18n %}
+{% block overlay %}
+	<div id="paymentOverlay" 
+		class="z-40 fixed top-0 left-0 h-full w-full flex justify-center items-center text-white text-center
+		overflow-y-auto bg-black bg-opacity-80 transition-opacity duration-500 z-40 hidden">
+		<div class="absolute top-4 right-4 p-4 cursor-pointer" onclick="hidePaymentOverlay();">
+			<i class="fal fa-times text-2xl"></i>
+		</div>
+		<div class="p-4">
+			<i class="fal fa-circle-notch text-5xl animate-spin mb-4"></i>
+			<h3>{% trans 'Thank you for your purchase'%}</h4>
+			<div>
+				{% trans 'We are confirming your payment, please dont refresh the page' %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+	<div class="md:hidden px-2 sm:px-4 w-full py-4 bg-primary-400 text-primary-bg collapsible cursor-pointer">
+		<div class="flex justify-between self-center items-center max-w-screen-2xl m-auto">
+			<div class="text-sm">
+				<i class="fal fa-shopping-cart mr-2"></i>
+				{% trans 'Show order' %}
+			</div>
+			<div>
+				{{ cart.get_display_total_price }}
+			</div>
+		</div>
+	</div>
+	<div class="px-2 sm:px-4 w-full max-h-0 overflow-hidden duration-500 
+			transition-all border-b border-gray-200 md:hidden">
+		<div id="cartCheckoutTop">
+		</div>
+	</div>
+	<div class="max-w-screen-2xl m-auto flex">
+		<div class="w-full md:w-7/12 p-2 md:p-4 lg:p-8">
+			<div class="text-xs mt-4 mb-8">
+				<a class="link-primary" href="{% url 'cart:details' %}">
+					{% trans 'Cart' %}
+				</a>
+				<i class="text-xs fal fa-chevron-right"></i>
+				<a class="link-primary" href="{% url 'order:information' %}">
+					{% trans 'Information' %}
+				</a>
+				<i class="xs fal fa-chevron-right"></i>
+				<a class="link-primary" href="{% url 'order:shipping' %}">
+					{% trans 'Shipping' %}
+				</a>
+				<i class="xs fal fa-chevron-right"></i>
+				<strong>{% trans 'Payment' %}</strong>
+			</div>
+			<div class="mb-8">
+				<div class="border border-gray-200 rounded px-4">
+					<div class="flex justify-between items-center w-full py-4 border-b border-gray-200">
+						<div class="flex flex-col sm:flex-row text-sm">
+							<div class="w-24">
+								{% trans 'Contact' %}
+							</div>
+							<div>
+								{{ order.email }}
+							</div>
+						</div>
+						<a class="link-primary text-xs" href="{% url 'order:information' %}">
+							{% trans 'Change' %}
+						</a>
+					</div>
+					<div class="flex justify-between items-center w-full py-4 border-b border-gray-200">
+						<div class="flex flex-col sm:flex-row text-sm">
+							<div class="w-24">
+								{% trans 'Ship to' %}
+							</div>
+							<div>
+								{{ order.address }}
+								{% if order.address2 %}{{ order.address2 }}{% endif %},
+								{{ order.postal_code }}
+								{{ order.city }},
+								{% if order.state %}{{ order.state }}{% endif %}
+								{{ order.get_country_readable }}
+							</div>
+						</div>
+						<a class="link-primary text-xs" href="{% url 'order:information' %}">
+							{% trans 'Change' %}
+						</a>
+					</div>
+					<div class="flex justify-between items-center w-full py-4">
+						<div class="flex flex-col sm:flex-row text-sm">
+							<div class="w-24">
+								{% trans 'Method' %}
+							</div>
+							<div>
+								{{ shipping_method.name }} - <strong>{{ shipping_method.get_display_price }}</strong>
+							</div>
+						</div>
+						<a class="link-primary text-xs" href="{% url 'order:information' %}">
+							{% trans 'Change' %}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="text-lg mb-2">
+				{% trans 'Payment method' %}
+			</div>
+			<div id="payment-loading" class="border border-gray-200 rounded mb-4">
+				<div class="animate-pulse">
+					<div class="p-4 cursor-pointer border-b border-gray-200 flex justify-between select-none">
+						<div class="h-6 bg-gray-400 rounded w-2/6"></div>
+						<div class="h-6 bg-gray-400 rounded w-3/6"></div>
+					</div>
+					<div class="p-4 cursor-pointer select-none">
+						<div class="h-6 bg-gray-400 rounded w-2/6"></div>
+					</div>
+				</div>
+			</div>
+			<div id="payment-real" class="border-t border-l border-r border-gray-200 rounded hidden mb-4">
+				<div id="credit-card-tab" class="collapsible p-4 cursor-pointer border-b border-gray-200 flex justify-between select-none">
+					<div>
+						{% trans 'Credit card' %}
+					</div>
+					<div class="flex">
+						<img class="credit-card-icon vertical-align-top"
+							src="{% static 'order/img/visa.svg' %}"
+							alt="visa">
+						<img class="credit-card-icon vertical-align-top"
+							src="{% static 'order/img/master.svg' %}"
+							alt="master">
+						<img class="credit-card-icon vertical-align-top"
+							src="{% static 'order/img/amex.svg' %}"
+							alt="amax">
+						<img class="credit-card-icon vertical-align-top"
+							src="{% static 'order/img/discover.svg' %}"
+							alt="discover">
+						<div class="flex items-center text-xs ml-2 select-none">
+							{% trans 'and more ..' %}
+						</div>
+					</div>
+				</div>
+				<div class="stripe max-h-0 overflow-hidden duration-500 transition-all">
+					<div class="flex self-center justify-center border-b border-gray-200 px-2 sm:px-8 py-4">
+						<form id="payment-form" class="mt-4 w-full max-w-lg">
+							{% csrf_token %}
+							<div id="stripe-card-element">
+							</div>
+							<button id="submit" class="stripe">
+								<div class="stripe-spinner hidden" id="stripe-spinner"></div>
+								<span id="stripe-button-text">Pay</span>
+							</button>
+							<p id="stripe-card-error" role="alert"></p>
+						</form>
+					</div>
+				</div>
+				<div class="collapsible p-4 cursor-pointer border-b border-gray-200 flex justify-between select-none">
+					<div>
+						Paypal
+					</div>
+				</div>
+				<div id="paypalPanel" class="max-h-0 overflow-hidden duration-500 transition-all">
+					<div id="paypalContent" class="flex self-center justify-center px-2 sm:px-8 py-8 border-b border-gray-200">
+						<div id="paypal-button-container" class="w-full max-w-lg z-1">
+						</div>
+						<!--script>
+							paypal.Buttons().render('#paypal-button-container');
+						</script-->
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col-reverse md:flex-row text-sm justify-between items-center">
+				<a class="link-primary w-full md:w-auto py-4" href="{% url 'order:shipping' %}">
+					<div class="text-center md:text-left">
+						<i class="mr1 text-xs fal fa-chevron-left"></i> 
+						{% trans 'Back to shipping method' %}
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id="cartCheckoutRight" class="hidden md:flex w-5/12 md:p-4 lg:p-8">
+		</div>
+	</div>
+{% endblock %}
+{% block extra_js %}
+{% get_currency_code_paypal as currency_code_paypal %}
+<script
+	src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency={{ currency_code_paypal }}">
+</script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+	const paymentLoading = document.getElementById('payment-loading');
+	const paymentReal = document.getElementById('payment-real');
+	const errorMessage = '{% trans "There has been an error while trying to process your payment, please refresh the page and try again or contact our support" %}';
+	const csrf = document.getElementById('payment-form').firstChild.nextElementSibling.value;
+	const stripe = Stripe('{{ stripe_publishable_key }}');
+	function showPaymentOverlay() {
+		document.getElementById('paymentOverlay').classList.remove('hidden');
+	}
+	function hidePaymentOverlay() {
+		document.getElementById('paymentOverlay').classList.add('hidden');
+	}
+	function initStripe() {
+		let elements = stripe.elements();
+		let style = {
+			base: {
+				color: "#32325d",
+				fontFamily: 'Arial, sans-serif',
+				fontSmoothing: "antialiased",
+				fontSize: "16px",
+				"::placeholder": {
+					color: "#32325d"
+				}
+			},
+			invalid: {
+				fontFamily: 'Arial, sans-serif',
+				color: "#fa755a",
+				iconColor: "#fa755a"
+			}
+		};
+		let card = elements.create("card", { style: style });
+		card.mount("#stripe-card-element");
+		card.on("change", function (event) {
+			document.querySelector("button").disabled = event.empty;
+			document.querySelector("#stripe-card-error").textContent = event.error ? event.error.message : "";
+		});
+		let form = document.getElementById("payment-form");
+		form.addEventListener("submit", function(event) {
+			event.preventDefault();
+			payWithCard(stripe, card, '{{ stripe_payment_intent_client_secret }}');
+		});
+		setTimeout(() => {
+			paymentLoading.classList.add('hidden');
+			paymentReal.classList.remove('hidden');
+			setTimeout(() => {
+				document.getElementById('credit-card-tab').click();
+			}, 100);
+		}, 3000);
+	}
+	function sofortPayment() {
+		stripe.confirmSofortPayment(
+			'{{ stripe_payment_intent_client_secret }}',
+			{
+				payment_method: {
+					sofort: {
+						country: "AT"
+					}
+				},
+				return_url: 'https://09584011c523.ngrok.io',
+			}
+		);
+	}
+	let payWithCard = function(stripe, card, clientSecret) {
+		loading(true);
+		stripe
+			.confirmCardPayment(clientSecret, {
+				payment_method: {
+					card: card
+				}
+			})
+			.then(function(result) {
+				if (result.error) {
+					if (result.error.code == 'payment_intent_unexpected_state') {
+						showError('{% trans "Your checkout session has expired. Please reload the page." %}');
+						location.reload();
+					} else {
+						loading(false);
+						let errorMsg = document.querySelector("#stripe-card-error");
+						errorMsg.textContent = errorMessage;
+					}
+				} else {
+					orderComplete(result.paymentIntent.id);
+				}
+			});
+	};
+	let orderComplete = function(paymentIntentId) {
+		showPaymentOverlay();
+		loading(false);
+		document.querySelector("button").disabled = true;
+		fetch('{% url "order:stripe_verification" payment_intent_id="replace" %}'.replace('replace', paymentIntentId))
+			.then(res => res.json())
+			.then(function (response) {
+				if (response['data']['success']) {
+					window.location.href = response['data']['url'];
+				} else {
+					showError(errorMessage);
+				}
+			})
+			.catch((error) => {
+				hidePaymentOverlay();
+				createFancyAlert('error', "{% trans 'Error' %}", errorMessage);
+			});
+	};
+	let showError = function(errorMsgText) {
+		createFancyAlert('error', '{% trans "Error" %}', errorMsgText);
+		loading(false);
+		let errorMsg = document.querySelector("#stripe-card-error");
+		errorMsg.textContent = errorMsgText;
+		hidePaymentOverlay();
+	};
+	let loading = function(isLoading) {
+		if (isLoading) {
+			document.querySelector("button").disabled = true;
+			document.querySelector("#stripe-spinner").classList.remove("hidden");
+			document.querySelector("#stripe-button-text").classList.add("hidden");
+		} else {
+			document.querySelector("button").disabled = false;
+			document.querySelector("#stripe-spinner").classList.add("hidden");
+			document.querySelector("#stripe-button-text").classList.remove("hidden");
+		}
+	};
+	loadCart = false
+	getCart();
+	initStripe();
+	paypal.Buttons({
+			createOrder: function() {
+				return '{{ paypal_order_id }}';
+			}, 
+			onApprove: function(data, actions) {
+				showPaymentOverlay();
+				return actions.order.capture().then(function(details) {
+					fetch('{% url "order:paypal_verification" paypal_order_id="replace" %}'.replace('replace', data.orderID))
+						.then(res => res.json())
+						.then(function (response) {
+							if (response['data']['success']) {
+								window.location.href = response['data']['url'];
+							} else {
+								showError(errorMessage);
+							}
+						});
+				});
+			},
+			onError: function (err) {
+				console.log(err);
+				showError(errorMessage);
+			}
+		}).render('#paypal-button-container');
+	const paypalPanel = document.getElementById('paypalPanel');
+	const paypalContent = document.getElementById('paypalContent');
+	if (paypalContent) {
+		const resizeObserver = new ResizeObserver(entries => {
+			if (paypalPanel.style.maxHeight) {
+				paypalPanel.style.maxHeight = (paypalPanel.scrollHeight + 50) + 'px';
+			} else {
+				paypalPanel.style.maxHeight = null;
+			}
+		});
+		resizeObserver.observe(paypalContent);
+	}
+</script>
+{% endblock %}

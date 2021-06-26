@@ -1,0 +1,17 @@
+.winwheel-semi-circle { 
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%, -50%); 
+	height: 16px; 
+	width: 32px; 
+	border-radius: 150px 150px 0 0; 
+	background-color: red; 
+} 
+.winwheel-triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	border-top: 32px solid red;
+}

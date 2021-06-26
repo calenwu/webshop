@@ -1,0 +1,965 @@
+{% load cache i18n static home_template_tags newsletter_template_tags winwheel_template_tags wagtailuserbar %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="{{ self.search_description }}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--fonts-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<!--link rel="preload" as="font" type="font/woff2" href="{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.woff2' %}" crossorigin="anonymous">
+		<link rel="preload" as="font" type="font/woff2" href="{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.woff2' %}" crossorigin="anonymous">
+		<style>
+				@font-face {
+					font-family: 'Font Awesome 5 Pro';
+					font-style: normal;
+					font-weight: 300;
+					font-display: block;
+					src: url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.eot' %}");
+					src: url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.eot?#iefix' %}") format("embedded-opentype"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.woff2' %}") format("woff2"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.woff' %}") format("woff"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.ttf' %}") format("truetype"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-light-300.svg#fontawesome' %}") format("svg");
+				}
+				@font-face {
+					font-family: 'Font Awesome 5 Brands';
+					font-style: normal;
+					font-weight: 400;
+					font-display: block;
+					src: url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.eot' %}");
+					src: url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.eot?#iefix' %}") format("embedded-opentype"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.woff2' %}") format("woff2"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.woff' %}") format("woff"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.ttf' %}") format("truetype"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.svg#fontawesome' %}") format("svg");
+				}
+		</style-->
+		<!--global css-->
+		<style>.-z-1 {z-index: -1;} .z-1 {z-index: 1;} .h-28 {height: 7rem;}</style>
+		{% block extra_css %}
+		{% endblock %}
+		{% cache 604800 static_css %}
+			<link rel="stylesheet" href="{% static 'vendors/fontawesome-pro-5.13.0-web/css/light_only.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+			<!--link rel="stylesheet" href="{% static 'vendors/photo_swipe/photoswipe.css' %}">
+			<link rel="stylesheet" href="{% static 'vendors/splide-2.4.21/css/splide.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+			<link rel="stylesheet" href="{% static 'css/wagtail.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/webshop.css' %}">
+			<link rel="stylesheet" href="{% static 'winwheel/css/winwheel.min.css' %}">
+			<link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+			<link rel="stylesheet" href="{% static 'shop/css/shop.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'css/stripe.css' %}"-->
+		{% endcache %}
+		{% cache 604800 favicon %}
+			<link rel="shortcut icon" type="image/png" href="{% get_favicon %}"/>
+		{% endcache %}
+		<title>
+			{% block title %}
+				{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+			{% endblock %}
+			{% block title_suffix %}
+				{% with self.get_site.site_name as site_name %}
+					{% if site_name %}- {{ site_name }}{% endif %}
+				{% endwith %}
+			{% endblock %}
+		</title>
+	</head>
+	<body class="{% block body_class %}{% endblock %}" onclick="hideSubnavProfile(); hideFlags();">
+		<!--global js-->
+		<!--script type="text/javascript" src="{% static 'js/webshop.js' %}"></script>
+		<script type="text/javascript" src="{% static 'account/js/account.js' %}"></script>
+		<script type="text/javascript" src="{% static 'cart/js/cart.js' %}"></script>
+		<script type="text/javascript" src="{% static 'coupon/js/coupon.js' %}"></script-->
+		<script type="text/javascript" src="{% static 'js/all.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'vendors/splide-2.4.21/js/splide.min.js' %}"></script>
+		<!--snackbar-->
+		<div class="snackbar z-50 fixed top-16 w-full">
+			<div id="snackbar" class="flex flex-col justify-center items-center px-4 w-full"></div>
+		</div>
+		<!--overlays-->
+		<div id="cartOverlayBackground" 
+			class="cursor-pointer fixed top-0 left-0 w-full h-full bg-white bg-opacity-80 transition-opacity duration-500
+				opacity-0 -z-1"
+			onclick="hideCart();">
+		</div>
+		<div id="cartOverlay"
+			class="fixed overflow-y-auto h-full bg-transparent z-40 shadow cursor-pointer
+				top-0 w-full sm:w-96 2xl:w-1/3 right-0 -right-full sm:-right-96 2xl:-right-1/3 transition-all duration-500"
+				onclick="hideCart();">
+			<div class="flex max-w-2xl lg:max-w-xl shadow bg-white cursor-default bg-white" 
+				onclick="event.stopPropagation();" id="cartOverlayContent" style="min-height: 100%; flex-flow: column;">
+			</div>
+		</div>
+		<div id="loginOverlay"
+				class="z-40 fixed top-0 left-0 h-full w-full flex justify-center items-center overflow-y-auto bg-white
+				bg-opacity-80 transition-opacity duration-500 opacity-0 z-40 -z-1">
+			<div id="loginContent"
+				class="w-full sm:w-3/4 sm:max-w-xl h-full sm:h-auto bg-white text-center shadow pt-4 px-2 sm:p-8 relative">
+				<div class="absolute top-4 right-4 text-xl text-gray-400 pl-3 pb-3 cursor-pointer"
+						onclick="hideLoginOverlay();">
+					<i class="fal fa-times hoverable-gray-black pl-4 pb-4"></i>
+				</div>
+				<h1 class="mt-8 sm:mt-0 mb-4">{% trans 'Login' %}</h1>
+				<div id="loginError" 
+					class="p-3 mb-2 border border-red-400 bg-red-200 rounded text-left text-sm text-red-800 hidden"></div>
+				<form onsubmit="event.preventDefault(); submitLoginForm(this);">
+					{% csrf_token %}
+					<div class="form-label-group mb-4">
+						<input type="email" name="email" id="loginEmail" placeholder="{% trans 'Email' %}" required/>
+						<label for="loginEmail">{% trans 'Email' %}</label>
+					</div>
+					<div id="loginEmailError" class="text-sm text-red-400 mt-1 text-left">
+					</div>
+					<div class="form-label-group mb-4">
+						<input type="password" name="password" id="loginPassword" placeholder="{% trans 'Password' %}"
+								required/>
+						<label for="loginPassword">{% trans 'Password' %}</label>
+					</div>
+					<div id="loginPasswordError" class="text-sm text-red-400 mt-1 text-left">
+					</div>
+					<button id="loginBtn" class="button-primary rounded p-3 w-full text-lg mb-4">
+						{% trans 'Login' %}
+					</button>
+					<div class="link-primary mb-4"
+							onclick="hideLogin(); showReset();">
+						{% trans 'Forgot your password?' %}
+					</div>
+				</form>
+				<div class="border-t border-gray-200 pt-2">
+					{% trans 'No account yet?' %} 
+					<span class="link-primary mb-4"
+							onclick="hideLogin(); showRegister();">
+						{% trans 'Register' %}
+					</span>
+				</div>
+			</div>
+			<div id="registerContent"
+					class="w-full sm:w-3/4 sm:max-w-xl h-full sm:h-auto bg-white text-center shadow pt-4 px-2 sm:p-8 relative 
+							hidden">
+				<div class="absolute top-4 right-4 text-xl text-gray-400 pl-3 pb-3 cursor-pointer"
+						onclick="hideLoginOverlay();">
+					<i class="fal fa-times hoverable-gray-black pl-4 pb-4"></i>
+				</div>
+				<h1 class="mt-8 sm:mt-0 mb-4">{% trans 'Register' %}</h1>
+				<div id="registerError" 
+					class="p-3 mb-2 border border-red-400 bg-red-200 rounded text-left text-sm text-red-800 hidden"></div>
+				<form onsubmit="event.preventDefault(); submitRegisterForm(this);">
+					{% csrf_token %}
+					<div class="form-label-group mb-4">
+						<input type="email" name="email" id="registerEmail" placeholder="{% trans 'Email' %}"
+								required/>
+						<label for="registerEmail" class="">{% trans 'Email' %}</label>
+						<div id="registerEmailError" class="text-sm text-red-400 mt-1 text-left">
+						</div>
+					</div>
+					<div class="form-label-group mb-4">
+						<input type="password" name="password" id="registerPassword" placeholder="{% trans 'Password' %}"
+								required/>
+						<label for="registerPassword" class="">{% trans 'Password' %}</label>
+						<div id="registerPasswordError" class="text-sm text-red-400 mt-1 text-left">
+						</div>
+					</div>
+					<div class="form-label-group mb-4">
+						<input type="password" name="password2" id="registerPassword2" placeholder="{% trans 'Repeat pssword' %}"
+								required/>
+						<label for="registerPassword2" class="">{% trans 'Repeat password' %}</label>
+						<div id="registerPassword2Error" class="text-sm text-red-400 mt-1 text-left">
+						</div>
+					</div>
+					<button id="registerBtn" class="button-primary rounded p-3 w-full text-lg mb-4">
+						{% trans 'Register' %}
+					</button>
+				</form>
+				<div class="border-t border-gray-200 pt-2">
+					{% trans 'Already have an account?' %} 
+					<span class="link-primary mb-4"
+							onclick="hideRegister(); showLogin();">
+						{% trans 'Login' %}
+					</span>
+				</div>
+			</div>
+			<div id="resetContent"
+					class="w-full sm:w-3/4 sm:max-w-xl h-full sm:h-auto bg-white text-center shadow pt-4 px-2 sm:p-8 
+					relative hidden">
+				<div class="absolute top-4 right-4 text-xl text-gray-400 pl-3 pb-3 cursor-pointer"
+						onclick="hideLoginOverlay();">
+					<i class="fal fa-times hoverable-gray-black pl-4 pb-4"></i>
+				</div>
+				<h1 class="mt-8 sm:mt-0 mb-4">{% trans 'Reset password' %}</h1>
+				<div id="resetSuccess" 
+					class="p-3 mb-2 border border-green-400 bg-green-200 rounded text-sm text-left text-green-800 hidden"></div>
+				<form onsubmit="event.preventDefault(); submitResetForm(this);">
+					{% csrf_token %}
+					<div class="form-label-group mb-4">
+						<input type="email" name="email" id="resetEmail" placeholder="{% trans 'Email' %}" required/>
+						<label for="resetEmail" class="">{% trans 'Email' %}</label>
+						<div id="resetEmailError" class="mt-2 text-sm text-red-400 mt-1 text-left">
+						</div>
+					</div>
+					<button id="resetBtn" class="button-primary rounded p-3 w-full text-lg mb-4">
+						{% trans 'Reset password' %}
+					</button>
+				</form>
+				<div class="border-t border-gray-200 pt-2">
+					{% trans 'Already have an account?' %} 
+					<span class="link-primary mb-4"
+							onclick="hideReset(); showLogin();">
+						{% trans 'Login' %}
+					</span>
+				</div>
+			</div>
+		</div>
+		<div id="winwheelOverlay" 
+				class="z-40 fixed top-0 left-0 h-full w-full flex justify-center items-center 
+				overflow-y-auto bg-white bg-opacity-80 transition-opacity duration-500 opacity-0 z-40 -z-1">
+			<div id="winwheelOverlayContent"
+					class="relative w-full sm:w-auto sm:max-w-6xl h-full sm:h-auto shadow bg-white text-center pt-4 px-2 sm:p-8"
+					onclick="event.stopPropagation();">
+			</div>
+		</div>
+		<div id="newsletterOverlay" 
+				class="z-40 fixed top-0 left-0 h-full w-full flex justify-center items-center 
+				overflow-y-auto bg-white bg-opacity-80 transition-opacity duration-500 opacity-0 z-40 -z-1">
+			<div id="newsletterOverlayContent"
+					class="relative w-full sm:w-auto sm:max-w-6xl h-full sm:h-auto shadow bg-white text-center pt-4 px-2 sm:p-8"
+					onclick="event.stopPropagation();">
+			</div>
+		</div>
+		{% block overlay %}
+		{% endblock %}
+		<!--header-->
+		<div id="header" class="fixed top-0 flex flex-col w-full z-20 transition-all duration-300" 
+				onclick="hideAllSubNavs();">
+			<!--information bar-->
+			{% cache 604800 information_bar LANGUAGE_CODE %}
+				{% get_information_bar as info_bar %}
+				{% if info_bar %}
+					<div id="informationBar" class="hidden flex flex-row justify-between items-center z-1 w-full" 
+							style="color: {{ info_bar.text_color }}; background-color: {{ info_bar.background_color }}">
+						<div class="p-2 sm:p-4">
+							{{ info_bar.text }}
+						</div>
+						<div class="flex p-2 sm:p-4 cursor-pointer" onclick="hideInformationBar()">
+							<i class="text-xl fal fa-times"></i>
+						</div>
+					</div>
+				{% endif %}
+			{% endcache %}
+			<!--header-->
+			<div class="w-full bg-white z-1 shadow">
+				<div class="flex items-center relative max-w-screen-2xl mx-auto w-full h-14 ">
+					<div class="hidden sm:flex absolute left-0 h-full">
+						{% cache 604800 navigation LANGUAGE_CODE %}
+							{% get_all_menu as navs %}
+							{% for nav in navs %}
+								{% if nav.menu_item.all.count > 1 %}
+									<div class="relative flex h-full items-center ml-2 sm:ml-2 px-2 cursor-pointer select-none"
+											onclick="event.stopPropagation(); showHideSubnav{{ nav.slug }}Tab();">
+										{{ nav.title }}
+										<div class="absolute left-0 w-full h-full box-border border-b-0 hover:border-b-3 
+												border-primary-400 transition-all duration-100">
+										</div>
+									</div>
+								{% else %}
+									<a href="{{ nav.menu_item.all.0.link }}">
+										<div class="relative flex h-full items-center ml-2 sm:ml-2 px-2 cursor-pointer select-none"
+												onclick="event.stopPropagation();">
+											{{ nav.title }}
+											<div class="absolute left-0 w-full h-full box-border border-b-0 hover:border-b-3 
+													border-primary-400 transition-all duration-100">
+											</div>
+										</div>
+									</a>
+								{% endif %}
+							{% endfor %}
+						{% endcache %}
+					</div>
+					<div class="flex sm:hidden sm:flex absolute left-0 h-full">
+						<div class="flex items-center p-2 cursor-pointer" onclick="showHideMobileMenu();">
+							<div class="flex items-center nav-menu-container">
+								<div id="navMenuBtn" class="nav-menu-btn">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="absolute left-1/2 transform flex items-center self-center text-center
+							-translate-x-1/2 ml-auto mr-auto">
+						{% cache 604800 title LANGUAGE_CODE %}
+							{% get_title as title %}
+							<a href="/" class="select-none" aria-label="{% trans 'Home' %}">
+								{% if title.logo %} 
+									<img src="{{ title.logo.file.url }}" alt="{{ title.logo.file.url.name }}"/>
+								{% else %} 
+									{{ title.text }}
+								{% endif %}
+							</a>
+						{% endcache %}
+					</div>
+					<div class="absolute right-0 h-full flex items-center">
+						<div class="relative flex items-center h-full pl-2 pr-2 cursor-pointer"
+						onclick="event.stopPropagation(); toggleFlags();">
+							{% if LANGUAGE_CODE == 'de' %}
+								<img src="{% static 'img/flags/flag_germany.svg' %}" alt="{% trans 'Flag of Germany' %}" 
+										class="h-6 w-6"/>
+							{% else %}
+								<img src="{% static 'img/flags/flag_uk.svg' %}" alt="{% trans 'Flag of UK' %}" class="h-6 w-6"/>
+							{% endif %}
+							<div class="absolute left-0 w-full h-full box-border border-b-0 hover:border-b-3 
+								border-primary-400 transition-all duration-100">
+							</div>
+							<div id="navbarFlags" class="subnav-container hidden">
+								<div class="subnav-container-1">
+									<div class="subnav-content shadow">
+										<a href="{% url 'home:lang_de' %}">
+											<div class="simple-subnav-item-container">
+												<div class="simple-subnav-item">
+													<img src="{% static 'img/flags/flag_germany.svg' %}" alt="{% trans 'German flag' %}" 
+															class="h-6 w-6"/>
+												</div>
+											</div>
+										</a>
+										<a href="{% url 'home:lang_en' %}">
+											<div class="simple-subnav-item-container">
+												<div class="simple-subnav-item">
+													<img src="{% static 'img/flags/flag_uk.svg' %}" alt="{% trans 'UK flag' %}"
+															class="h-6 w-6"/>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% if request.user.is_authenticated %}
+							<div class="relative flex items-center h-full pl-2 pr-2 cursor-pointer"
+								onclick="event.stopPropagation(); toggleSubnavProfile();">
+								<i class="fal fa-user"></i>
+								<div class="absolute left-0 w-full h-full box-border border-b-0 hover:border-b-3 
+									border-primary-400 transition-all duration-100">
+								</div>
+								<div id="navbarProfileSubnav" class="subnav-container hidden">
+									<div class="subnav-container-1">
+										<div class="subnav-content shadow subnav-content-small">
+											<div class="simple-subnav-item-container">
+												<a href="{% url 'account:menu' %}">
+													<div class="simple-subnav-item">
+														{% trans 'Account' %}
+													</div>
+												</a>
+											</div>
+											<a href="{% url 'account:orders' %}">
+												<div class="simple-subnav-item-container">
+													<div class="simple-subnav-item">
+														{% trans 'My orders' %}
+													</div>
+												</div>
+											</a>
+											<a href="{% url 'account:logout' %}">
+												<div class="simple-subnav-item-container">
+													<div class="simple-subnav-item" >
+														{% trans 'Log out' %}
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<div class="relative flex items-center h-full pl-2 pr-2 cursor-pointer"
+								onclick="showLoginOverlay();">
+								<div class="absolute left-0 w-full h-full box-border border-b-0 hover:border-b-3 
+									border-primary-400 transition-all duration-100">
+								</div>
+								<i class="fal fa-user"></i>
+							</div>
+						{% endif %}
+						<div class="relative flex items-center h-full pr-4 pl-2 cursor-pointer"
+							onclick="showCart();">
+							<div class="absolute left-0 w-full h-full box-border border-b-0 hover:border-b-3 
+								border-primary-400 transition-all duration-100">
+							</div>
+							<i class="fal fa-shopping-cart"></i>
+							<div id="cartIconDot" class="absolute bg-primary-400 rounded-full w-3 h-3 hidden" 
+									style="top:10px; right: 10px;">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% cache 604800 sub_navs LANGUAGE_CODE %}
+				{% get_all_menu as navigation %}
+				{% for nav in navigation %}
+					{% if nav.menu_item.all.count > 1 %}
+						<div class="relative">
+							<div id="{{ nav.slug }}Tab" class="absolute w-full z-10 hidden" onclick="event.stopPropagation();">
+								<div class="hidden sm:flex flex-wrap items-center justify-center w-full bg-primary-400 text-white"
+										style="min-height: 40px;">
+									{% for item in nav.menu_item.all %}
+										<a class="cursor-pointer p-2" href="{{ item.link }}">
+											<div class="pl-2 pr-2 pt-1 pb-1 unselectable">{{ item.title }}</div>
+										</a>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endcache %}
+			<div class="relative">
+				<div id="mobileMenu" class="sm:hidden absolute w-full h-full bg-white transition-all duration-500 
+						top-0 -top-screen overflow-x-hidden overflow-y-auto px-2">
+					<div>
+						<a href="/">
+							<div class="flex justify-between items-center py-4 border-b border-gray-200">
+									<div>{% trans 'Home' %}</div>
+								<div class="text-2xl">
+									<i class="fal fa-home"></i>
+								</div>
+							</div>
+						</a>
+						{% cache 604800 mobile_nav_tabs LANGUAGE_CODE %}
+							{% get_all_menu as navigation %}
+							{% for nav in navigation %}
+								{% if nav.menu_item.all.count == 1 %}
+									<a href="{{ nav.menu_item.all.0.link }}">
+										<div class="flex justify-between items-center py-4 border-b border-gray-200">
+											<div>{{ nav.title }}</div>
+											<div class="text-2xl">
+												{% if nav.menu_item.all.0.font_awesome_class %}
+													<i class="{{ nav.menu_item.all.0.font_awesome_class }}"></i>
+												{% else %}
+													<i class="fal fa-home invisible"></i>
+												{% endif %}
+											</div>
+										</div>
+									</a>
+								{% else %}
+									<div onclick="showMobileSubnav{{ nav.slug }}();">
+										<div class="flex justify-between items-center py-4 border-b border-gray-200 cursor-pointer">
+											<div>{{ nav.title }}</div>
+											<div class="text-2xl">
+												{% if nav.font_awesome_class %}
+													<i class="{{ nav.font_awesome_class }}"></i>
+												{% else %}
+													<i class="fal fa-home invisible"></i>
+												{% endif %}
+											</div>
+										</div>
+									</div>
+									<div id="subMobileNav{{ nav.slug }}"
+											class="absolute h-full w-full top-0 right-0 -right-full bg-white transition-all duration-500 
+													overflow-y-auto">
+										<div class="flex items-center border-b border-gray-200">
+											<div class="flex justify-center items-center h-14 w-20 cursor-pointer text-xl" 
+													onclick="hideMobileSubnav{{ nav.slug }}();">
+												<i class="fal fa-arrow-alt-left"></i>
+											</div>
+											<div class="w-full flex text-center justify-center items-center py-4 border-l border-gray-200">
+												<div class="text-2xl">
+													<i class="fal fa-home invisible"></i>
+												</div>
+												{{ nav.title }}
+												<div class="text-2xl">
+													<i class="fal fa-home invisible"></i>
+												</div>
+											</div>
+										</div>
+										<div class="px-2">
+											{% for item in nav.menu_item.all %}
+												<a href="{{ item.link }}">
+													<div class="flex justify-between items-center py-4 border-b border-gray-200">
+														<div>{{ item.title }}</div>
+														<div class="text-2xl">
+															{% if item.font_awesome_class %}
+																<i class="{{ item.font_awesome_class }}"></i>
+															{% else %}
+																<i class="fal fa-home invisible"></i>
+															{% endif %}
+														</div>
+													</div>
+												</a>
+											{% endfor %}
+										</div>
+									</div>
+									<script>
+										const subMobileNav{{ nav.slug }} = document.getElementById('subMobileNav{{ nav.slug }}');
+										function showMobileSubnav{{ nav.slug }}() {
+											subMobileNav{{ nav.slug }}.classList.remove('-right-full');
+										}
+										function hideMobileSubnav{{ nav.slug }}() {
+											subMobileNav{{ nav.slug }}.classList.add('-right-full');
+										}
+									</script>
+								{% endif %}
+							{% endfor %}
+						{% endcache %}
+						{% cache 604800 mobile_nav_footer LANGUAGE_CODE %}
+							{% get_footer_mobile as navigation %}
+							{% for item in navigation %}
+								<a href="{{ item.link }}">
+									<div class="flex justify-between items-center py-4 border-b border-gray-200">
+										<div>{{ item.title }}</div>
+										<div class="text-2xl">
+											<i class="{{ item.font_awesome_class }}"></i>
+										</div>
+									</div>
+								</a>
+							{% endfor %}
+						{% endcache %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--gap between header and content-->
+		<div id="topGap"></div>
+		<!--content-->
+		<div class="h-full" onclick="hideAllSubNavs();" style="min-height: calc(100vh - 200px);">
+			{% block content %}{% endblock %}
+		<!--footer-->
+		<div class="border-t border-gray-20 mt-8">
+			<div class="flex flex-col-reverse md:flex-row justify-between max-w-screen-2xl px-2 sm:px-4  mx-auto py-8">
+				<div class="flex flex-col md:flex-row flex-wrap">
+					{% cache 604800 footer LANGUAGE_CODE %}
+						{% get_all_footer as footers %}
+						{% for footer in footers %}
+							<div class="flex flex-col mb-12 pr-0 md:pr-24">
+								<p>{{ footer.title }}</p>
+								{% for item in footer.footer_item.all %}
+									<a class="link-gray pb-1" href="{{ item.link }}" 
+											{% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+										{{ item.title }}
+									</a>
+								{% endfor %}
+							</div>
+						{% endfor %}
+					{% endcache %}
+				</div>
+				<div class="mb-12 md:mb-4 flex flex-col flex-grow items-center md:items-start 
+						max-w-none md:max-w-md mx-auto md:mx-0" 
+						style="min-width: 300px;">
+					<p class="w-full text-left">
+						<strong>{% trans 'We also make emails.' %}</strong>
+					</p>
+					<p class="text-sm">
+						{% trans 'Receive email updates on stuff you’ll probably want to know about, including products, launches, and events. Unsubscribe anytime.'%}
+					</p>
+					<div id="newsletterSuccess"
+							class="border border-green-400 bg-green-200 rounded text-sm text-left text-green-800 
+							w-full hidden p-3 mb-2"
+							style="min-width: 300px">
+						{% trans 'Thank you for subscribing to our newsletter' %}
+					</div>
+					<div id="newsletterError"
+							class="border border-red-400 bg-red-200 rounded text-left text-sm text-red-800 w-full hidden p-3 mb-2 ">
+					</div>
+					<form id="newsletterForm" class="w-full" action="." 
+							onsubmit='event.preventDefault(); subscribeToNewsletter(this);'>
+						{% csrf_token %}
+						<div class="flex" style="min-width: 300px;">
+							<input class="border border-gray-300 rounded-l text-sm w-full w-full h-12 p-2"
+									name="email" type="email"
+									placeholder="lukeskywaler@gmail.com" required/>
+							<button class="button-primary capitalize rounded-r text-sm h-12 p-2">
+								{% trans 'Subscribe' %}
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="cookieConsent"
+				class="fixed bottom-0 hidden w-full border border-t border-gray-200 bg-white shadow z-40 ">
+			<div class="max-w-screen-2xl pt-1 pb-4 pr-4 pl-4 m-auto">
+				<div class="flex flex-row-reverse">
+					<i class="fal fa-times text-2xl p-2 link-gray" onclick="hideCookieConsent();"></i>
+				</div>
+				<div class="flex flex-col md:flex-row justify-center items-center w-full text-sm">
+					<div class="mb-4 md:mb-0">
+						{% trans 'By keep using our site you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.' %}
+					</div>
+					<div class="inline-flex">
+						<a class="block link-primary w-40 h-full p-2" href="/privacy-policy/" target="_blank" style="width: 10rem">
+							<div class="flex justify-center items-center">
+								{% trans 'Privacy policy' %}
+							</div>
+						</a>
+						<button class="button-primary w-40 h-full p-2 rounded" onclick="hideCookieConsent();" style="width: 10rem">
+							{% trans 'Accept all cookies' %}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--constants-->
+		<script>
+			const errorString = '{% trans "Error" %}';
+			const couponApplyUrl = "{% url 'coupon:apply' %}";
+			const couponRemoveUrl = "{% url 'coupon:remove' %}";
+			const cartOverlayContentUrl = "{% url 'cart:cart_overlay_content' %}";
+			const cartCheckoutTopUrl = "{% url 'cart:cart_checkout_top' %}";
+			const cartCheckoutRightUrl = "{% url 'cart:cart_checkout_right' %}";
+			const cartUpdateUrl = "{% url 'cart:update' product_color_quantity_id=12345 quantity=12345 %}";
+			const loginUrl = "{% url 'account:login' %}";
+			const registerUrl = "{% url 'account:register' %}";
+			const resetUrl = "{% url 'account:reset' %}";
+			const resetSuccessText = '{% trans "An email has been sent if a registed account was found" %}';
+			const cartOverlay = document.getElementById('cartOverlay');
+			const cartOverlayBackground = document.getElementById('cartOverlayBackground');
+			const cartIconDot = document.getElementById('cartIconDot');
+			const invalidQuantityTitle = '{% trans "Invalid quantity" %}';
+			const invalidQuantityText = '{% trans "Please enter a positive quantity" %}';
+			const navMenuBtn = document.getElementById('navMenuBtn');
+			const mobileMenu = document.getElementById('mobileMenu');
+			const navbarFlags = document.getElementById('navbarFlags')
+			const header = document.getElementById('header');
+			const topGap = document.getElementById('topGap');
+			const cookieConsent = document.getElementById('cookieConsent');
+			//for account.js
+			const passwordsDontMatchError = '{% trans "Passwords dont match" %}'
+			const loginOverlay = document.getElementById('loginOverlay');
+			const loginContent = document.getElementById('loginContent');
+			const registerContent = document.getElementById('registerContent');
+			const resetContent = document.getElementById('resetContent');
+			const loginError = document.getElementById('loginError');
+			const loginEmail = document.getElementById('loginEmail');
+			const loginEmailError = document.getElementById('loginEmailError');
+			const loginPassword = document.getElementById('loginPassword');
+			const loginPasswordError = document.getElementById('loginPasswordError');
+			const loginBtn = document.getElementById('loginBtn');
+			const registerError = document.getElementById('registerError');
+			const registerEmail = document.getElementById('registerEmail');
+			const registerEmailError = document.getElementById('registerEmailError');
+			const registerPassword = document.getElementById('registerPassword');
+			const registerPasswordError = document.getElementById('registerPasswordError');
+			const registerPassword2 = document.getElementById('registerPassword2');
+			const registerPassword2Error = document.getElementById('registerPassword2Error');
+			const registerBtn = document.getElementById('registerBtn');
+			const resetSuccess = document.getElementById('resetSuccess');
+			const resetEmail = document.getElementById('resetEmail');
+			const resetEmailError = document.getElementById('resetEmailError');
+			const resetBtn = document.getElementById('resetBtn');
+		</script>
+		<!--header logic-->
+		<script>
+			let loadCart = true;
+			refreshTopGapHeight();
+			(function(){
+				let doc = document.documentElement;
+				let w = window;
+				let prevScroll = w.scrollY || doc.scrollTop;
+				let curScroll;
+				let direction = 0;
+				let prevDirection = 0;
+				let header = document.getElementById('header');
+				let checkScroll = function() {
+					/*
+					** Find the direction of scroll
+					** 0 - initial, 1 - up, 2 - down
+					*/
+					curScroll = w.scrollY || doc.scrollTop;
+					if (curScroll > prevScroll) { 
+						//scrolled up
+						direction = 2;
+					}
+					else if (curScroll < prevScroll) { 
+						//scrolled down
+						direction = 1;
+					}
+					if (direction !== prevDirection) {
+						toggleHeader(direction, curScroll);
+					}
+					prevScroll = curScroll;
+				};
+				let toggleHeader = function(direction, curScroll) {
+					if (direction === 2 && curScroll > 120) { 
+						//replace 52 with the height of your header in px
+						header.classList.add('hide');
+						prevDirection = direction;
+					} else if (direction === 1) {
+						header.classList.remove('hide');
+						prevDirection = direction;
+					}
+				};
+				window.addEventListener('scroll', checkScroll);
+			})();
+			window.onload = function () {
+				refreshTopGapHeight();
+				refreshMobileMenuMinHeight();
+				if (loadCart) {
+					getCart();
+				}
+				const coll = document.getElementsByClassName('collapsible');
+				for (i = 0; i < coll.length; i++) {
+					let panel = coll[i].nextElementSibling;
+					coll[i].addEventListener('click', function() {
+						if (panel.style.maxHeight) {
+							panel.style.maxHeight = null;
+						} else {
+							panel.style.maxHeight = (panel.scrollHeight + 50) + 'px';
+						}
+					});
+				}
+				{% block onload %}
+				{% endblock %}
+			}
+			window.onresize = reportWindowSize;
+			function reportWindowSize() {
+				refreshTopGapHeight();
+				refreshMobileMenuMinHeight();
+			}
+			function refreshTopGapHeight() {
+				topGap.style.height = header.offsetHeight + 'px';
+			}
+			function refreshMobileMenuMinHeight() {
+				mobileMenu.style.minHeight = window.innerHeight - mobileMenu.parentElement.offsetTop + 'px';
+			}
+			function toggleFlags() {
+				navbarFlags.classList.toggle('hidden');
+			}
+			function showFlags() {
+				navbarFlags.classList.remove('hidden');
+			}
+			function hideFlags() {
+				navbarFlags.classList.add('hidden');
+			}
+			function toggleSubnavProfile() {
+				const element = document.getElementById('navbarProfileSubnav');
+				if (element) {
+					element.classList.toggle('hidden');
+				}
+			}
+			function showSubnavProfile() {
+				const element = document.getElementById('navbarProfileSubnav');
+				if (element) {
+					element.classList.remove('hidden');
+				}
+			}
+			function hideSubnavProfile() {
+				const element = document.getElementById('navbarProfileSubnav');
+				if (element) {
+					element.classList.add('hidden');
+				}
+			}
+			{% cache 604800 nav_sub_js %}
+				{% get_all_menu as navigation %}
+				{% for nav in navigation %}
+					{% if nav.menu_item.all.count > 1 %}					
+						const {{ nav.slug }}Tab = document.getElementById('{{ nav.slug }}Tab');
+						function showHideSubnav{{ nav.slug }}Tab() {
+							hideAllSubNavs();
+							{{ nav.slug }}Tab.classList.toggle('hidden');
+						}
+						function hideSubnav{{ nav.slug }}Tab() {
+							if (!{{ nav.slug }}Tab.classList.contains('hidden')) {
+								{{ nav.slug }}Tab.classList.add('hidden');
+							}
+						}
+					{% endif %}
+				{% endfor %}
+			{% endcache %}
+			{% cache 604800 hide_all_tabs %}
+				{% get_all_menu as navigation %}
+				function hideAllSubNavs() {
+					hideFlags();
+					hideSubnavProfile();
+					{% for nav in navigation %}
+						{% if nav.menu_item.all.count > 1 %}					
+								hideSubnav{{ nav.slug }}Tab();
+						{% endif %}
+					{% endfor %}
+				}
+			{% endcache %}
+			function showHideMobileMenu() {
+				mobileMenu.classList.toggle('-top-screen');
+				header.classList.toggle('show');
+			}
+			function showCookieConsent() {
+				cookieConsent.classList.remove('hidden');
+			}
+			function hideCookieConsent() {
+				cookieConsent.classList.add('hidden');
+				setCookie('cookieConsent', true, 7);
+			}
+			if (!getCookie('cookieConsent')) {
+				showCookieConsent();
+			}
+		</script>
+		{% cache 604800 winwheel LANGUAGE_CODE %}
+			{% get_winwheel_active as winwheel_active %}
+			{% if winwheel_active %}
+				<!--winwheel-->
+				<script>
+					const winWheelOverlay = document.getElementById('winwheelOverlay');
+					function showWinwheel() {
+						winWheelOverlay.classList.add('opacity-100');
+						winWheelOverlay.classList.remove('-z-1');
+					}
+					function hideWinwheel() {
+						winWheelOverlay.classList.remove('opacity-100');
+						setTimeout(function(){
+							winWheelOverlay.classList.add('-z-1');
+						}, 500);
+						setCookie('winWheel', true, 7);
+					}
+					if (!getCookie('winWheel')) {
+						loadContent('winwheelOverlayContent', '{% url "winwheel:winwheel" %}', 'bg-primary-400');
+						fetch('{% url "winwheel:winwheel_js" %}')
+							.then(response => {
+								return response.text()
+							})
+							.then(html => {
+								const temp = new DOMParser().parseFromString(html, 'text/html');
+								const scripts = temp.getElementsByTagName('script');
+								const leng = scripts.length;
+								/*
+								let s = document.createElement('script');
+								s.src = '{% static "winwheel/javascript-winwheel-2.8.0/Winwheel.min.js" %}';
+								document.body.appendChild(s);
+								s = document.createElement('script');
+								s.src = '{% static "winwheel/javascript-winwheel-2.8.0/TweenMax.min.js" %}';
+								document.body.appendChild(s);
+								*/
+								for (let i = 0; i < leng; i++) {
+									s = document.createElement('script');
+									s.innerHTML = scripts[i].innerHTML;
+									document.body.appendChild(s);
+								}
+								setCookie('winWheel', true, 7);
+								setTimeout(() => {
+									showWinwheel();
+								}, 8000);
+								setTimeout(() => {
+									initWinwheel();
+								}, 4000);
+							})
+							.catch(error => {
+								while(container.firstChild) {container.firstChild.remove()};
+								for(let i = 0; i < oldChildren.length; i++){
+									container.appendChild(oldChildren[i]);
+								}
+								createFancyAlert(
+									'error',
+									'{% trans "Loading error" %}', 
+									'{% trans "There was an error trying to load the content"%}');
+								throw error;
+							})
+						}
+				</script>
+			{% endif %}
+		{% endcache %}
+		<!--newsletter-->
+		<script>
+			{% cache 604800 newsletter_popup_js LANGUAGE_CODE %}
+				{% get_campaign_active as campaign_available %}
+				{% if campaign_available %}
+					const newsletterOverlay = document.getElementById('newsletterOverlay');
+					function showNewsletterPopup() {
+						newsletterOverlay.classList.add('opacity-100');
+						newsletterOverlay.classList.remove('-z-1');
+					}
+					function hideNewsletterPopup() {
+						newsletterOverlay.classList.remove('opacity-100');
+						setTimeout(function(){
+							newsletterOverlay.classList.add('-z-1');
+						}, 500);
+						setCookie('newsletterPopUp', true, 7);
+					}
+					if (!getCookie('newsletterPopUp')) {
+					loadContent('newsletterOverlayContent', '{% url "newsletter:popup" %}', 'bg-primary-400');
+					fetch('{% url "newsletter:popup_js" %}')
+						.then(response => {
+							return response.text()
+						})
+						.then(html => {
+							const temp = new DOMParser().parseFromString(html, 'text/html');
+							const scripts = temp.getElementsByTagName('script');
+							const leng = scripts.length;
+							for (let i = 0; i < leng; i++) {
+								s = document.createElement('script');
+								s.innerHTML = scripts[i].innerHTML;
+								document.body.appendChild(s);
+							}
+							setCookie('newsletterPopUp', true, 7);
+							setTimeout(() => {
+								showNewsletterPopup();
+							}, 8000);
+						})
+						.catch(error => {
+							while(container.firstChild) {container.firstChild.remove()};
+							for(let i = 0; i < oldChildren.length; i++){
+								container.appendChild(oldChildren[i]);
+							}
+								createFancyAlert(
+									'error',
+									'{% trans "Loading error" %}', 
+									'{% trans "There was an error trying to load the content"%}');
+							throw error;
+						})
+					}
+				{% endif %}
+			{% endcache %}
+			async function subscribeToNewsletter(form){
+				const formData = new FormData(form);
+				let data = {};
+				for (let [key, value] of formData.entries()) {
+					data[key] = value;
+				}
+				let response = await fetch('{% url "newsletter:subscribe" %}', {
+					method: 'POST',
+					mode: 'cors',
+					cache: 'default',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+						'X-CSRFToken': getCookie('csrftoken')
+					},
+					body: JSON.stringify(data),
+				});
+				response = await response.json();
+				const newsletterError = document.getElementById('newsletterError');
+				const newsletterSuccess = document.getElementById('newsletterSuccess');
+				const newsletterForm = document.getElementById('newsletterForm');
+				if(response['exception'] !== undefined){
+					newsletterSuccess.classList.add('hidden');
+					newsletterError.classList.remove('hidden');
+					newsletterError.innerText = response['exception'];
+				} else{
+					newsletterError.classList.add('hidden');
+					newsletterSuccess.classList.remove('hidden');
+					newsletterForm.classList.add('hidden');
+				}
+			}
+		</script>
+		<!--infobar-->
+		<script>
+			const informationBar = document.getElementById('informationBar');
+			if (informationBar) {
+				if (!getCookie('hideInformationBar')) {
+					informationBar.classList.remove('hidden');
+				}
+			}
+			function hideInformationBar() {
+				informationBar.classList.add('hidden');
+				setCookie('hideInformationBar', true, 7);
+				window.dispatchEvent(new Event('resize'));
+			}
+		</script>
+		{% if messages %}
+			<script>
+				let fancyBaseCounter = 0;
+				let message = '';
+				let alert = '';
+				const fancyBaseDelay = 500;
+				{% for message in messages %}
+					setTimeout(function(){
+						message = `{{ message.message }}`.replace(/&quot;/g, "\"").replaceAll("\n", "\\n");
+						alert = JSON.parse(message);
+						createFancyAlert(alert['data']['type'], alert['data']['title'], alert['data']['innerHTML']);
+					}, fancyBaseCounter * fancyBaseDelay);
+					fancyBaseCounter = fancyBaseCounter + 1;
+				{% endfor %}
+			</script>
+		{% endif %}
+		{% block extra_js %}
+		{% endblock %}
+		<script type="text/javascript" src="{% static 'winwheel/javascript-winwheel-2.8.0/Winwheel.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'winwheel/javascript-winwheel-2.8.0/TweenMax.min.js' %}"></script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load cache i18n static wagtailcore_tags streams_template_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block body_class %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block content %}
+	{% cache 604800 home_page LANGUAGE_CODE %}
+		<div class="max-w-screen-2xl m-auto">
+			{% for block in page.content %}
+				{% full_width block as full %}
+				{% if full %}
+					{% include_block block %}
+				{% endif %}
+			{% endfor %}
+			<div class="p-2 md:p-4 lg:p-8 m-auto">
+				{% for block in page.content %}
+					{% full_width block as full %}
+					{% if not full %}
+						{% include_block block %}
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	{% endcache %}
+{% endblock content %}

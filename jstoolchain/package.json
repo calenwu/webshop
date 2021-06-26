@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "postcss css/tailwind.css -o ../webshop/static/css/tailwind.css"
+  },
+  "dependencies": {
+    "@yaireo/tagify": "^4.0.3",
+    "autoprefixer": "^10.0.4",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.0",
+    "tailwindcss": "^2.0.1"
+  }
+}

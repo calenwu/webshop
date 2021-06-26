@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load i18n cart_template_tags shop_template_tags %}
+{% block content %}
+	<div class="flex flex-col items-center text-center p-2 sm:p-4">
+		<h1 class="my-16">
+			{% trans 'Edit address' %}
+		</h1>
+		<div class="w-full max-w-lg my-auto mb-16">
+			<form action="{% url 'account:change_address' %}" method="POST">
+				{% csrf_token %}
+				<div class="mb-8">
+					<div class="grid gap-2 grid-cols-6">
+						<div class="col-span-6 sm:col-span-3">
+							<div class="form-label-group">
+								<input name="{{ form.first_name.html_name }}" id="{{ form.first_name.id_for_label }}"
+									placeholder="{{ form.first_name.field.widget.attrs.placeholder }} =" required=true
+									{% if form.first_name.value %}value="{{ form.first_name.value }}"{% endif %}
+									{% if form.first_name.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.first_name.id_for_label }}">
+									{{ form.first_name.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.first_name.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-span-6 sm:col-span-3">
+							<div class="form-label-group">
+								<input name="{{ form.last_name.html_name }}" id="{{ form.last_name.id_for_label }}"
+									placeholder="{{ form.last_name.field.widget.attrs.placeholder }}" required=true
+									{% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %}
+									{% if form.last_name.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.last_name.id_for_label }}">
+									{{ form.last_name.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.last_name.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-span-6">
+							<div class="form-label-group">
+								<input type="email" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}"
+									placeholder="{{ form.email.field.widget.attrs.placeholder }}" required=true
+									{% if form.email.value %}value="{{ form.email.value }}"{% endif %}
+									{% if form.email.errors %}class="error"{% endif %}/>
+								<label for="{{ form.email.id_for_label }}">
+									{{ form.email.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.email.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-span-6">
+							<div class="form-label-group">
+								<input name="{{ form.company.html_name }}" id="{{ form.company.id_for_label }}"
+									placeholder="{{ form.company.field.widget.attrs.placeholder }}"
+									{% if form.company.value %}value="{{ form.company.value }}"{% endif %}
+									{% if form.company.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.company.id_for_label }}">
+									{{ form.company.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.company.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-span-6">
+							<div class="form-label-group">
+								<input name="{{ form.address.html_name }}" id="{{ form.address.id_for_label }}"
+									placeholder="{{ form.address.field.widget.attrs.placeholder }}" required=true
+									{% if form.address.value %}value="{{ form.address.value }}"{% endif %}
+									{% if form.address.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.address.id_for_label }}">
+									{{ form.address.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.address.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-span-6">
+							<div class="form-label-group">
+								<input name="{{ form.address2.html_name }}" id="{{ form.address2.id_for_label }}"
+									placeholder="{{ form.address2.field.widget.attrs.placeholder }}"
+									{% if form.address2.value %}value="{{ form.address2.value }}"{% endif %}
+									{% if form.address2.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.address2.id_for_label }}">
+									{{ form.address2.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.address2.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class=" col-span-6 sm:col-span-3">
+							<div class="form-label-group">
+								<input name="{{ form.postal_code.html_name }}" id="{{ form.postal_code.id_for_label }}"
+									placeholder="{{ form.postal_code.field.widget.attrs.placeholder }}" required=true
+									{% if form.postal_code.value %}value="{{ form.postal_code.value }}"{% endif %}
+									{% if form.postal_code.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.postal_code.id_for_label }}">
+									{{ form.postal_code.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.postal_code.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class=" col-span-6 sm:col-span-3">
+							<div class="form-label-group">
+								<input name="{{ form.city.html_name }}" id="{{ form.city.id_for_label }}"
+									placeholder="{{ form.city.field.widget.attrs.placeholder }}" required=true
+									{% if form.city.value %}value="{{ form.city.value }}"{% endif %}
+									{% if form.city.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.city.id_for_label }}">
+									{{ form.city.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.city.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div id="countryContainer" class="col-span-6 sm:col-span-3">
+							<div class="form-label-group">
+								<select name="{{ form.country.html_name }}" id="{{ form.country.id_for_label }}"
+									placeholder="{{ form.country.field.widget.attrs.placeholder }}" required
+									{% if form.country.errors %}class="error"{% endif %}>
+									{% for x, y in form.country.field.choices %}
+										<option value="{{ x }}">{{ y }}</option>
+									{% endfor %}
+								</select>
+								<label class="cursor-default" for="{{ form.country.id_for_label }}">
+									{{ form.country.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.country.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div id="stateContainer" class="hidden col-span-6 sm:col-span-3">
+							<div class="form-label-group ">
+								<select name="{{ form.state.html_name }}" id="{{ form.state.id_for_label }}"
+									placeholder="{{ form.state.field.widget.attrs.placeholder }}" required
+									{% if form.state.errors %}class="error"{% endif %}>
+								</select>
+								<label class="cursor-default" for="{{ form.state.id_for_label }}">
+									{{ form.state.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.state.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-span-6">
+							<div class="form-label-group ">
+								<input name="{{ form.telephone.html_name }}" id="{{ form.telephone.id_for_label }}"
+									placeholder="{{ form.telephone.field.widget.attrs.placeholder }}" required=true
+									{% if form.telephone.value %}value="{{ form.telephone.value }}"{% endif %}
+									{% if form.telephone.errors %}class="error"{% endif %}/>
+								<label class="cursor-text" for="{{ form.telephone.id_for_label }}">
+									{{ form.telephone.label }}
+								</label>
+							</div>
+							<div class="text-sm text-red-400 mt-1 text-left">
+								{% for error in form.telephone.errors %}
+									{{ error|escape }}<br/>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="button-primary-outline block w-full rounded p-3 text-lg text-center">
+					{% trans 'Save' %}
+				</button>
+			</form>
+		</div>
+		<div class="w-full max-w-lg my-auto">
+			<a class="button-red-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:menu' %}">
+				{% trans 'Return to menu' %}
+			</a>
+		</div>
+	</div>
+	<script>
+		const stateContainer = document.getElementById('stateContainer');
+		const stateSelect = document.getElementById('id_state');
+		const countryContainer = document.getElementById('countryContainer');
+		const countrySelect = document.getElementById('id_country');
+		const states = JSON.parse("{{ states }}".replaceAll("&quot;", '"'));
+		{% if form.country.value %}
+			countrySelect.value='{{ form.country.value }}';
+		{% endif %}
+		changeCountry(countrySelect.value);
+		countrySelect.addEventListener('change', function() {
+			changeCountry(this.value);
+		});
+		function changeCountry(value) {
+			const countryCode = value;
+			if (states[countryCode]) {
+				removeOptions(stateSelect);
+				states[countryCode].forEach((state) => {
+					const option = document.createElement('option');
+					option.text = state.name;
+					option.value = state.code;
+					stateSelect.appendChild(option);
+				});
+				stateContainer.selectedIndex = 0;
+				showState();
+			} else {
+				hideState();
+			}
+		}
+		function showState() {
+			if (stateContainer.classList.contains('hidden')) {
+				stateContainer.classList.remove('hidden');
+				stateSelect.required = true;
+			}
+			countryContainer.classList.add('sm:col-span-3');
+		}
+		function hideState() {
+			if (!stateContainer.classList.contains('hidden')) {
+				stateContainer.classList.add('hidden');
+			}
+			countryContainer.classList.remove('sm:col-span-3');
+			stateSelect.required = false;
+		}
+		function removeOptions(element) {
+			while (element.firstChild) {element.firstChild.remove()}
+		}
+		{% if form.state.value %}
+			stateSelect.value = '{{ form.state.value }}';
+		{% endif %}
+	</script>
+{% endblock %}

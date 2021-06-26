@@ -1,0 +1,44 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n %}
+{% block form_top %}
+<input type="submit"
+	name="_view_in_web"
+	value="{% trans 'View in web' %}"
+	class="grp-button grp-default"/>
+<input type="submit"
+	name="_send_invoice"            
+	value="{% trans 'Send invoice' %}"
+	class="grp-button grp-default"/>
+<input type="submit"
+	name="_send_invoice_celery"
+	value="{% trans 'Send invoice via celery' %}"
+	class="grp-button grp-default"/>
+<input type="submit"
+	name="_shipping_notification"
+	value="{% trans 'Send shipping notification' %}"
+	class="grp-button grp-default"/>
+<input type="submit"
+	name="_shipping_notification_celery"
+	value="{% trans 'Send shipping notification via celery' %}"
+	class="grp-button grp-default"/>
+<div style="display: inline-block; background-color: var(--button-bg); padding: 0px 15px; border-radius: 4px;
+    margin: 2px 0;">
+	<input id="refundInput" type="number" min="1" class="" style="border-radius: 4px 0 0 4px;"/>
+	<input type="submit" onclick="event.preventDefault(); refund(); return false;" style="margin: 0px" value="{% trans 'Refund' %}"/>
+	<input type="submit"
+		name="_refund"
+		id="refundSubmit"
+		value="Refund"
+		onclick="refund();"
+		style="margin: 0px; display:none"/>
+	<script>
+		const refundInput = document.getElementById('refundInput');
+		const refundSubmit = document.getElementById('refundSubmit');
+		function refund() {
+			refundSubmit.value = refundInput.value;
+			refundSubmit.click();
+		}
+	</script>
+</div>
+
+{% endblock %}

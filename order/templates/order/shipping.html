@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load shop_template_tags cart_template_tags i18n %}
+{% block content %}
+	<div class="md:hidden px-2 sm:px-4 w-full py-4 bg-primary-400 text-primary-bg collapsible cursor-pointer">
+		<div class="flex justify-between self-center items-center max-w-screen-2xl m-auto">
+			<div class="text-sm">
+				<i class="fal fa-shopping-cart mr-2"></i>{% trans 'Show order' %}
+			</div>
+			<div>
+				{{ cart.get_display_total_price }}
+			</div>
+		</div>
+	</div>
+	<div class="px-2 sm:px-4 w-full max-h-0 overflow-hidden duration-500 
+			transition-all border-b border-gray-200 md:hidden">
+		<div id="cartCheckoutTop">
+		</div>
+	</div>
+	<div class="max-w-screen-2xl m-auto flex">
+		<div class="w-full md:w-7/12 p-2 md:p-4 lg:p-8">
+			<div class="text-xs mt-4 mb-8">
+				<a class="link-primary" href="{% url 'cart:details' %}">
+					{% trans 'Cart' %}
+				</a>
+				<i class="text-xs fal fa-chevron-right"></i>
+				<a class="link-primary" href="{% url 'order:information' %}">
+					{% trans 'Information' %}
+				</a>
+				<i class="xs fal fa-chevron-right"></i>
+				<strong>{% trans 'Shipping' %}</strong>
+				<i class="xs fal fa-chevron-right"></i>
+				{% trans 'Payment' %}
+			</div>
+      <div class="mb-8">
+        <div class="border border-gray-200 rounded px-4">
+					<div class="flex justify-between items-center w-full py-4 border-b border-gray-200">
+						<div class="flex flex-col sm:flex-row text-sm">
+							<div class="w-24">
+								{% trans 'Contact' %}
+							</div>
+							<div>
+								{{ order.email }}
+							</div>
+						</div>
+						<a class="link-primary text-xs" href="{% url 'order:information' %}">
+							{% trans 'Change' %}
+						</a>
+					</div>
+					<div class="flex justify-between items-center w-full py-4">
+						<div class="flex flex-col sm:flex-row text-sm">
+							<div class="w-24">
+								{% trans 'Ship to' %}
+							</div>
+							<div>
+								{{ order.address }}
+								{% if order.address2 %}{{ order.address2 }}{% endif %},
+								{{ order.postal_code }}
+								{{ order.city }},
+								{% if order.state %}{{ order.state }}{% endif %}
+								{{ order.get_country_readable }}
+							</div>
+						</div>
+						<a class="link-primary text-xs" href="{% url 'order:information' %}">
+							{% trans 'Change' %}
+						</a>
+					</div>
+        </div>
+      </div>
+			<div class="text-lg mb-2">
+				{% trans 'Shipping method' %}
+			</div>
+			{% if form.errors %}
+				<div class="p-3 mb-4 border border-red-400 bg-red-200 rounded text-left text-sm text-red-800 hidden">
+					{% for field in form %}
+						{% for error in field.errors %}
+							{{ error|escape }}<br/>
+						{% endfor %}
+					{% endfor %}
+					{% for error in form.non_field_errors %}
+						{{ error|escape }}<br/>
+					{% endfor %}
+				</div>
+			{% endif %}
+			<form action="{% url 'order:shipping' %}" method="POST">
+				{% csrf_token %}
+				<div class="border border-gray-200 rounded mb-4">
+					{% if form.method.field.choices %}
+						{% for shipping_method in form.method.field.choices %}
+							<div class="p-4 {% if not forloop.last %}border-b border-gray-200{% endif %}">
+								<div class="flex flex-row">
+									<div class="flex items-center mr-4">
+										<input type="radio" id="{{ shipping_method.id }}" 
+											name="{{ form.method.html_name }}" value="{{ shipping_method.id }}" required=true
+											{% if forloop.first %}checked="checked"{% endif %}>
+									</div>
+									<div class="flex justify-between w-full">
+										<div class="w-full">
+											<label for="{{ shipping_method.id }}">
+												<div class="flex flex-col">
+													<div class="text-lg">
+														{{ shipping_method.name }}
+													</div>
+													<div class="text-xs">
+														{{ shipping_method.description }}
+													</div>
+												</div>
+											</label>
+										</div>
+										<div class="">
+											<strong>{{ shipping_method.get_display_price }}</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<div class="flex flex-col jusitfy-center p-8">
+							<div class="text-center text-gray-400 mb-8">
+								<i class="fal fa-shipping-timed text-8xl"></i>
+							</div>
+							<div>
+								{% trans 'We currently cannot provide shipping for the products in your cart to your address. Please ' %}
+								<a class="link-primary" href="{% url 'contact:contact' %}">{% trans 'contact us' %}</a>.
+							</div>
+						</div>
+					{% endif %}
+				</div>
+				<div class="flex flex-col-reverse md:flex-row text-sm justify-between items-center">
+					<a class="link-primary w-full md:w-auto py-4 mt-4 md:mt-0" href="{% url 'order:information' %}">
+						<div class="text-center md:text-left">
+							<i class="mr1 text-xs fal fa-chevron-left"></i> 
+							{% trans 'Contact information' %}
+						</div>
+					</a>
+					<button id="paymentMethodButton"
+						class="button-primary rounded py-4 px-6 text-center w-full md:w-auto"
+						onclick=changeToSpinner();>
+						{% trans 'Payment method' %}
+					</button>
+					<script>
+						function changeToSpinner() {
+							let nextButton = document.getElementById('paymentMethodButton');
+							nextButton.style.width = nextButton.offsetWidth + 'px';
+							nextButton.style.height = nextButton.offsetHeight + 'px';
+							nextButton.innerHTML = '';
+							let spinner = document.createElement('i');
+							spinner.classList.add('fad');
+							spinner.classList.add('fa-spinner-third');
+							spinner.classList.add('spinning');
+							nextButton.appendChild(spinner);
+						}
+					</script>
+				</div>
+			</form>
+		</div>
+		<div id="cartCheckoutRight" class="hidden md:flex w-5/12 md:p-4 lg:p-8">
+		</div>
+	</div>
+{% endblock %}

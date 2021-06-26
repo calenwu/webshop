@@ -1,0 +1,9 @@
+[
+	{
+		"model": "home.title",
+		"fields": {
+			"logo": null, 
+			"text": "Company"
+		}
+	}
+]

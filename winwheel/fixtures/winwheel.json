@@ -1,0 +1,51 @@
+[
+	{
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "wheelPower",
+			"value": "0"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "WheelStrokeWidth",
+			"value": "3"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "wheelTextColor",
+			"value": "#FFFFFF"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "textMargin",
+			"value": "0"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "textFontSize",
+			"value": "15"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "WheelStrokeColor",
+			"value": "#FFFFFF"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "innerRadius",
+			"value": "20"
+		}
+	}, {
+		"model": "winwheel.winwheelparameter",
+		"fields": {
+			"label": "WINWHEEL_ACTIVE",
+			"value": "yes"
+		}
+	}
+]

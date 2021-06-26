@@ -1,0 +1,37 @@
+{% load static i18n %}
+<html>
+	<head></head>
+	<body>
+		<script>			
+			async function subscribeToNewsletterPopUp(form){
+				const formData = new FormData(form);
+				let data = {};
+				for (let [key, value] of formData.entries()) {
+					data[key] = value;
+				}
+				let response = await fetch('{% url "newsletter:subscribe" %}', {
+					method: 'POST',
+					mode: 'cors',
+					cache: 'default',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+						'X-CSRFToken': getCookie('csrftoken')
+					},
+					body: JSON.stringify(data),
+				});
+				response = await response.json();
+				const newsletterError = document.getElementById('newsletterPopUpError');
+				const newsletterDone = document.getElementById('newsletterPopUpDone');
+				const newsletterForm = document.getElementById('newsletterPopUpForm');
+				if(response['exception'] !== undefined){
+					newsletterError.classList.remove('hidden');
+					newsletterError.innerText = response['exception'];
+				} else{
+					newsletterForm.classList.add('hidden');
+					newsletterDone.classList.remove('hidden');
+				}
+			}
+		</script>
+	</body>
+</html>

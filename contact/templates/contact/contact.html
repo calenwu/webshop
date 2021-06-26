@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Contact' %}{% endblock %}
+
+{% block content %}
+<div class="p-2 sm:p-4 m-auto text-center max-w-4xl">
+	<div class="md:text-4xl mt-8 mb-4 md:mt-16 md:mb-12">
+		<h1 class="mb-6">{% trans 'Contact' %}</h2>
+	</div>
+  <div>
+    {% if form.non_field_errors %}
+    <div class="form-error-container mb-4">
+      {% for error in form.non_field_errors %}
+        {{ error|escape }}<br />
+      {% endfor %}
+    </div>
+    {% endif %}
+    <form action="{% url 'contact:contact' %}" method="post" class="text-left">
+      <div class="mb-4">
+				<div>
+					<label class="font-bold" for="{{ contact_form.name.id_for_label }}">
+						{% trans 'Name' %}
+					</label>
+				</div>
+        <input id="{{ contact_form.name.id_for_label }}" name="{{ contact_form.name.html_name }}"
+          placeholder="{% trans 'Name' %}" type="text" class="w-full border border-gray-400 p-3 rounded
+					{% if contact_form.name.errors %}border-red-400{% else %}border-gray-400{% endif %}
+					" required autofocus />
+        {% if contact_form.name.errors %}
+					<div class="text-sm text-red-400 text-left">
+						{% for error in contact_form.name.errors %}
+							{{ error|escape }}
+						{% endfor %}
+					</div>
+        {% endif %}
+      </div>
+      <div class="mb-4">
+				<div>
+					<label class="font-bold" for="{{ contact_form.email.id_for_label }}">
+						{% trans 'Email' %}
+					</label>
+				</div>
+        <input id="{{ contact_form.email.id_for_label }}" name="{{ contact_form.email.html_name }}"
+          placeholder="{% trans 'Email' %}" type="email" 
+					class="w-full border p-3 rounded 
+					{% if contact_form.email.errors %}border-red-400{% else %}border-gray-400{% endif %}" 
+					required>
+        {% if contact_form.email.errors %}
+					<div class="text-sm text-red-400 text-left">
+						{% for error in contact_form.email.errors %}
+							{{ error|escape }}
+						{% endfor %}
+					</div>
+        {% endif %}
+      </div>
+      <div class="mb-4">
+				<div>
+					<label class="font-bold" for="{{ contact_form.message.id_for_label }}">
+						{% trans 'Message' %}
+					</label>
+				</div>
+        <textarea id="{{ contact_form.message.id_for_label }}" name="{{ contact_form.message.html_name }}"
+						placeholder="{% trans 'Message' %}" rows="10" class="w-full border border-gray-400 p-3 h-auto rounded
+						{% if contact_form.message.errors %}border-red-400{% else %}border-gray-400{% endif %}"
+						required></textarea>
+        {% if contact_form.message.errors %}
+					<div class="text-sm text-red-400 text-left">
+						{% for error in contact_form.message.errors %}
+							{{ error|escape }}
+						{% endfor %}
+					</div>
+        {% endif %}
+      </div>
+      {% csrf_token %}
+      <div class="flex flex-col justify-end">
+				<div class="g-recaptcha mb-4 flex flex-row-reverse" data-sitekey="{{ site_key }}"></div>
+				<!--input id="recaptcha-input" type="hidden" name="g-recaptcha-response" value=""/-->
+				<button
+					class="button-primary rounded py-4 px-6 text-center">
+					{% trans 'Send message' %}
+				</button>
+      </div>
+    </form>
+  </div>
+  <br />
+</div>
+<!--script src="https://www.google.com/recaptcha/api.js?render={{site_key}}"><script-->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+	setTimeout(() => {
+		document.getElementById('g-recaptcha-response').setAttribute('required', 'true')
+	}, 500)
+</script>
+<!--script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('{{site_key}}', {action: 'contactform'}).then(function(token) {
+        document.getElementById('recaptcha-input').value = token;
+    });
+  });
+</script-->
+{% endblock %}

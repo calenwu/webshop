@@ -1,0 +1,15 @@
+[
+	{
+		"model": "contact.setting", 
+		"fields": {
+			"key": "RECAPTCHA_PUBLIC_KEY", 
+			"value": "RECAPTCHA_PUBLIC_KEY"
+		}
+	}, {
+		"model": "contact.setting",
+		"fields": {
+			"key": "RECAPTCHA_PRIVATE_KEY",
+			"value": "RECAPTCHA_PRIVATE_KEY"
+		}
+	}
+]

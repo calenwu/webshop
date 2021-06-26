@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load cache i18n static wagtailimages_tags wagtailcore_tags wagtailroutablepage_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}
+  {{ page.title }}
+{% endblock %}
+{% block bodytag %}style="background-color: #ffffff; color: #000000"{% endblock %}
+{% block head %}
+  <meta property="og:url" content="{{ page.url }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{ page.preview_text|truncatewords_html:10 }}" />
+  <meta name="description" content="{{ page.preview_text|truncatewords_html:10 }}" />
+  {% if page.image %}
+    <meta property="og:image" content="{{ page.image.url}}" />
+  {% endif %}
+	<link rel="stylesheet" href="{% static 'css/prism.css' %}">
+	<link rel="stylesheet" href="{% static 'css/code.css' %}">
+{% endblock %}
+{% block content %}
+	{% cache 604800 article page.id LANGUAGE_CODE %}
+		<div class="max-w-screen-2xl p-2 md:p-4 lg:p-8 m-auto">
+			<div class="mt-4 mb-4 sm:mb-8">
+				<a class="pt-2 pr-2 pb-2 hoverable-gray-black" href="{{ page.get_parent.specific.link }}">
+					<i class="fal fa-long-arrow-left"></i> {% trans 'Back to articles' %}
+				</a>
+			</div>
+			<div>
+				<h1>
+					{{ page.title }}
+				</h1>
+				<h3>
+					{{ page.subtitle }}
+				</h3>
+				<p class="text-sm text-gray-400 mb-0">
+					{{ page.get_date_readable }}
+				</p>
+			</div>
+			<div class="mt-8 blog">
+				{% for block in page.content %}
+					{% include_block block %}
+				{% endfor %}
+			</div>
+		</div>
+	{% endcache %}
+{% endblock %}

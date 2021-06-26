@@ -1,0 +1,94 @@
+{% load i18n cart_template_tags shop_template_tags %}
+<div class="w-full">
+	{% get_currency as currency %}
+	{% for item in cart %}
+		{% get_product_color item.product_color_id as product_color %}
+		{% get_product_size item.product_size_id as product_size %}
+		{% get_product_color_quantity item.product_color_quantity_id as product_color_quantity %}
+		<div class="flex items-center mt-4 pb-4 border-b border-gray-200">
+			<a href="{{ product_color.product.link }}" aria-label="{% trans 'Product' %}" class="cursor-pointer mr-4">
+				<div class="flex items-center justify-center w-20 relative">
+					<div class="absolute w-6 h-6 bg-gray-500 text-white -top-2 -right-2 rounded-full text-center">
+						{{ item.quantity }}
+					</div>
+					<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
+						style="background-image: url('{{ product_color.image.file.url }}')";>
+					</div>
+				</div>
+			</a>
+			<div class="flex justify-between w-full relative">
+				<div class="flex flex-col">
+					<h4 class="text-lg leading-5 mb-0">{{ product_color.product.title }}</h4>
+					<h6 class="text-xs">{{ product_color_quantity.get_display_variation }}</h6>
+					<h6 class="text-xs">{{ product_color.product.get_display_price }}</h6>
+				</div>
+				<div class="text-sm flex items-center">
+					{% get_display_currency_price item.total_price %}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	<div class="mt-4 pb-4 border-b border-gray-200">
+		<div class="w-full">
+			<form action="POST" class="couponForm"
+				onsubmit="event.preventDefault(); applyCoupon(this);">
+				<div class="flex flex-col">
+					<div class="coupon-error p-3 mb-4 border border-red-400 bg-red-200 rounded text-red-800 hidden">
+						{% trans 'The code you entered seems to be invalid' %}
+					</div>
+					<div class="flex">
+						{% csrf_token %}
+						<input class="w-full h-12 p-1 rounded-l border border-gray-300 focus:border-black" 
+							name="coupon" placeholder="{% trans 'Coupon' %}" required/>
+						<button class="button-primary rounded-r h-12 w-20">
+							{% trans 'Apply' %}
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="mt-4 flex justify-between pb-4 border-b border-gray-200">
+		<div>
+			{% trans 'Subtotal' %}
+		</div>
+		<div>
+			{{ cart.get_display_pre_coupon_price }}
+		</div>
+	</div>
+	{% if cart.coupon %}
+		<div class="my-4 flex justify-between coupon-class">
+			<div class="flex align-center items-center">
+				{% if cart.coupon.coupon_type == 'Credit' %}
+					{{ cart.coupon.code }} ({{ cart.coupon.display_credit_value }})
+				{% else %}
+					{{ cart.coupon.code }} ({{ cart.coupon.display_percentage }})
+				{% endif %}
+				<div onclick="removeCoupon();" class="ml-2 cursor-pointer flex align-center items-center">
+					<i class="fal fa-times hoverable-gray-black text-lg"></i>
+				</div>
+			</div>
+			<div>
+				- {{ cart.get_display_discount }}
+			</div>
+		</div>
+	{% endif %}
+	{% get_shipping_method cart.get_shipping_id as shipping_method %}
+	{% if shipping_method %}
+		<div class="flex justify-between my-4 ">
+			<div class="d-inline-block">
+				{% trans 'Shipping' %} ({{ shipping_method.name }})
+			</div>
+			<div class="d-inline-block pl-2">
+				{{ shipping_method.get_display_price }}
+			</div>
+		</div>
+	{% endif %}
+	{% if cart.coupon or shipping_method %}
+		<div class="w-full border-t border-gray-200"></div>
+	{% endif %}
+	<div class="mt-4 flex justify-between pb-4">
+		<h5 class="text-xl">{% trans 'Total' %}</h5>
+		<h5 class="text-xl">{{ cart.get_display_total_price }}</h5>
+	</div>
+</div>

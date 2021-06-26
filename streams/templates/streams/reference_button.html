@@ -1,0 +1,33 @@
+{% load streams_template_tags %}
+<div>
+	{% random_string as class %}
+	<a href="{{ self.url }}" target="_blank" rel="noopener"
+		class="flex justify-center items-center items-center w-full transition-all {{ class }} rounded p-3 text-lg border">
+		<div class="text-center">
+			{% if self.font_awesome_class %}
+				<i class="{{ self.font_awesome_class }} mr-2"></i>
+			{% endif %}
+			{{ self.text }}
+		</div>
+	</a>
+	<script>
+		var css = `
+			.{{ class }} {
+				{% if self.border_color %}border: 1px solid {{self.border_color}};{% endif %}
+				color: {{ self.text_color }};
+				background-color: {{ self.button_bg_color }};
+			}
+			.{{ class }}:hover {
+				color: {{ self.button_bg_color }};
+				background-color: {{ self.text_color }};
+			}
+		`;
+		var style = document.createElement('style');
+		if (style.styleSheet) {
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+		document.getElementsByTagName('head')[0].appendChild(style);
+	</script>
+</div>

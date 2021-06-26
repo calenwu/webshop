@@ -1,0 +1,7 @@
+@media only screen and (max-width: 	847px) {
+	.product-carousel {
+		margin-left: -0.5rem;
+		margin-right: -0.5.rem;
+		width: calc(100% + 1rem);
+	}
+}

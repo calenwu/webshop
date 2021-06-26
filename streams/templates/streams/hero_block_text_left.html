@@ -1,0 +1,48 @@
+<div id="afjdsalkwe" class="mb-16 md:mb-0 flex flex-col justify-center items-center">
+	<div class="flex flex-col md:flex-row items-center justify-center pb-12">
+		<div class="hidden md:flex flex-col md:pr-2">
+			<div class="text-4xl mb-4">
+				<strong>{{ self.title }}</strong>
+			</div>
+			<div class="">
+				{{ self.text }}
+			</div>
+			{% if self.button_text %}
+				<div>
+					<a href="{{ self.button_url }}" 
+							class="button-primary-outline rounded p-3 text-lg text-center w-full mt-4 block">
+						{{ self.button_text }}
+					</a>
+				</div>
+			{% endif %}
+		</div>
+		<div class="">
+			<img class="max-w-xl w-4/5 md:w-full m-auto md:pl-2" src="{{ self.image.file.url }}"
+					alt="{{ self.image.file.name }}" />
+		</div>
+		<div class="flex md:hidden flex-col">
+			<div class="text-4xl mb-4">
+				<strong>{{ self.title }}</strong>
+			</div>
+			<div class="">
+				{{ self.text }}
+			</div>
+			{% if self.button_text %}
+				<div>
+					<a href="{{ self.button_url }}" 
+							class="button-primary-outline rounded p-3 text-lg text-center w-full mt-4 block">
+						{{ self.button_text }}
+					</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<script>
+	const afjdsalkwe = document.getElementById('afjdsalkwe');
+	afjdsalkwe.style.minHeight = (window.innerHeight - afjdsalkwe.offsetTop) + 'px';
+	window.addEventListener('resize', weravasgjhre);
+	function weravasgjhre() {
+		afjdsalkwe.style.minHeight = (window.innerHeight - afjdsalkwe.offsetTop) + 'px';
+	}
+</script>

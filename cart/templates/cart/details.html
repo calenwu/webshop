@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+{% load i18n cart_template_tags shop_template_tags %}
+
+{% block title %}
+	{% trans 'Cart' %}
+{% endblock %}
+{% block content %}
+	{% get_currency as currency %}
+	<div class="m-auto p-2 sm:p-4 max-w-xl">
+		<div class="mt-8 mb-8 text-center ">
+			<h1 class="mb-0">{% trans 'Your cart' %}</h1>
+		</div>
+		<div id="cartDetailsDiv">
+			<div class="w-full">
+				{% with total_items=cart|length %}
+				{% if total_items != 0 %}
+					<div>
+						{% for item in cart %}
+							{% get_product_color item.product_color_id as product_color %}
+							{% get_product_size item.product_size_id as product_size %}
+							{% get_product_color_quantity item.product_color_quantity_id as product_color_quantity %}
+							<div class="flex items-center mt-4 pb-4 border-b border-gray-200">
+								<a href="{{ product_color.product.link }}" aria-label="{% trans 'Product' %}" 
+										class="cursor-pointer mr-4">
+									<div class="flex items-center justify-center w-20">
+										<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
+											style="background-image: url('{{ product_color.image.file.url }}');">
+										</div>
+									</div>
+								</a>
+								<form class="w-full" 
+										onsubmit="event.preventDefault(); updateQuantity(this, '{{ product_color_quantity.id }}');">
+									<div class="flex justify-between w-full relative">
+										<div class="flex flex-col">
+											<h4 class="text-lg" style="line-height: 1.2;">
+												{% if item.product_color_quantity_id in out_of_stock %}
+													<s>{{ product_color.product.title }}</s>
+												{% else %}
+													{{ product_color.product.title }}
+												{% endif %}
+											</h4>
+											<h6 class="text-xs">{{ product_color_quantity.get_display_variation }}</h6>
+											<h6 class="text-xs">{{ product_color.product.get_display_price }}</h6>
+											<div>
+												<div class="flex">
+													<input class="block w-16 h-8 p-1 text-sm rounded-l border border-gray-400 
+															focus:border-black" aria-label="{% trans 'Quantity' %}"
+															name="quantity" type="number" min="1" value="{{ item.quantity }}"/>
+													<button class="button-primary rounded-r h-8 w-8"
+															aria-label="{% trans 'Update quantity' %}">
+														<i class="fal fa-sync"></i>
+													</button>
+													<div class="flex items-center text-red-500 text-sm ml-1">
+														{% if item.product_color_quantity_id in available_keys %}
+															{% blocktrans with stock=available|get_item:item.product_color_quantity_id %}
+																(Only {{ stock }} left)
+															{% endblocktrans %}
+														{% endif %}
+														{% if item.product_color_quantity_id in out_of_stock %}
+															({% trans 'Out of stock' %})
+														{% endif %}
+													</div>
+												</div>
+											</div>
+											<div class="absolute bottom-0 right-0 text-sm cursor-text">
+												{% get_display_currency_price item.total_price %}
+											</div>
+										</div>
+										<div class="flex items-center hoverable-gray-black pl-4"
+											onclick="updateQuantity(this.parentElement.parentElement, '{{ product_color_quantity.id }}', 0);"
+												aria-label="{% trans 'Update quantity' %}">
+												<i class="fal fa-times padding-4"></i>
+										</div>
+									</div>
+								</form>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="mt-4 pb-4 border-b border-gray-200">
+						<div class="w-full">
+							<form action="POST" class="coupon-form"
+								onsubmit="event.preventDefault(); applyCoupon(this, true);">
+								<div class="flex flex-col">
+									<div class="coupon-error p-3 mb-4 border border-red-400 bg-red-200 rounded text-red-800 hidden">
+										{% trans 'The code you entered seems to be invalid' %}
+									</div>
+									<div class="flex">
+										{% csrf_token %}
+										<input class="block w-full h-12 p-1 rounded-l border border-gray-300 focus:border-black" 
+											name="coupon" placeholder="{% trans 'Coupon' %}" required/>
+										<button class="button-primary rounded-r h-12 w-20 transition-all text-white">
+											{% trans 'Apply' %}
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="py-4 flex border-b border-gray-200 justify-between">
+						<div>
+							{% trans 'Subtotal' %}
+						</div>
+						<div>
+							{{ cart.get_display_pre_coupon_price }}
+						</div>
+					</div>
+					{% if cart.coupon %}
+						<div class="mt-4 pb-4 flex border-b border-gray-200 justify-between coupon-class">
+							<div class="flex align-center items-center">
+								{% if cart.coupon.coupon_type == 'Credit' %}
+									{{ cart.coupon.code }} ({{ cart.coupon.display_credit_value }})
+								{% else %}
+									{{ cart.coupon.code }} ({{ cart.coupon.display_percentage }})
+								{% endif %}
+								<div onclick="removeCoupon(true);" class="ml-2 cursor-pointer flex align-center items-center">
+									<i class="fal fa-times hoverable-gray-black text-lg"></i>
+								</div>
+							</div>
+							<div>
+								- {{ cart.get_display_discount }}
+							</div>
+						</div>
+					{% endif %}
+					<div class="mt-4 flex justify-between pb-4 border-b border-gray-200">
+						<h5 class="text-xl">{% trans 'Total' %}</h5>
+						<h5 class="text-xl">{{ cart.get_display_price_pre_shipping }}</h5>
+					</div>
+					<div class="flex flex-col sm:flex-row mt-4">
+						<a href="{% url 'order:information' %}"
+							class="block w-full transition-all rounded p-3 text-lg text-center button-primary-outline">
+							{% trans 'Checkout' %}
+						</a>
+					</div>
+				{% else %}
+					<div class="cart-empty-container text-center flex flex-col justify-center" style="min-height: 60vh;">
+						<div class="w-100">
+							<i class="fal fa-shopping-cart text-8xl mb-4"></i>
+							<h3 class="mb-4 text-2xl">{% trans 'Your cart is empty' %}</h4>
+							<p class="mb-8">{% trans 'It seems like you have not added any items to your cart' %}</p>
+							<div>
+								<a class="block button-primary-outline w-full transition-all rounded p-3 text-lg text-center sm:mr-1 
+										mb-4 sm:mb-0" href="{{ products_url }}">
+									{% trans 'View Shop' %}
+								</a>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+[
+	{
+		"model": "cart.setting",
+		"fields": {
+			"key": "MAXIMUM_ORDER_QUANTITY",
+			"value": "20"
+		}
+	}, {
+		"model": "cart.setting",
+		"fields": {
+			"key": "SAVE_ABANDONED_CART",
+			"value": "yes"
+		}
+	}
+]

@@ -1,0 +1,134 @@
+{
+    "data": [
+        {   
+            "segmentsList": [
+                {
+                    "txtDisplayText": "15%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -15% Coupon gewonnen",
+                    "txtBackgroundColor": "#24CFFF",
+                    "ddlGravity": "15",
+                    "hdnGravityPerc": "10",
+                    "IsCouponCode": "true",
+                    "CouponCode": "CONGRATS15"
+                },
+                {
+                    "txtDisplayText": "25%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -25% Coupon gewonnen",
+                    "txtBackgroundColor": "#5CFFA0",
+                    "ddlGravity": "15",
+                    "hdnGravityPerc": "15",
+                    "IsCouponCode": "true",
+                    "CouponCode": "HAPPIER25"
+                },
+                {
+                    "txtDisplayText": "20%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -20% Coupon gewonnen",
+                    "txtBackgroundColor": "#7A6EFF",
+                    "ddlGravity": "20",
+                    "hdnGravityPerc": "20",
+                    "IsCouponCode": "true",
+                    "CouponCode": "SUNNY20"
+                },
+                {
+                    "txtDisplayText": "40%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "You got a 40% discount.",
+                    "txtBackgroundColor": "#FFC457",
+                    "ddlGravity": "0",
+                    "hdnGravityPerc": "0",
+                    "IsCouponCode": "true",
+                    "CouponCode": "555666"
+                },
+                {
+                    "txtDisplayText": "Loss",
+                    "txtResultTitle": "Leider verloren",
+                    "txtResultText": "You didn't win anything, better luck next time.",
+                    "txtBackgroundColor": "#D09EFF",
+                    "ddlGravity": "0",
+                    "hdnGravityPerc": "0",
+                    "IsCouponCode": "false",
+                    "CouponCode": ""
+                },
+                {
+                    "txtDisplayText": "10%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -10% Coupon gewonnen",
+                    "txtBackgroundColor": "#ABF2FF",
+                    "ddlGravity": "5",
+                    "hdnGravityPerc": "5",
+                    "IsCouponCode": "true",
+                    "CouponCode": "RAINBOW10"
+                },
+                {
+                    "txtDisplayText": "20%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -20% Coupon gewonnen",
+                    "txtBackgroundColor": "#9582FF",
+                    "ddlGravity": "15",
+                    "hdnGravityPerc": "15",
+                    "IsCouponCode": "true",
+                    "CouponCode": "SUNNY20"
+                },
+                {
+                    "txtDisplayText": "10%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -10% Coupon gewonnen",
+                    "txtBackgroundColor": "#FFBA70",
+                    "ddlGravity": "5",
+                    "hdnGravityPerc": "5",
+                    "IsCouponCode": "true",
+                    "CouponCode": "RAINBOW10"
+                },
+                {
+                    "txtDisplayText": "20%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -20% Coupon gewonnen",
+                    "txtBackgroundColor": "#46C97D",
+                    "ddlGravity": "15",
+                    "hdnGravityPerc": "15",
+                    "IsCouponCode": "true",
+                    "CouponCode": "SUNNY20"
+                },
+                {
+                    "txtDisplayText": "25%",
+                    "txtResultTitle": "Du hast gewonnen",
+                    "txtResultText": "Du hast einen -25% Coupon gewonnen",
+                    "txtBackgroundColor": "#87D9FF",
+                    "ddlGravity": "10",
+                    "hdnGravityPerc": "10",
+                    "IsCouponCode": "true",
+                    "CouponCode": "HAPPIER25"
+                }
+            ],
+            "OuterRadius": "150",
+            "InnerRadius": "20",
+            "WheelStrokeColor": "#FFFFFF",
+            "WheelStrokeWidth": "3",
+            "WheelTextColor": "#FFFFFF",
+            "WheelTextSize": "15",
+            "GameOverText": "Done",
+            "IntroText": "YOU HAVE TO CLICK SPIN BUTTON TO WIN IT!",
+            "backgroundOption": {
+                "type": "image",
+                "value": "background_12ec1d70a7c72c01f48a1d4416074129.jpg"
+            },
+            "centerWheelImage": "wheelcenter_b8aba481386aabee47bb588032606137.png",
+            "WheelPinImage": "wheelcenter_42b535480fd11de938ec249bf2b60678.png",
+            "enablediscountbar": "on",
+            "countdowntime": "15",
+            "position": "screen_bottom",
+            "showdesktop": "on",
+            "desktopintent": "on",
+            "desktopinterval": "on",
+            "DesktopIntervaltext": "17",
+            "showmobile": "off",
+            "mobileintent": "on",
+            "mobileinterval": "on",
+            "MobileIntervaltext": "19",
+            "cookiedays": "5"
+        }
+    ]
+}

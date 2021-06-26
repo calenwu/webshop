@@ -1,0 +1,13 @@
+[
+	{
+		"model": "order.shippingmethod",
+		"fields": {
+			"name": "Free Shipping",
+			"description": "Estimated delivery time: 5-14 days",
+			"min_weight": 0.0,
+			"max_weight": 100.0,
+			"price": 0.0,
+			"active": true
+		}
+	}
+]

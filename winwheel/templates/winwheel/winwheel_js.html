@@ -1,0 +1,119 @@
+{% load static i18n %}
+<html>
+	<head></head>
+	<body>
+		<script>
+			let winWheel;
+			let winWheelSegments;
+			let winwheelTitle;
+			let winwheelText;
+			let winwheelCode;
+			async function getWinwheelParameters(){
+				const response = await fetch('{% url "winwheel:parameters" %}');
+				return await response.json();
+			}
+			async function getWinwheelSections(){
+				const response = await fetch('{% url "winwheel:sections" %}');
+				const res = await response.json();
+				return res['data'];
+			}
+			async function initWinwheel() {
+				winWheelSegments = await getWinwheelSections();
+				winWheel = new Winwheel({
+					'canvasId': 'winwheelCanvas',
+					'lineWidth': 2,
+					'textFontSize' : 16,
+					'textFontFamily': 'Montserrat, sans-serif',
+					'strokeStyle': '#ffffff',
+					'numSegments' : winWheelSegments.length,
+					'segments': winWheelSegments,
+					'animation' : {
+						'type' : 'spinToStop',
+						'duration': 5,
+						'spins': 8,
+						'callbackFinished': 'showPrize()'
+					}
+				});
+			}
+			async function submitEmail(form){
+				const formData = new FormData(form);
+				let data = {};
+				for (let [key, value] of formData.entries()) {
+					data[key] = value;
+				}
+				const response = await fetch('{% url "winwheel:spin" %}', {
+					method: 'POST',
+					mode: 'cors',
+					cache: 'default',
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+						'X-CSRFToken': getCookie('csrftoken')
+					},
+					body: JSON.stringify(data),
+				});
+				return response.json();
+			}
+			async function spinWheel(form){
+				let response = await submitEmail(form);
+				const errorContainer = document.getElementById('formErrors');
+				if(response['exception'] !== undefined){
+					errorContainer.classList.remove('hidden');
+					errorContainer.innerText = response['exception'];
+				} else{
+					let winWheelWinner;
+					winningSegment = response;
+					errorContainer.classList.add('hidden');
+					for (let i = 0; i < winWheelSegments.length; i++) {
+						winwheelTitle = winningSegment['title'];
+						winwheelText = winningSegment['text'];
+						winwheelCode = winningSegment['code'];
+						if (winWheelSegments[i]['text'] == winningSegment['displayText']) {
+							winWheelWinner = i + 1;
+							break;
+						}
+					}
+					const winwheelSpinButton = document.getElementById('winwheelSpinButton');
+					winwheelSpinButton.classList.add('hidden');
+					let stopAt = winWheel.getRandomForSegment(winWheelWinner);
+					winWheel.animation.stopAngle = stopAt;
+					winWheel.startAnimation();
+				}
+			}
+			function showPrize() {
+				const winwheelTitleDiv = document.getElementById('winwheelTitle');
+				const winwheelTextDiv = document.getElementById('winwheelText');
+				const winwheelInputDiv = document.getElementById('winwheelInput');
+				const winwheelInputLabel = document.getElementById('winwheelInputLabel');
+				const winwheelCloseButton = document.getElementById('winwheelCloseButton');
+				const errorContainer = document.getElementById('formErrors');
+				errorContainer.classList.add('hidden');
+				winwheelTitleDiv.innerHTML = winwheelTitle;
+				winwheelTextDiv.innerHTML = winwheelText;
+				winwheelInputDiv.value = winwheelCode;
+				winwheelInputLabel.innerHTML = '{% trans "Coupon code" %}';
+				winwheelCloseButton.classList.remove('hidden');
+			}
+			/*function setCookie(cname, cvalue, exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				var expires = "expires="+ d.toUTCString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+			function getCookie(cname) {
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i = 0; i < ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}*/
+		</script>
+	</body>
+</html>

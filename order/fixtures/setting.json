@@ -1,0 +1,144 @@
+[
+	{
+		"model": "order.setting",
+		"fields": {
+			"key": "STRIPE_PUBLISHABLE_KEY",
+			"value": "STRIPE_PUBLISHABLE_KEY",
+			"image": null
+		}
+	}, {
+		"model": "order.setting", 
+		"fields": {
+			"key": "STRIPE_SECRET_KEY", 
+			"value": "STRIPE_SECRET_KEY", 
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "PAYPAL_SECRET_KEY",
+			"value": "PAYPAL_SECRET_KEY", 
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "PAYPAL_CLIENT_ID",
+			"value": "PAYPAL_CLIENT_ID",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "TAX_PERCENTAGE", 
+			"value": "20", 
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "ORDER_CONFIRMATION_SUBJECT",
+			"value": "Order confirmation",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "SHIPPING_CONFIRMATION_SUBJECT",
+			"value": "Shipping confirmation",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "ORDER_NUMBER_PREFIX",
+			"value": "ON",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "ORDER_NUMBER_START",
+			"value": "200000",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_NUMBER_PREFIX",
+			"value": "ON",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_NUMBER_START",
+			"value": "200000",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_COMPANY_NAME",
+			"value": "INVOICE_COMPANY_NAME",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_COMPANY_SIGNATURE",
+			"value": "INVOICE_COMPANY_SIGNATURE",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_LOGO",
+			"value": "LOGO",
+			"image": null
+		}
+	}, {
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_BUSINESS_ID",
+			"value": "INVOICE_BUSINESS_ID",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_WEBSITE",
+			"value": "INVOICE_WEBSITE",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "INVOICE_EMAIL",
+			"value": "INVOICE_EMAIL",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "CHECKOUT_TIMEOUT",
+			"value": "300",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "EMAIL_BUTTON_COLOR",
+			"value": "#000000",
+			"image": null
+		}
+	}, {
+		"model": "order.setting",
+		"fields": {
+			"key": "EMAIL_BUTTON_TEXT_COLOR",
+			"value": "#ffffff",
+			"image": null
+		}
+	}
+]

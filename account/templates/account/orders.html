@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load shop_template_tags cart_template_tags i18n %}
+{% block content %}
+	<div class="flex flex-col items-center text-center p-2 sm:p-4">
+		<h1 class="my-16">
+			{% trans 'My orders' %}
+		</h1>
+		<div class="w-full max-w-lg my-auto mb-16">
+			{% if orders %}
+				<table class="table-auto w-full border border-gray-400">
+					<thead>
+						<tr>
+							<th class="border border-gray-400 p-2" scope="col">{% trans 'Order' %}</th>
+							<th class="border border-gray-400 p-2" scope="col">{% trans 'Date' %}</th>
+							<th class="border border-gray-400 p-2" scope="col">{% trans 'Sum' %}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for order in orders %}
+							<tr>
+								<td class="border border-gray-400 p-2">
+									<a class="hoverable-gray-black" target="_blank" href="{% url 'account:invoice' url=order.url %}">
+										{{ order.invoice_number }}
+										<i class="fal fa-file-invoice-dollar ml-2"></i>
+									</a>
+								</td>
+								<td class="border border-gray-400 p-2">{{ order.get_date_readable }}</td>
+								<td class="border border-gray-400 p-2">{{ order.get_display_total_price }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<i class="fal fa-box-full text-8xl mb-4"></i>
+				<h3 class="mb-4">{% trans 'Your order history is empty' %}</h3>
+				<p class="mb-8">{% trans 'It seems like you have not made a purchase yet' %}</p>
+				<div>
+					<a class="block button-primary-outline w-full transition-all rounded p-3 text-lg text-center sm:mr-1 mb-4 
+							sm:mb-0" href="{{ products_url }}">
+						{% trans 'View Shop' %}
+					</a>
+				</div>
+			{% endif %}
+		</div>
+		<div class="w-full max-w-lg my-auto">
+			<a class="button-red-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:menu' %}">
+				{% trans 'Return to menu' %}
+			</a>
+		</div>
+	</div>
+{% endblock %}

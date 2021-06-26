@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load shop_template_tags cart_template_tags i18n %}
+{% block content %}
+	<div class="flex flex-col items-center text-center p-2 sm:p-4">
+		<h1 class="my-16">
+			{% trans 'Change email' %}
+		</h1>
+		<div class="w-full max-w-lg my-auto mb-16">
+			<form action="{% url 'account:change_email' %}" method="POST">
+				{% csrf_token %}
+				<div class="w-full mb-8">
+					<div class="form-label-group">
+						<input name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}" type="email"
+							placeholder="{{ form.email.field.widget.attrs.placeholder }}"
+							{% if form.email.value %}value="{{ form.email.value }}"{% endif %}/>
+						<label class="cursor-text" for="{{ form.email.id_for_label }}">
+							{{ form.email.label }}
+						</label>
+					</div>
+					<div class="text-sm text-red-400 mt-1 text-left">
+						{% for error in form.email.errors %}
+							{{ error|escape }}<br/>
+						{% endfor %}
+					</div>
+				</div>
+				<button class="button-primary-outline block w-full rounded p-3 text-lg text-center">
+					{% trans 'Save' %}
+				</button>
+			</form>
+		</div>
+		<div class="w-full max-w-lg my-auto">
+			<a class="button-red-outline block w-full rounded p-3 text-lg text-center"
+					href="{% url 'account:menu' %}">
+				{% trans 'Return to menu' %}
+			</a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load i18n %}
+{% block base_newsletter %}
+<div id="footer-newsletter" class="text-align-center">
+  <h2 id="footer-newsletter-title">{% trans 'Abboniere unseren Newsletter' %}</h2>
+  {% if not errors %}
+    <div>{% trans 'Abonniert' %}</div>
+    {% endif %}
+  {% if errors %}
+    <div>{{ errors }}</div>
+  {% endif %}
+  <form id="footer-newsletter-form" action="{% url 'newsletter:newsletter_base' %}" class="m-auto">
+    <div class="m-auto d-flex">
+      <input class="form-input" type="text" required id="{{ subscriber_form.email.id_for_label }}"
+        name="{{ subscriber_form.email.html_name }}" placeholder="email@gmail.com" />
+      {% csrf_token %}
+      <button class="custom-button-light" type="submit" name="subscribe">
+        {% trans 'Abonnieren' %}
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+  $('#footer-newsletter-form').submit(function (e) {
+    e.preventDefault();
+    $.post("{% url 'newsletter:newsletter_base' %}", $(this).serialize(), function (data) {
+      $('#footer-newsletter').replaceWith(data);
+    });
+  });
+</script>
+{% endblock %}
