@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 
 from django_extensions.db.fields import AutoSlugField
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page, Orderable
 from wagtail.contrib.routable_page.models import RoutablePageMixin
@@ -196,16 +196,6 @@ class BlogListingPage(RoutablePageMixin, Page):
 		return context
 
 
-class AuthorsOrderable(Orderable):
-	""""""
-	page = ParentalKey('ArticlePage', related_name='blog_authors')
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	unique_together = ('page', 'author')
-	panels = [
-		SnippetChooserPanel('author')
-	]
-
-
 @register_snippet
 class Category(ClusterableModel):
 	"""Category for a snippet."""
@@ -226,11 +216,6 @@ class Category(ClusterableModel):
 		return self.name
 
 
-class CategoriesOrderable(Orderable, Category):
-	""""""
-	page = ParentalKey('ArticlePage', related_name='blog_categories')
-
-
 class ArticlePage(RoutablePageMixin, Page):
 	"""Blog Article"""
 	subpage_types = []
@@ -238,7 +223,7 @@ class ArticlePage(RoutablePageMixin, Page):
 	tags = ClusterTaggableManager(through=Tag, blank=True)
 	template = 'blog/details.html'
 	subtitle = models.CharField(max_length=255, blank=True, null=True, help_text='Why we love Avicii')
-	authors = ParentalManyToManyField(User, blank=False, related_name='blog_authors')
+	authors = ParentalManyToManyField(User, blank=False, limit_choices_to={'is_staff': True}, related_name='blog_authors')
 	categories = ParentalManyToManyField(Category, blank=True, related_name='blog_categories')
 	preview_image = models.ForeignKey(
 		WagtailImage,

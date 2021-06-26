@@ -18,9 +18,7 @@ sudo apt-get install gettext
 #before first makemigration
 comment out profile picture
 remove wagtail_modeltranslation from apps
-
 remove all apps
-comment out all * = Setting.* on top of all files
 
 #prep
 sudo docker-compose run --rm webshop python manage.py loaddata blog/fixtures/setting cart/fixtures/setting contact/fixtures/setting home/fixtures/title order/fixtures/country order/fixtures/setting order/fixtures/shipping_method shop/fixtures/setting winwheel/fixtures/winwheel

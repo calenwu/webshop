@@ -25,7 +25,7 @@ DATABASES = {
 		'NAME': 'webshop',
 		'USER': 'postgres',
 		'PASSWORD': 'postgres',
-		'HOST': '127.0.0.1',  # 'postgres' '127.0.0.1',
+		'HOST': 'postgres',  # 'postgres' '127.0.0.1',
 		'PORT': '5432',
 	}
 }
@@ -47,7 +47,7 @@ INTERNAL_IPS = [
 	'0.0.0.0'
 ]
 
-REDIS_IP = '127.0.0.1'
+REDIS_IP = 'redis'
 REDIS_PORT = '6379'
 REDIS_ADDRESS = REDIS_IP + ':' + REDIS_PORT
 REDIS_PASSWORD = 'redis'
