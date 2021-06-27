@@ -64,14 +64,14 @@ Not that all keys asking for true/false, the value should be yes/no.
 ## Notes
 In `settings` do not forget to change the database settings. The only 2 other important things in the settings are the `BASE_URL` setting and the `EMAIL` settings.
 
-## To do's (important):
+## To do's (important)
 Fix credit coupons: if 2 people check out at the same time with the same credit coupon. The coupon will go into negative balance. Unfortunately I dont know how to solve that problem.
 
-## Features to add:
+## Features to add
 * Global coupon: coupon which is added automatically.
 * Free gift: Free item added to the cart, when a certain cart value has been reached.
 
-## Thanks:
+## Thanks
 These projects were used in the making of this application:
 * [Django](https://github.com/django/django)
 * [wagtail](https://github.com/wagtail/wagtail)
