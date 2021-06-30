@@ -359,8 +359,8 @@ function createCarouselImageLi(img) {
 }
 
 function changeToSpinner(el) {
-	el.style.width = nextButton.offsetWidth + 'px';
-	el.style.height = nextButton.offsetHeight + 'px';
+	el.style.width = el.offsetWidth + 'px';
+	el.style.height = el.offsetHeight + 'px';
 	el.innerHTML = '';
 	let spinner = document.createElement('i');
 	spinner.classList.add('fad');
