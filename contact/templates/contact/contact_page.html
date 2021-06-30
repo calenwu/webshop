@@ -19,7 +19,7 @@
     </div>
 		{% endif %}
     <form id="contact-form" action="{% pageurl page %}" method="post" class="text-left"
-			onSubmit="e.preventDefault();">
+			onSubmit="event.preventDefault();">
 			{% for field in form %}
 				<div class="mb-4">
 					<label class="font-weight-bold" for="{{ field.id_for_label }}">

@@ -15,7 +15,7 @@
       {% endfor %}
     </div>
     {% endif %}
-    <form action="{% url 'contact:contact' %}" method="post" class="text-left">
+    <form action="{% url 'contact:contact' %}" method="post" class="text-left" onsubmit="e.preventDefault(); submitForm();">
       <div class="mb-4">
 				<div>
 					<label class="font-bold" for="{{ contact_form.name.id_for_label }}">
@@ -75,7 +75,7 @@
       <div class="flex flex-col justify-end">
 				<div class="g-recaptcha mb-4 flex flex-row-reverse" data-sitekey="{{ site_key }}"></div>
 				<!--input id="recaptcha-input" type="hidden" name="g-recaptcha-response" value=""/-->
-				<button
+				<button id="sendButton"
 					class="button-primary rounded py-4 px-6 text-center">
 					{% trans 'Send message' %}
 				</button>
@@ -89,7 +89,11 @@
 <script>
 	setTimeout(() => {
 		document.getElementById('g-recaptcha-response').setAttribute('required', 'true')
-	}, 500)
+	}, 500);
+	function submitForm() {
+		changeToSpinner(document.getElementById('sendButton'));
+		return false;
+	}
 </script>
 <!--script>
   grecaptcha.ready(function() {

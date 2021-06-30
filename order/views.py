@@ -225,11 +225,11 @@ def stripe_webhook(request):
 		)
 	except stripe.error.CardError as e:
 		# Since it's a decline, stripe.error.CardError will be caught
-		print('Status is: %s' % e.http_status)
-		print('Code is: %s' % e.code)
+		logger.error('Status is: %s' % e.http_status)
+		logger.error('Code is: %s' % e.code)
 		# param is '' in this case
-		print('Param is: %s' % e.param)
-		print('Message is: %s' % e.user_message)
+		logger.error('Param is: %s' % e.param)
+		logger.error('Message is: %s' % e.user_message)
 	except stripe.error.RateLimitError as e:
 		# Too many requests made to the API too quickly
 		logger.error('Too many requests made to the API too quickly: ' + e)
@@ -267,10 +267,10 @@ def stripe_webhook(request):
 			order_processed(order, stripe_payment_id=payment_intent.stripe_id)
 	elif event.type == 'payment_method.attached':
 		payment_method = event.data.object  # contains a stripe.PaymentMethod
-		print('PaymentMethod was attached to a Customer!')
+		logger.error('PaymentMethod was attached to a Customer!')
 	# ... handle other event types
 	else:
-		print('Unhandled event type {}'.format(event.type))
+		logger.error('Unhandled event type {}'.format(event.type))
 	return HttpResponse(status=200)
 
 
@@ -281,11 +281,11 @@ def stripe_verification(request, payment_intent_id):
 		payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
 	except stripe.error.CardError as e:
 		# Since it's a decline, stripe.error.CardError will be caught
-		print('Status is: %s' % e.http_status)
-		print('Code is: %s' % e.code)
+		logger.error('Status is: %s' % e.http_status)
+		logger.error('Code is: %s' % e.code)
 		# param is '' in this case
-		print('Param is: %s' % e.param)
-		print('Message is: %s' % e.user_message)
+		logger.error('Param is: %s' % e.param)
+		logger.error('Message is: %s' % e.user_message)
 	except stripe.error.RateLimitError as e:
 		# Too many requests made to the API too quickly
 		logger.error('Too many requests made to the API too quickly: ' + e)
@@ -333,11 +333,11 @@ def paypal_verification(request, paypal_order_id):
 		order_id = paypal_client.get_order(paypal_order_id)
 	except stripe.error.CardError as e:
 		# Since it's a decline, stripe.error.CardError will be caught
-		print('Status is: %s' % e.http_status)
-		print('Code is: %s' % e.code)
+		logger.error('Status is: %s' % e.http_status)
+		logger.error('Code is: %s' % e.code)
 		# param is '' in this case
-		print('Param is: %s' % e.param)
-		print('Message is: %s' % e.user_message)
+		logger.error('Param is: %s' % e.param)
+		logger.error('Message is: %s' % e.user_message)
 	except Exception as e:
 		logger.error('Error: ' + str(e))
 		pass

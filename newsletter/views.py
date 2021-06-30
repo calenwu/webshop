@@ -9,21 +9,6 @@ from newsletter.models import NewsletterCampaign, Subscriber
 from webshop.utils import get_errors_from_form
 
 
-def newsletter_base(request):
-	"""
-	Newsletter base view. E.g. footer
-	"""
-	errors = ""
-	subscriber_form = SubscribeForm()
-	if request.method == 'POST':
-		subscriber_form = SubscribeForm(request.POST)
-		if subscriber_form.is_valid():
-			subscriber_form.save()
-		else:
-			errors = get_errors_from_form(subscriber_form)
-	return render(request, 'newsletter/footer.html', {'subscriber_form': subscriber_form, 'errors': errors})
-
-
 def unsubscribe_view(request, encoded_email):
 	"""
 	Unsubscribe from newsletter view

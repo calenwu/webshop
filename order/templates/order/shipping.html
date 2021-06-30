@@ -134,22 +134,9 @@
 					</a>
 					<button id="paymentMethodButton"
 						class="button-primary rounded py-4 px-6 text-center w-full md:w-auto"
-						onclick=changeToSpinner();>
+						onclick=changeToSpinner(this);>
 						{% trans 'Payment method' %}
 					</button>
-					<script>
-						function changeToSpinner() {
-							let nextButton = document.getElementById('paymentMethodButton');
-							nextButton.style.width = nextButton.offsetWidth + 'px';
-							nextButton.style.height = nextButton.offsetHeight + 'px';
-							nextButton.innerHTML = '';
-							let spinner = document.createElement('i');
-							spinner.classList.add('fad');
-							spinner.classList.add('fa-spinner-third');
-							spinner.classList.add('spinning');
-							nextButton.appendChild(spinner);
-						}
-					</script>
 				</div>
 			</form>
 		</div>

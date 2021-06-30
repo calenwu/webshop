@@ -3,11 +3,9 @@
 {% load static %}
 
 {% block extrastyle %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
 {% endblock %}
-
 {% block title %}Order {{ order.id }} {{ block.super }}{% endblock %}
-
 {% block breadcrumbs %}
 	<div class="breadcrumbs">
 		<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> &rsaquo;
@@ -37,14 +35,13 @@
 		</tr>
 		<tr>
 			<th>{% trans 'Address' %}</th>
-			<td>{{ order.address }}, {{ order.postal_code }} {{ order.city }}</td>
+			<td>{{ order.address }}, {{ order.postal_code }} {{ order.city }} {% if order.state %}{{ order.state }}{% endif %} {{ order.country }}</td>
 		</tr>
 		<tr>
 			<th>{% trans 'Total amount' %}</th>
 			<td>{{ order.get_display_total_price }}</td>
 		</tr>
 	</table>
-
 	<div class="module">
 		<div class="tabular inline-related last-related">
 			<table>

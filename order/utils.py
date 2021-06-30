@@ -17,13 +17,12 @@ paypal_client = PayPalClient()
 
 
 def get_invoice(order) -> bytes:
-	logger.info(settings.BASE_URL + Setting.get_INVOICE_LOGO_URL())
 	html = render_to_string('order/invoice_pdf.html', {
 		'order': order,
 		'company_name': Setting.get_INVOICE_COMPANY_NAME(),
 		'company_signature': Setting.get_INVOICE_COMPANY_SIGNATURE(),
 		'business_id': Setting.get_INVOICE_BUSINESS_ID(),
-		'logo': settings.BASE_URL + Setting.get_INVOICE_LOGO_URL(),
+		'logo': settings.BASE_DIR + Setting.get_INVOICE_LOGO_URL(),
 		'website': Setting.get_INVOICE_WEBSITE(),
 		'email': Setting.get_INVOICE_EMAIL(),
 		'tax_percentage': Setting.get_TAX_PERCENTAGE(),

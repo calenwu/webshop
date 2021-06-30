@@ -358,3 +358,13 @@ function createCarouselImageLi(img) {
 	return slide;
 }
 
+function changeToSpinner(el) {
+	el.style.width = nextButton.offsetWidth + 'px';
+	el.style.height = nextButton.offsetHeight + 'px';
+	el.innerHTML = '';
+	let spinner = document.createElement('i');
+	spinner.classList.add('fad');
+	spinner.classList.add('fa-spinner-third');
+	spinner.classList.add('spinning');
+	el.appendChild(spinner);
+}
