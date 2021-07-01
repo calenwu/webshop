@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-25 01:09+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2021-06-30 20:53+0000\n"
+"Last-Translator: b'Georg Ye <calenwuuu@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.6\n"
 
 #: webshop/settings/base.py:215
 msgid "German"
@@ -158,13 +159,13 @@ msgstr ""
 
 #: webshop/templates/base.html:541
 msgid ""
-"Receive email updates on stuff you’ll probably want to know about, including "
-"products, launches, and events. Unsubscribe anytime."
+"Receive email updates on stuff you’ll probably want to know about, including"
+" products, launches, and events. Unsubscribe anytime."
 msgstr ""
 
 #: webshop/templates/base.html:547
 msgid "Thank you for subscribing to our newsletter"
-msgstr ""
+msgstr "Danke, dass Sie unseren Newsletter abonniert haben"
 
 #: webshop/templates/base.html:560
 msgid "Subscribe"
@@ -172,8 +173,8 @@ msgstr ""
 
 #: webshop/templates/base.html:575
 msgid ""
-"By keep using our site you agree to the storing of cookies on your device to "
-"enhance site navigation, analyze site usage, and assist in our marketing "
+"By keep using our site you agree to the storing of cookies on your device to"
+" enhance site navigation, analyze site usage, and assist in our marketing "
 "efforts."
 msgstr ""
 
