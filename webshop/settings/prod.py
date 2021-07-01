@@ -2,17 +2,13 @@ from .base import *
 
 DEBUG = False
 
-try:
-	from .local import *
-except ImportError:
-	pass
-
 SECRET_KEY = get_secret('SECRET_KEY')
 
 ALLOWED_HOSTS = [
 	'127.0.0.1',
 	'192.168.1.200',
-	'b3935a6cb0e5.ngrok.io'
+	'kalunagoods.com'
+	'www.kalunagoods.com'
 ]
 
 # Logging
@@ -79,7 +75,7 @@ CACHES = {
 			"CLIENT_CLASS": "django_redis.client.DefaultClient",
 			"PASSWORD": REDIS_PASSWORD
 		},
-		"KEY_PREFIX": 'webshop'
+		"KEY_PREFIX": get_secret('KEY_PREFIX')
 	}
 }
 
