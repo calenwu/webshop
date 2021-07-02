@@ -71,6 +71,10 @@ Fix credit coupons: if 2 people check out at the same time with the same credit 
 * Global coupon: coupon which is added automatically.
 * Free gift: Free item added to the cart, when a certain cart value has been reached.
 
+## Example
+This shop was made with this:
+https://kalunagoods.com/
+
 ## Thanks
 These projects were used in the making of this application:
 * [Django](https://github.com/django/django)
