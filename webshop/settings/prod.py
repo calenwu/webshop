@@ -75,7 +75,7 @@ CACHES = {
 			"CLIENT_CLASS": "django_redis.client.DefaultClient",
 			"PASSWORD": REDIS_PASSWORD
 		},
-		"KEY_PREFIX": get_secret('KEY_PREFIX')
+		"KEY_PREFIX": get_secret('REDIS_KEYPREFIX')
 	}
 }
 
