@@ -1,8 +1,8 @@
 import urllib
 from django import template
-from typing import List
-from home.models import FavIcon, Footer, FooterItem, InformationBar, Menu, Title
 from django.conf import settings
+from typing import List
+from home.models import FavIcon, Footer, FooterItem, InformationBar, Menu, Setting, Title
 
 
 register = template.Library()
@@ -58,6 +58,7 @@ def get_favicon() -> str:
 		return temp[0].image.file.url
 	return None
 
+
 @register.simple_tag()
 def change_page(url, page) -> str:
 	url_parsed = urllib.parse.urlparse(url)
@@ -65,3 +66,8 @@ def change_page(url, page) -> str:
 	parameters['page'] = page
 	temp = urllib.parse.urlencode(parameters)
 	return url_parsed.path + '?' + temp.replace('%27%5B', '').replace('%27%5D', '')
+
+
+@register.simple_tag()
+def get_google_analytics_measurement_id() -> str:
+	return Setting.get_GOOGLE_ANALYTICS_MEASUREMENT_ID()

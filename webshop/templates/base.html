@@ -29,6 +29,18 @@
 					src: url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.eot?#iefix' %}") format("embedded-opentype"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.woff2' %}") format("woff2"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.woff' %}") format("woff"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.ttf' %}") format("truetype"), url("{% static 'vendors/fontawesome-pro-5.13.0-web/webfonts/fa-brands-400.svg#fontawesome' %}") format("svg");
 				}
 		</style-->
+		<!-- Google Analytics -->
+		{% cache 604800 google_analytics %}
+			<script async src="https://www.googletagmanager.com/gtag/js?id={% get_google_analytics_measurement_id %}">
+			</script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', '{% get_google_analytics_measurement_id %}');
+			</script>
+		{% endcache %}
+		<!-- End Google Analytics -->
 		<!--global css-->
 		<style>.-z-1 {z-index: -1;} .z-1 {z-index: 1;} .h-28 {height: 7rem;}</style>
 		{% block extra_css %}

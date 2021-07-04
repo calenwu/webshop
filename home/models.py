@@ -1,9 +1,10 @@
+import logging
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.core.exceptions import ValidationError 
 from django.db import models
-from django.db.models.fields import related
+from django.db.utils import ProgrammingError
 from django_extensions.db.fields import AutoSlugField
 from django.utils.translation import gettext_lazy as _
 
@@ -22,6 +23,44 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image as WagtailImage
 
 from streams import blocks
+
+
+logger = logging.getLogger('django')
+
+
+class Setting(models.Model):
+	key = models.CharField(max_length=255, db_index=True, unique=True)
+	value = models.CharField(max_length=255, db_index=True)
+
+	class Meta:
+		verbose_name = 'Setting'
+		verbose_name_plural = 'Settings'
+		ordering = ['key']
+
+	def __str__(self):
+		return self.key
+
+	@staticmethod
+	def get_GOOGLE_ANALYTICS_MEASUREMENT_ID() -> int:
+		"""
+		Get the google analytics measurement id
+		"""
+		try:
+			return Setting.objects.get(key='GOOGLE_ANALYTICS_MEASUREMENT_ID').value
+		except Setting.DoesNotExist:
+			return ''
+		except ProgrammingError:
+			logging.error(_('Run python manage.py migrate'))
+			return ''
+		except Exception as e:
+			logging.error(str(e))
+			return ''
+	
+	def save(self, *args, **kwargs):
+		if self.key == 'GOOGLE_ANALYTICS_MEASUREMENT_ID':
+			key = make_template_fragment_key('google_analytics')
+			cache.delete(key)
+		return super().save(*args, **kwargs)
 
 
 class HomePage(Page):

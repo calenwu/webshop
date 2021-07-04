@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 
-from home.models import FavIcon, Footer, HomePage, InformationBar, Menu, TextPage, Title
+from home.models import FavIcon, Footer, HomePage, InformationBar, Menu, Setting, TextPage, Title
 
 
 class FavIconAdmin(ModelAdmin):
@@ -27,15 +27,15 @@ class FooterAdmin(ModelAdmin):
 	search_fields = ['title', 'slug', 'order']
 
 
-class TitleAdmin(ModelAdmin):
-	model = Title
-	menu_icon = 'fontawesome icon-heading'
-	menu_label = _('Title')
-	menu_order = 811
+class InformationBarAdmin(ModelAdmin):
+	model = InformationBar
+	menu_icon = 'fontawesome icon-bells'
+	menu_label = _('Information bar')
+	menu_order = 812
 	add_to_settings_menu = True
 	exclude_from_explorer = True
-	list_display = ['text',]
-	search_fields = ['text',]
+	list_display = ['text', 'active']
+	search_fields = ['text', 'active']
 
 
 class MenuAdmin(ModelAdmin):
@@ -49,26 +49,38 @@ class MenuAdmin(ModelAdmin):
 	search_fields = ['title', 'slug', 'order']
 
 
-class InformationBarAdmin(ModelAdmin):
-	model = InformationBar
-	menu_icon = 'fontawesome icon-bells'
-	menu_label = _('Information bar')
-	menu_order = 812
+class SettingAdmin(ModelAdmin):
+	model = Setting
+	menu_icon = 'fontawesome icon-sliders-v'
+	menu_label = _('Site settings')
+	menu_order = 813
 	add_to_settings_menu = True
 	exclude_from_explorer = True
-	list_display = ['text', 'active']
-	search_fields = ['text', 'active']
+	list_display = ['key',]
+
+
+class TitleAdmin(ModelAdmin):
+	model = Title
+	menu_icon = 'fontawesome icon-heading'
+	menu_label = _('Title')
+	menu_order = 811
+	add_to_settings_menu = True
+	exclude_from_explorer = True
+	list_display = ['text',]
+	search_fields = ['text',]
 
 
 modeladmin_register(FavIconAdmin)
 modeladmin_register(FooterAdmin)
 modeladmin_register(InformationBarAdmin)
 modeladmin_register(MenuAdmin)
+modeladmin_register(SettingAdmin)
 modeladmin_register(TitleAdmin)
 admin.site.register(FavIcon)
 admin.site.register(Footer)
 admin.site.register(HomePage)
 admin.site.register(InformationBar)
 admin.site.register(Menu)
+admin.site.register(Setting)
 admin.site.register(TextPage)
 admin.site.register(Title)

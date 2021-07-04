@@ -1,0 +1,9 @@
+[
+	{
+		"model": "home.setting",
+		"fields": {
+			"key": "GOOGLE_ANALYTICS_MEASUREMENT_ID",
+			"value": "GOOGLE_ANALYTICS_MEASUREMENT_ID"
+		}
+	}
+]
