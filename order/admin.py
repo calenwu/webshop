@@ -25,7 +25,7 @@ from order.utils import refund_stripe, refund_paypal
 class CountryAdmin(ModelAdmin):
 	model = Country
 	menu_icon = 'fontawesome icon-globe'
-	menu_order = 812
+	menu_order = 821
 	add_to_settings_menu = True
 	exclude_from_explorer = True
 	list_display = ['name', 'iso_2', 'iso_3', 'active']
@@ -36,7 +36,7 @@ class CountryAdmin(ModelAdmin):
 class StateAdmin(ModelAdmin):
 	model = State
 	menu_icon = 'fontawesome icon-globe'  # change as required
-	menu_order = 813
+	menu_order = 822
 	add_to_settings_menu = True  # or True to add your model to the Settings sub-menu
 	exclude_from_explorer = True  # or True to exclude pages of this type from Wagtail's explorer view
 	list_display = ['name', 'country', 'active']
@@ -62,7 +62,7 @@ class OrderItemAdmin(ModelAdmin):
 class OrderAdmin(ModelAdmin):
 	model = Order
 	menu_icon = 'fontawesome icon-boxes'
-	menu_order = 810  # will put in 3rd place (000 being 1st, 100 2nd)
+	menu_order = 820  # will put in 3rd place (000 being 1st, 100 2nd)
 	add_to_settings_menu = False  # or True to add your model to the Settings sub-menu
 	exclude_from_explorer = True  # or True to exclude pages of this type from Wagtail's explorer view
 	list_display = [
