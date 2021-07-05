@@ -7,7 +7,7 @@ SECRET_KEY = get_secret('SECRET_KEY')
 ALLOWED_HOSTS = [
 	'127.0.0.1',
 	'192.168.1.200',
-	'kalunagoods.com'
+	'kalunagoods.com',
 	'www.kalunagoods.com'
 ]
 
@@ -75,7 +75,7 @@ CACHES = {
 			"CLIENT_CLASS": "django_redis.client.DefaultClient",
 			"PASSWORD": REDIS_PASSWORD
 		},
-		"KEY_PREFIX": get_secret('KEY_PREFIX')
+		"KEY_PREFIX": get_secret('REDIS_KEYPREFIX')
 	}
 }
 
