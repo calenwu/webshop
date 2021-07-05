@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-25 01:09+0000\n"
-"PO-Revision-Date: 2021-06-30 20:53+0000\n"
+"PO-Revision-Date: 2021-07-05 01:31+0000\n"
 "Last-Translator: b'Georg Ye <calenwuuu@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,11 +21,11 @@ msgstr ""
 
 #: webshop/settings/base.py:215
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 #: webshop/settings/base.py:216
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 #: webshop/templates/404.html:4
 msgid "Error 404"
@@ -37,15 +37,15 @@ msgstr ""
 
 #: webshop/templates/404.html:13
 msgid "We can't seem to find the page you're looking for."
-msgstr ""
+msgstr "Wir können die von Ihnen gesuchte Seite nicht finden."
 
 #: webshop/templates/404.html:16 webshop/templates/500.html:22
 msgid "Error code: "
-msgstr ""
+msgstr "Fehlercode"
 
 #: webshop/templates/404.html:22
 msgid "Here are some helpful links instead:"
-msgstr ""
+msgstr "Hier sind stattdessen einige hilfreiche Links:"
 
 #: webshop/templates/404.html:24 webshop/templates/500.html:30
 #: webshop/templates/base.html:285 webshop/templates/base.html:411
@@ -54,11 +54,11 @@ msgstr ""
 
 #: webshop/templates/404.html:27 webshop/templates/500.html:33
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: webshop/templates/404.html:33 webshop/templates/500.html:39
 msgid "Error image"
-msgstr ""
+msgstr "Fehlerbild"
 
 #: webshop/templates/500.html:4
 msgid "Error 500"
@@ -66,102 +66,105 @@ msgstr ""
 
 #: webshop/templates/500.html:13
 msgid "There was an error while loading that page."
-msgstr ""
+msgstr "Beim Laden dieser Seite ist ein Fehler aufgetreten."
 
 #: webshop/templates/500.html:16
 msgid "Try reloading or "
-msgstr ""
+msgstr "Versuche es neu zu laden oder"
 
 #: webshop/templates/500.html:18
 msgid "contact us."
-msgstr ""
+msgstr "kontaktiere uns."
 
 #: webshop/templates/500.html:28
 msgid "Here are some helpful links:"
-msgstr ""
+msgstr "Hier einige hilfreiche Links:"
 
 #: webshop/templates/base.html:98 webshop/templates/base.html:117
 #: webshop/templates/base.html:173 webshop/templates/base.html:203
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: webshop/templates/base.html:104 webshop/templates/base.html:105
 #: webshop/templates/base.html:145 webshop/templates/base.html:147
 #: webshop/templates/base.html:190 webshop/templates/base.html:191
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: webshop/templates/base.html:110 webshop/templates/base.html:112
 #: webshop/templates/base.html:152 webshop/templates/base.html:154
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: webshop/templates/base.html:121
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Passwort vergessen?"
 
 #: webshop/templates/base.html:125
 msgid "No account yet?"
-msgstr ""
+msgstr "Noch keinen Account?"
 
 #: webshop/templates/base.html:128 webshop/templates/base.html:139
 #: webshop/templates/base.html:166
 msgid "Register"
-msgstr ""
+msgstr "Registrieren"
 
 #: webshop/templates/base.html:159
 msgid "Repeat pssword"
-msgstr ""
+msgstr "Passwort wiederholen"
 
 #: webshop/templates/base.html:161
 msgid "Repeat password"
-msgstr ""
+msgstr "Passwort wiederholen"
 
 #: webshop/templates/base.html:170 webshop/templates/base.html:200
 msgid "Already have an account?"
-msgstr ""
+msgstr "Bereit einen Account?"
 
 #: webshop/templates/base.html:184 webshop/templates/base.html:196
 msgid "Reset password"
-msgstr ""
+msgstr "Passwort zurücksetzen"
 
 #: webshop/templates/base.html:298
 msgid "Flag of Germany"
-msgstr ""
+msgstr "Flagge von Deutschland"
 
 #: webshop/templates/base.html:301
 msgid "Flag of UK"
-msgstr ""
+msgstr "Flagge von UK"
 
 #: webshop/templates/base.html:312
 msgid "German flag"
-msgstr ""
+msgstr "Flagge von Deutschland"
 
 #: webshop/templates/base.html:320
 msgid "UK flag"
-msgstr ""
+msgstr "Flagge von UK"
 
 #: webshop/templates/base.html:342
 msgid "Account"
-msgstr ""
+msgstr "Account"
 
 #: webshop/templates/base.html:349
 msgid "My orders"
-msgstr ""
+msgstr "Meine Bestellungen"
 
 #: webshop/templates/base.html:356
 msgid "Log out"
-msgstr ""
+msgstr "Ausloggen"
 
 #: webshop/templates/base.html:538
 msgid "We also make emails."
-msgstr ""
+msgstr "Wir schreiben auch E-Mails."
 
 #: webshop/templates/base.html:541
 msgid ""
 "Receive email updates on stuff you’ll probably want to know about, including"
 " products, launches, and events. Unsubscribe anytime."
 msgstr ""
+"Erhalten Sie E-Mail-Updates zu Dingen, über die Sie wahrscheinlich wissen "
+"möchten, einschließlich Produkte, Einführungen und Veranstaltungen Abmelden "
+"jederzeit."
 
 #: webshop/templates/base.html:547
 msgid "Thank you for subscribing to our newsletter"
@@ -177,42 +180,53 @@ msgid ""
 " enhance site navigation, analyze site usage, and assist in our marketing "
 "efforts."
 msgstr ""
+"Durch die weitere Nutzung unserer Website stimmen Sie der Speicherung von "
+"Cookies auf Ihrem Gerät zu, um die Navigation auf der Website zu verbessern,"
+" die Websitenutzung zu analysieren und unsere Marketingbemühungen zu "
+"unterstützen."
 
 #: webshop/templates/base.html:580
 msgid "Privacy policy"
-msgstr ""
+msgstr "Datenschutz-Bestimmungen"
 
 #: webshop/templates/base.html:584
 msgid "Accept all cookies"
-msgstr ""
+msgstr "Alle Cookies akzeptieren"
 
 #: webshop/templates/base.html:592
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: webshop/templates/base.html:602
 msgid "An email has been sent if a registed account was found"
 msgstr ""
+"auto_awesome\n"
+"Showing translation for An email has been sent if a registered account was found\n"
+"Translate instead An email has been sent if a registed account was found\n"
+"Translate by voice\n"
+"54 / 5000\n"
+"Translation results\n"
+"Eine E-Mail wurde gesendet, wenn ein registriertes Konto gefunden wurde "
 
 #: webshop/templates/base.html:606
 msgid "Invalid quantity"
-msgstr ""
+msgstr "Ungültige Menge"
 
 #: webshop/templates/base.html:607
 msgid "Please enter a positive quantity"
-msgstr ""
+msgstr "Bitte geben Sie eine positive Menge ein"
 
 #: webshop/templates/base.html:615
 msgid "Passwords dont match"
-msgstr ""
+msgstr "Passwörter stimmen nicht überein"
 
 #: webshop/templates/base.html:834 webshop/templates/base.html:886
 msgid "Loading error"
-msgstr ""
+msgstr "Ladefehler"
 
 #: webshop/templates/base.html:835 webshop/templates/base.html:887
 msgid "There was an error trying to load the content"
-msgstr ""
+msgstr "Beim Laden des Inhalts ist ein Fehler aufgetreten"
 
 #: webshop/urls.py:25
 msgid "home/"
