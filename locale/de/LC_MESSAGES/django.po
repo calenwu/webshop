@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-25 01:09+0000\n"
-"PO-Revision-Date: 2021-07-05 01:27+0000\n"
+"POT-Creation-Date: 2021-07-05 01:39+0000\n"
+"PO-Revision-Date: 2021-07-05 01:40+0000\n"
 "Last-Translator: b'Georg Ye <calenwuuu@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -26,8 +26,8 @@ msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
 #: account/forms.py:161 account/forms.py:181 account/forms.py:188
-#: contact/forms.py:25 contact/templates/contact/contact.html:40
-#: contact/templates/contact/contact.html:44 newsletter/forms.py:8
+#: contact/forms.py:25 contact/templates/contact/contact.html:41
+#: contact/templates/contact/contact.html:45 newsletter/forms.py:8
 #: order/forms.py:14 order/forms.py:150
 #: order/templates/order/invoice_pdf.html:53
 msgid "Email"
@@ -88,8 +88,8 @@ msgid "Date"
 msgstr "Datum"
 
 #: account/templates/account/orders.html:15
-#: order/templates/order/admin/detail.html:58
-#: order/templates/order/admin/detail.html:83
+#: order/templates/order/admin/detail.html:55
+#: order/templates/order/admin/detail.html:80
 #: order/templates/order/invoice_pdf.html:111
 #: order/templates/order/invoice_pdf.html:173
 msgid "Sum"
@@ -176,72 +176,72 @@ msgstr "Blog Einstellungen"
 msgid "Search"
 msgstr "Suche"
 
-#: blog/models.py:36 order/models.py:49
+#: blog/models.py:35 order/models.py:49
 msgid "January"
 msgstr "Januar"
 
-#: blog/models.py:37 order/models.py:50
+#: blog/models.py:36 order/models.py:50
 msgid "February"
 msgstr "Februar"
 
-#: blog/models.py:38 order/models.py:51
+#: blog/models.py:37 order/models.py:51
 msgid "March"
 msgstr "März"
 
-#: blog/models.py:39 order/models.py:52
+#: blog/models.py:38 order/models.py:52
 msgid "April"
 msgstr "April"
 
-#: blog/models.py:40 order/models.py:53
+#: blog/models.py:39 order/models.py:53
 msgid "May"
 msgstr "Mai"
 
-#: blog/models.py:41 order/models.py:54
+#: blog/models.py:40 order/models.py:54
 msgid "June"
 msgstr "Juni"
 
-#: blog/models.py:42 order/models.py:55
+#: blog/models.py:41 order/models.py:55
 msgid "July"
 msgstr "Juli"
 
-#: blog/models.py:43 order/models.py:56
+#: blog/models.py:42 order/models.py:56
 msgid "August"
 msgstr "August"
 
-#: blog/models.py:44 order/models.py:57
+#: blog/models.py:43 order/models.py:57
 msgid "September"
 msgstr "September"
 
-#: blog/models.py:45 order/models.py:58
+#: blog/models.py:44 order/models.py:58
 msgid "October"
 msgstr "Oktober"
 
-#: blog/models.py:46 order/models.py:59
+#: blog/models.py:45 order/models.py:59
 msgid "November"
 msgstr "November"
 
-#: blog/models.py:47 order/models.py:60
+#: blog/models.py:46 order/models.py:60
 msgid "December"
 msgstr "Dezember"
 
-#: blog/models.py:79 blog/models.py:95 cart/models.py:34 cart/models.py:53
-#: contact/models.py:39 contact/models.py:57 order/models.py:97
-#: order/models.py:113 order/models.py:128 order/models.py:144
-#: order/models.py:160 order/models.py:179 order/models.py:195
-#: order/models.py:211 order/models.py:227 order/models.py:243
-#: order/models.py:259 order/models.py:275 order/models.py:291
-#: order/models.py:306 order/models.py:322 order/models.py:338
-#: order/models.py:354 order/models.py:373 order/models.py:392
-#: order/models.py:411 shop/models.py:65 shop/models.py:84 shop/models.py:103
-#: shop/models.py:122
+#: blog/models.py:78 blog/models.py:94 cart/models.py:34 cart/models.py:53
+#: contact/models.py:39 contact/models.py:57 home/models.py:53
+#: order/models.py:97 order/models.py:113 order/models.py:128
+#: order/models.py:144 order/models.py:160 order/models.py:179
+#: order/models.py:195 order/models.py:211 order/models.py:227
+#: order/models.py:243 order/models.py:259 order/models.py:275
+#: order/models.py:291 order/models.py:306 order/models.py:322
+#: order/models.py:338 order/models.py:354 order/models.py:373
+#: order/models.py:392 order/models.py:411 shop/models.py:66 shop/models.py:85
+#: shop/models.py:104 shop/models.py:123
 msgid "Run python manage.py migrate"
 msgstr ""
 
-#: blog/models.py:268
+#: blog/models.py:252
 msgid "Author(s)"
 msgstr "Author/en"
 
-#: blog/models.py:273
+#: blog/models.py:257
 msgid "Categories"
 msgstr "Kategorien"
 
@@ -343,14 +343,14 @@ msgstr "Ihr Warenkorb"
 #: cart/templates/cart/details.html:26
 #: order/templates/cart/cart_checkout_right.html:9
 #: order/templates/cart/cart_checkout_top.html:9
-#: order/templates/order/admin/detail.html:53
+#: order/templates/order/admin/detail.html:50
 #: order/templates/order/view.html:20 order/templates/order/view.html:178
 msgid "Product"
 msgstr "Produkt"
 
 #: cart/templates/cart/cart_overlay.html:38
 #: cart/templates/cart/details.html:50
-#: order/templates/order/admin/detail.html:57
+#: order/templates/order/admin/detail.html:54
 #: order/templates/order/invoice_pdf.html:109
 #: shop/templates/shop/details.html:66
 #: streams/templates/streams/hero_product.html:57
@@ -468,13 +468,13 @@ msgid "Contact settings"
 msgstr "Kontakteinstellungen"
 
 #: contact/forms.py:17 contact/forms.py:20
-#: contact/templates/contact/contact.html:22
-#: contact/templates/contact/contact.html:26 order/models.py:482
+#: contact/templates/contact/contact.html:23
+#: contact/templates/contact/contact.html:27 order/models.py:482
 msgid "Name"
 msgstr "Name"
 
-#: contact/forms.py:34 contact/templates/contact/contact.html:59
-#: contact/templates/contact/contact.html:63
+#: contact/forms.py:34 contact/templates/contact/contact.html:60
+#: contact/templates/contact/contact.html:64
 msgid "Message"
 msgstr "Nachricht"
 
@@ -486,7 +486,7 @@ msgstr "Neue Nachricht vom Webshop"
 msgid "New contact: "
 msgstr "Neuer Kontakt:"
 
-#: contact/templates/contact/contact.html:80
+#: contact/templates/contact/contact.html:81
 msgid "Send message"
 msgstr "Nachricht senden"
 
@@ -528,29 +528,35 @@ msgstr "Ungültiger Code"
 msgid "Favicon"
 msgstr "Favicon"
 
-#: home/admin.py:22 home/models.py:220
+#: home/admin.py:22 home/models.py:259
 msgid "Footer"
 msgstr "Footer"
 
-#: home/admin.py:33 streams/blocks.py:44 streams/blocks.py:79
+#: home/admin.py:33
+msgid "Information bar"
+msgstr "Informationsleiste"
+
+#: home/admin.py:44 home/models.py:177
+msgid "Menu"
+msgstr "Menu"
+
+#: home/admin.py:55
+#, fuzzy
+#| msgid "Cart settings"
+msgid "Site settings"
+msgstr "Warenkorbeinstellungen"
+
+#: home/admin.py:65 streams/blocks.py:44 streams/blocks.py:79
 #: streams/blocks.py:89 streams/blocks.py:100 streams/blocks.py:112
 #: streams/blocks.py:125 streams/blocks.py:147
 msgid "Title"
 msgstr "Titel"
 
-#: home/admin.py:44 home/models.py:138
-msgid "Menu"
-msgstr "Menu"
-
-#: home/admin.py:55
-msgid "Information bar"
-msgstr "Informationsleiste"
-
-#: home/models.py:93
+#: home/models.py:132
 msgid "Either logo or text has to be set"
 msgstr "Entweder Logo oder Text muss gesetzt werden"
 
-#: home/models.py:199 home/models.py:280
+#: home/models.py:238 home/models.py:319
 msgid "Either link_page or link_url has to be set"
 msgstr "Entweder link_page oder link_url muss gesetzt werden"
 
@@ -581,18 +587,6 @@ msgstr "Abonnent"
 #: newsletter/models.py:63
 msgid "Subscribers"
 msgstr "Abonnenten"
-
-#: newsletter/templates/newsletter/footer.html:4
-msgid "Abboniere unseren Newsletter"
-msgstr ""
-
-#: newsletter/templates/newsletter/footer.html:6
-msgid "Abonniert"
-msgstr ""
-
-#: newsletter/templates/newsletter/footer.html:17
-msgid "Abonnieren"
-msgstr ""
 
 #: newsletter/templates/newsletter/popup.html:19
 msgid "Close"
@@ -748,7 +742,7 @@ msgstr "Mindestgewicht"
 msgid "Maximum weight"
 msgstr "Maximales Gewicht"
 
-#: order/models.py:486 order/templates/order/admin/detail.html:56
+#: order/models.py:486 order/templates/order/admin/detail.html:53
 msgid "Price"
 msgstr "Preis"
 
@@ -764,7 +758,7 @@ msgstr "Name"
 msgid "label"
 msgstr "Beschriftung"
 
-#: order/models.py:615 order/templates/order/admin/detail.html:27
+#: order/models.py:615 order/templates/order/admin/detail.html:25
 msgid "Created"
 msgstr "Erstellt"
 
@@ -904,35 +898,35 @@ msgstr "Versandbenachrichtigung per Sellerie senden"
 msgid "Refund"
 msgstr "Rückerstatten"
 
-#: order/templates/order/admin/detail.html:13
+#: order/templates/order/admin/detail.html:11
 msgid "Home"
 msgstr "Home"
 
-#: order/templates/order/admin/detail.html:14
+#: order/templates/order/admin/detail.html:12
 msgid "Detail"
 msgstr "Detail"
 
-#: order/templates/order/admin/detail.html:31
+#: order/templates/order/admin/detail.html:29
 msgid "Customer"
 msgstr "Kunde"
 
-#: order/templates/order/admin/detail.html:35
+#: order/templates/order/admin/detail.html:33
 msgid "E-mail"
 msgstr "Email"
 
-#: order/templates/order/admin/detail.html:39
+#: order/templates/order/admin/detail.html:37
 msgid "Address"
 msgstr "Adresse"
 
-#: order/templates/order/admin/detail.html:43
+#: order/templates/order/admin/detail.html:41
 msgid "Total amount"
 msgstr "Gesamtmenge"
 
-#: order/templates/order/admin/detail.html:54
+#: order/templates/order/admin/detail.html:51
 msgid "Color"
 msgstr "Farbe"
 
-#: order/templates/order/admin/detail.html:55
+#: order/templates/order/admin/detail.html:52
 msgid "Size"
 msgstr "Größe"
 
@@ -1219,23 +1213,23 @@ msgstr "Shop-Einstellungen"
 msgid "Category"
 msgstr "Kategorie"
 
-#: shop/forms.py:23 shop/models.py:225
+#: shop/forms.py:23 shop/models.py:226
 msgid "Show all"
 msgstr "Zeige alles"
 
-#: shop/models.py:376
+#: shop/models.py:377
 msgid "Use the smallest unit possible (e.g. cents for EUR/USD)"
 msgstr "Verwenden Sie die kleinstmögliche Einheit (z. B. Cent für EUR/USD)"
 
-#: shop/models.py:381
+#: shop/models.py:382
 msgid "Use the smallest unit possible (e.g. gram)"
 msgstr "Verwenden Sie die kleinstmögliche Einheit (z. B. Gramm)"
 
-#: shop/models.py:419
+#: shop/models.py:420
 msgid "Images"
 msgstr "Bilder"
 
-#: shop/models.py:428
+#: shop/models.py:429
 msgid "Product color"
 msgstr "Produktfarbe"
 

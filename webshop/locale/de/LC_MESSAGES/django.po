@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-25 01:09+0000\n"
-"PO-Revision-Date: 2021-07-05 01:31+0000\n"
+"POT-Creation-Date: 2021-07-05 01:39+0000\n"
+"PO-Revision-Date: 2021-07-05 01:37+0000\n"
 "Last-Translator: b'Georg Ye <calenwuuu@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -48,7 +48,7 @@ msgid "Here are some helpful links instead:"
 msgstr "Hier sind stattdessen einige hilfreiche Links:"
 
 #: webshop/templates/404.html:24 webshop/templates/500.html:30
-#: webshop/templates/base.html:285 webshop/templates/base.html:411
+#: webshop/templates/base.html:297 webshop/templates/base.html:423
 msgid "Home"
 msgstr ""
 
@@ -80,151 +80,145 @@ msgstr "kontaktiere uns."
 msgid "Here are some helpful links:"
 msgstr "Hier einige hilfreiche Links:"
 
-#: webshop/templates/base.html:98 webshop/templates/base.html:117
-#: webshop/templates/base.html:173 webshop/templates/base.html:203
+#: webshop/templates/base.html:110 webshop/templates/base.html:129
+#: webshop/templates/base.html:185 webshop/templates/base.html:215
 msgid "Login"
 msgstr "Login"
 
-#: webshop/templates/base.html:104 webshop/templates/base.html:105
-#: webshop/templates/base.html:145 webshop/templates/base.html:147
-#: webshop/templates/base.html:190 webshop/templates/base.html:191
+#: webshop/templates/base.html:116 webshop/templates/base.html:117
+#: webshop/templates/base.html:157 webshop/templates/base.html:159
+#: webshop/templates/base.html:202 webshop/templates/base.html:203
 msgid "Email"
 msgstr "Email"
 
-#: webshop/templates/base.html:110 webshop/templates/base.html:112
-#: webshop/templates/base.html:152 webshop/templates/base.html:154
+#: webshop/templates/base.html:122 webshop/templates/base.html:124
+#: webshop/templates/base.html:164 webshop/templates/base.html:166
 msgid "Password"
 msgstr "Passwort"
 
-#: webshop/templates/base.html:121
+#: webshop/templates/base.html:133
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
-#: webshop/templates/base.html:125
+#: webshop/templates/base.html:137
 msgid "No account yet?"
 msgstr "Noch keinen Account?"
 
-#: webshop/templates/base.html:128 webshop/templates/base.html:139
-#: webshop/templates/base.html:166
+#: webshop/templates/base.html:140 webshop/templates/base.html:151
+#: webshop/templates/base.html:178
 msgid "Register"
 msgstr "Registrieren"
 
-#: webshop/templates/base.html:159
+#: webshop/templates/base.html:171
 msgid "Repeat pssword"
 msgstr "Passwort wiederholen"
 
-#: webshop/templates/base.html:161
+#: webshop/templates/base.html:173
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
-#: webshop/templates/base.html:170 webshop/templates/base.html:200
+#: webshop/templates/base.html:182 webshop/templates/base.html:212
 msgid "Already have an account?"
 msgstr "Bereit einen Account?"
 
-#: webshop/templates/base.html:184 webshop/templates/base.html:196
+#: webshop/templates/base.html:196 webshop/templates/base.html:208
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
-#: webshop/templates/base.html:298
+#: webshop/templates/base.html:310
 msgid "Flag of Germany"
 msgstr "Flagge von Deutschland"
 
-#: webshop/templates/base.html:301
+#: webshop/templates/base.html:313
 msgid "Flag of UK"
 msgstr "Flagge von UK"
 
-#: webshop/templates/base.html:312
+#: webshop/templates/base.html:324
 msgid "German flag"
 msgstr "Flagge von Deutschland"
 
-#: webshop/templates/base.html:320
+#: webshop/templates/base.html:332
 msgid "UK flag"
 msgstr "Flagge von UK"
 
-#: webshop/templates/base.html:342
+#: webshop/templates/base.html:354
 msgid "Account"
 msgstr "Account"
 
-#: webshop/templates/base.html:349
+#: webshop/templates/base.html:361
 msgid "My orders"
 msgstr "Meine Bestellungen"
 
-#: webshop/templates/base.html:356
+#: webshop/templates/base.html:368
 msgid "Log out"
 msgstr "Ausloggen"
 
-#: webshop/templates/base.html:538
+#: webshop/templates/base.html:550
 msgid "We also make emails."
 msgstr "Wir schreiben auch E-Mails."
 
-#: webshop/templates/base.html:541
+#: webshop/templates/base.html:553
 msgid ""
-"Receive email updates on stuff you’ll probably want to know about, including"
-" products, launches, and events. Unsubscribe anytime."
+"Receive email updates on stuff you’ll probably want to know about, including "
+"products, launches, and events. Unsubscribe anytime."
 msgstr ""
 "Erhalten Sie E-Mail-Updates zu Dingen, über die Sie wahrscheinlich wissen "
 "möchten, einschließlich Produkte, Einführungen und Veranstaltungen Abmelden "
 "jederzeit."
 
-#: webshop/templates/base.html:547
+#: webshop/templates/base.html:559
 msgid "Thank you for subscribing to our newsletter"
 msgstr "Danke, dass Sie unseren Newsletter abonniert haben"
 
-#: webshop/templates/base.html:560
+#: webshop/templates/base.html:572
 msgid "Subscribe"
 msgstr ""
 
-#: webshop/templates/base.html:575
+#: webshop/templates/base.html:587
 msgid ""
-"By keep using our site you agree to the storing of cookies on your device to"
-" enhance site navigation, analyze site usage, and assist in our marketing "
+"By keep using our site you agree to the storing of cookies on your device to "
+"enhance site navigation, analyze site usage, and assist in our marketing "
 "efforts."
 msgstr ""
 "Durch die weitere Nutzung unserer Website stimmen Sie der Speicherung von "
-"Cookies auf Ihrem Gerät zu, um die Navigation auf der Website zu verbessern,"
-" die Websitenutzung zu analysieren und unsere Marketingbemühungen zu "
+"Cookies auf Ihrem Gerät zu, um die Navigation auf der Website zu verbessern, "
+"die Websitenutzung zu analysieren und unsere Marketingbemühungen zu "
 "unterstützen."
 
-#: webshop/templates/base.html:580
+#: webshop/templates/base.html:592
 msgid "Privacy policy"
 msgstr "Datenschutz-Bestimmungen"
 
-#: webshop/templates/base.html:584
+#: webshop/templates/base.html:596
 msgid "Accept all cookies"
 msgstr "Alle Cookies akzeptieren"
 
-#: webshop/templates/base.html:592
+#: webshop/templates/base.html:604
 msgid "Error"
 msgstr "Fehler"
 
-#: webshop/templates/base.html:602
+#: webshop/templates/base.html:614
 msgid "An email has been sent if a registed account was found"
 msgstr ""
-"auto_awesome\n"
-"Showing translation for An email has been sent if a registered account was found\n"
-"Translate instead An email has been sent if a registed account was found\n"
-"Translate by voice\n"
-"54 / 5000\n"
-"Translation results\n"
-"Eine E-Mail wurde gesendet, wenn ein registriertes Konto gefunden wurde "
+"Eine E-Mail wurde gesendet, wenn ein registriertes Konto gefunden wurde"
 
-#: webshop/templates/base.html:606
+#: webshop/templates/base.html:618
 msgid "Invalid quantity"
 msgstr "Ungültige Menge"
 
-#: webshop/templates/base.html:607
+#: webshop/templates/base.html:619
 msgid "Please enter a positive quantity"
 msgstr "Bitte geben Sie eine positive Menge ein"
 
-#: webshop/templates/base.html:615
+#: webshop/templates/base.html:627
 msgid "Passwords dont match"
 msgstr "Passwörter stimmen nicht überein"
 
-#: webshop/templates/base.html:834 webshop/templates/base.html:886
+#: webshop/templates/base.html:851 webshop/templates/base.html:903
 msgid "Loading error"
 msgstr "Ladefehler"
 
-#: webshop/templates/base.html:835 webshop/templates/base.html:887
+#: webshop/templates/base.html:852 webshop/templates/base.html:904
 msgid "There was an error trying to load the content"
 msgstr "Beim Laden des Inhalts ist ein Fehler aufgetreten"
 
