@@ -14,24 +14,21 @@
 		</div>
 		<div class="flex-grow overflow-y-auto px-2 sm:px-4">
 			{% for item in cart %}
-				{% get_product_color item.product_color_id as product_color %}
-				{% get_product_size item.product_size_id as product_size %}
-				{% get_product_color_quantity item.product_color_quantity_id as product_color_quantity %}
 				<div class="flex items-center py-4 border-t border-gray-200">
-					<a href="{{ product_color.product.link }}" aria-label="{% trans 'Product' %}" class="cursor-pointer mr-4">
+					<a href="{{ item.link }}" aria-label="{% trans 'Product' %}" class="cursor-pointer mr-4">
 						<div class="flex items-center justify-center w-20">
 							<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
-								style="background-image: url('{{ product_color.image.file.url }}');">
+								style="background-image: url('{{ item.image_url }}');">
 							</div>
 						</div>
 					</a>
 					<form class="w-full"
-						onsubmit="event.preventDefault(); updateOverlayQuantity(this, '{{ product_color_quantity.id }}');">
+						onsubmit="event.preventDefault(); updateOverlayQuantity(this, '{{ item.id }}');">
 						<div class="flex justify-between w-full relative">
 							<div class="flex flex-col">
-								<h4 class="text-lg cursor-text mb-0" style="line-height: 1.2;">{{ product_color.product.title }}</h4>
-								<p class="text-xs cursor-text mb-0">{{ product_color_quantity.get_display_variation }}</p>
-								<p class="text-xs cursor-text mb-0">{{ product_color.product.get_display_price }}</p>
+								<h4 class="text-lg cursor-text mb-0" style="line-height: 1.2;">{{ item.title }}</h4>
+								<p class="text-xs cursor-text mb-0">{{ item.variation }}</p>
+								<p class="text-xs cursor-text mb-0">{{ item.display_price }}</p>
 								<div>
 									<div class="flex">
 										<input class="block w-16 h-8 p-1 text-sm rounded-l border border-gray-400 
@@ -44,11 +41,11 @@
 									</div>
 								</div>
 								<div class="absolute bottom-0 right-0 text-sm cursor-text">
-									{% get_display_currency_price item.total_price %}
+									{{ item.display_total_price }}
 								</div>
 							</div>
 							<div class="flex items-center hoverable-gray-black pl-4"
-								onclick="updateOverlayQuantity(this.parentElement.parentElement, '{{ product_color_quantity.id }}', 0);">
+								onclick="updateOverlayQuantity(this.parentElement.parentElement, '{{ item.product_color.id }}', 0);">
 								<i class="fal fa-times padding-4"></i>
 							</div>
 						</div>

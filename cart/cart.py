@@ -35,6 +35,17 @@ class Cart(object):
 			self.set_default_values(product_color_quantity_id)
 		for product_color_quantity_id in self.cart['items'].keys():
 			self.update_total_price(product_color_quantity_id)
+			product_color_quantity = ProductColorQuantity.objects.select_related('product_color').select_related('product_color').select_related('product_size').get(id=product_color_quantity_id)
+			product_color = product_color_quantity.product_color
+			product = product_color.product
+			self.cart['items'][product_color_quantity_id]['id'] = product_color_quantity.id
+			self.cart['items'][product_color_quantity_id]['link'] = product.link
+			self.cart['items'][product_color_quantity_id]['title'] = product.title
+			self.cart['items'][product_color_quantity_id]['image_url'] = product.image.file.url
+			self.cart['items'][product_color_quantity_id]['variation'] = product_color_quantity.get_display_variation()
+			self.cart['items'][product_color_quantity_id]['display_price'] = product.get_display_price()
+			self.cart['items'][product_color_quantity_id]['display_total_price'] = display_currency_price(
+				self.cart['items'][product_color_quantity_id]['total_price'])
 			yield self.cart['items'][product_color_quantity_id]
 
 	def __len__(self) -> int:

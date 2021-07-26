@@ -19,31 +19,28 @@
 				{% if total_items != 0 %}
 					<div>
 						{% for item in cart %}
-							{% get_product_color item.product_color_id as product_color %}
-							{% get_product_size item.product_size_id as product_size %}
-							{% get_product_color_quantity item.product_color_quantity_id as product_color_quantity %}
 							<div class="flex items-center mt-4 pb-4 border-b border-gray-200">
-								<a href="{{ product_color.product.link }}" aria-label="{% trans 'Product' %}" 
+								<a href="{{ item.link }}" aria-label="{% trans 'Product' %}" 
 										class="cursor-pointer mr-4">
 									<div class="flex items-center justify-center w-20">
 										<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
-											style="background-image: url('{{ product_color.image.file.url }}');">
+											style="background-image: url('{{ item.image_url }}');">
 										</div>
 									</div>
 								</a>
 								<form class="w-full" 
-										onsubmit="event.preventDefault(); updateQuantity(this, '{{ product_color_quantity.id }}');">
+										onsubmit="event.preventDefault(); updateQuantity(this, '{{ item.id }}');">
 									<div class="flex justify-between w-full relative">
 										<div class="flex flex-col">
 											<h4 class="text-lg" style="line-height: 1.2;">
-												{% if item.product_color_quantity_id in out_of_stock %}
-													<s>{{ product_color.product.title }}</s>
+												{% if item.id in out_of_stock %}
+													<s>{{ item.title }}</s>
 												{% else %}
-													{{ product_color.product.title }}
+													{{ item.title }}
 												{% endif %}
 											</h4>
-											<h6 class="text-xs">{{ product_color_quantity.get_display_variation }}</h6>
-											<h6 class="text-xs">{{ product_color.product.get_display_price }}</h6>
+											<h6 class="text-xs">{{ item.variation }}</h6>
+											<h6 class="text-xs">{{ item.display_price }}</h6>
 											<div>
 												<div class="flex">
 													<input class="block w-16 h-8 p-1 text-sm rounded-l border border-gray-400 
@@ -54,19 +51,19 @@
 														<i class="fal fa-sync"></i>
 													</button>
 													<div class="flex items-center text-red-500 text-sm ml-1">
-														{% if item.product_color_quantity_id in available_keys %}
-															{% blocktrans with stock=available|get_item:item.product_color_quantity_id %}
+														{% if item.id in available_keys %}
+															{% blocktrans with stock=available|get_item:item.id %}
 																(Only {{ stock }} left)
 															{% endblocktrans %}
 														{% endif %}
-														{% if item.product_color_quantity_id in out_of_stock %}
+														{% if item.id in out_of_stock %}
 															({% trans 'Out of stock' %})
 														{% endif %}
 													</div>
 												</div>
 											</div>
 											<div class="absolute bottom-0 right-0 text-sm cursor-text">
-												{% get_display_currency_price item.total_price %}
+												{{ item.display_total_price }}
 											</div>
 										</div>
 										<div class="flex items-center hoverable-gray-black pl-4"

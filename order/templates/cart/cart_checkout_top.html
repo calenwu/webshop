@@ -2,28 +2,25 @@
 <div class="w-full">
 	{% get_currency as currency %}
 	{% for item in cart %}
-		{% get_product_color item.product_color_id as product_color %}
-		{% get_product_size item.product_size_id as product_size %}
-		{% get_product_color_quantity item.product_color_quantity_id as product_color_quantity %}
 		<div class="flex items-center mt-4 pb-4 border-b border-gray-200">
-			<a href="{{ product_color.product.link }}" aria-label="{% trans 'Product' %}" class="cursor-pointer mr-4">
+			<a href="{{ item.link }}" aria-label="{% trans 'Product' %}" class="cursor-pointer mr-4">
 				<div class="flex items-center justify-center w-20 relative">
 					<div class="absolute w-6 h-6 bg-gray-500 text-white -top-2 -right-2 rounded-full text-center">
 						{{ item.quantity }}
 					</div>
 					<div class="aspect-1-1 bg-center bg-cover rounded border border-gray-200"
-						style="background-image: url('{{ product_color.image.file.url }}')";>
+						style="background-image: url('{{ item.image_url }}')";>
 					</div>
 				</div>
 			</a>
 			<div class="flex justify-between w-full relative">
 				<div class="flex flex-col">
-					<h4 class="text-lg leading-5">{{ product_color.product.title }}</h4>
-					<h6 class="text-xs">{{ product_color_quantity.get_display_variation }}</h6>
-					<h6 class="text-xs">{{ product_color.product.get_display_price }}</h6>
+					<h4 class="text-lg leading-5">{{ item.title }}</h4>
+					<h6 class="text-xs">{{ item.variation }}</h6>
+					<h6 class="text-xs">{{ item.display_price }}</h6>
 				</div>
 				<div class="text-sm flex items-center">
-					{% get_display_currency_price item.total_price %}
+					{{ item.display_total_price }}
 				</div>
 			</div>
 		</div>
