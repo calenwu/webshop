@@ -14,9 +14,9 @@
 		</div>
 		<div class="flex-grow overflow-y-auto px-2 sm:px-4">
 			{% for item in cart %}
-				{% get_product_color item.product_color_id as product_color %}
-				{% get_product_size item.product_size_id as product_size %}
-				{% get_product_color_quantity item.product_color_quantity_id as product_color_quantity %}
+				{% item.product_color as product_color %}
+				{% item.product_size as product_size %}
+				{% item as product_color_quantity %}
 				<div class="flex items-center py-4 border-t border-gray-200">
 					<a href="{{ product_color.product.link }}" aria-label="{% trans 'Product' %}" class="cursor-pointer mr-4">
 						<div class="flex items-center justify-center w-20">

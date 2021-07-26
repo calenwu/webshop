@@ -168,7 +168,7 @@
 						</div>
 					</div>
 					<div class="form-label-group mb-4">
-						<input type="password" name="password2" id="registerPassword2" placeholder="{% trans 'Repeat pssword' %}"
+						<input type="password" name="password2" id="registerPassword2" placeholder="{% trans 'Repeat password' %}"
 								required/>
 						<label for="registerPassword2" class="">{% trans 'Repeat password' %}</label>
 						<div id="registerPassword2Error" class="text-sm text-red-400 mt-1 text-left">
@@ -611,7 +611,7 @@
 			const loginUrl = "{% url 'account:login' %}";
 			const registerUrl = "{% url 'account:register' %}";
 			const resetUrl = "{% url 'account:reset' %}";
-			const resetSuccessText = '{% trans "An email has been sent if a registed account was found" %}';
+			const resetSuccessText = '{% trans "An email has been sent if a registered account was found" %}';
 			const cartOverlay = document.getElementById('cartOverlay');
 			const cartOverlayBackground = document.getElementById('cartOverlayBackground');
 			const cartIconDot = document.getElementById('cartIconDot');
