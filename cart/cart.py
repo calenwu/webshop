@@ -35,7 +35,7 @@ class Cart(object):
 			self.set_default_values(product_color_quantity_id)
 		for product_color_quantity_id in self.cart['items'].keys():
 			self.update_total_price(product_color_quantity_id)
-			product_color_quantity = ProductColorQuantity.objects.select_related('product_color').select_related('product_color').select_related('product_size').get(id=product_color_quantity_id)
+			product_color_quantity = ProductColorQuantity.objects.select_related('product_color').select_related('product_color__product').select_related('product_size').get(id=product_color_quantity_id)
 			product_color = product_color_quantity.product_color
 			product = product_color.product
 			self.cart['items'][product_color_quantity_id]['id'] = product_color_quantity.id

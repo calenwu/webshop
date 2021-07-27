@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-05 01:39+0000\n"
-"PO-Revision-Date: 2021-07-05 01:37+0000\n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
+"PO-Revision-Date: 2021-07-26 21:30+0000\n"
 "Last-Translator: b'Georg Ye <calenwuuu@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.9.6\n"
 
 #: webshop/settings/base.py:215
-msgid "German"
-msgstr "Deutsch"
-
-#: webshop/settings/base.py:216
 msgid "English"
 msgstr "Englisch"
+
+#: webshop/settings/base.py:216
+msgid "German"
+msgstr "Deutsch"
 
 #: webshop/templates/404.html:4
 msgid "Error 404"
@@ -261,3 +261,6 @@ msgstr ""
 #: webshop/urls.py:34
 msgid "winwheel/"
 msgstr ""
+
+#~ msgid "PLEASE TRANSLATE FFS"
+#~ msgstr "asfdasjfkljsalkfjslkfjlk"

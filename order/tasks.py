@@ -71,3 +71,19 @@ def check_if_order_paid(order_id, payment_intent_id, paypal_order_id) -> None:
 		stripe.api_key = Setting.get_STRIPE_SECRET_KEY()
 		stripe.PaymentIntent.cancel(payment_intent_id)
 		paypal_client.cancel_order(order, paypal_order_id)
+
+
+@shared_task
+def reduce_stock(order_id):
+	order = Order.objects.get(id=order_id)
+	for order_item in order.order_items.all():
+		product_color_quant = order_item.product_color_quantity
+		product_color_quant.quantity -= order_item.quantity
+		if product_color_quant.quantity < 0:
+			logger.error('Stock is below 0, OrderId: {}, ProductId: {}, ProductColorId: {}, ProductSizeName: {}'.format(
+				order.id, 
+				product_color_quant.product_color.product.id,
+				product_color_quant.product_color.id,
+				product_color_quant.product_size.name
+			))
+		product_color_quant.save()

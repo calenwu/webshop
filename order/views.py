@@ -16,8 +16,8 @@ from order.forms import AddressForm, OrderCreateForm, ShippingForm
 from order.models import Order, OrderItem, OrderStatus, ShippingMethod, State, Setting
 from order.order import Order as OrderSession
 from order.paypal import PayPalClient
-from order.utils import get_invoice, reduce_coupon, reduce_stock
-from order.tasks import check_if_order_paid, save_invoice, send_invoice
+from order.utils import get_invoice, reduce_coupon
+from order.tasks import check_if_order_paid, reduce_stock, save_invoice, send_invoice
 from shop.models import ProductColorQuantity, Setting as ShopSetting
 
 
@@ -146,24 +146,26 @@ def payment(request):
 			discount=cart.get_discount(),
 		)
 	order_items = []
-	for item in cart:
-		product_color_quantity = ProductColorQuantity.objects.get(id=item['product_color_quantity_id'])
+	for k, v in cart.cart['items'].items():
+		product_color_quantity = ProductColorQuantity.objects.select_related('product_color').select_related('product_size').select_related('product_color__product').get(id=k)
 		product_color = product_color_quantity.product_color
+		product = product_color.product
+		product_size = product_color_quantity.product_size
 		order_items.append(
 			OrderItem.objects.create(
 				order=order,
 				product_color_quantity=product_color_quantity,
 				sku=product_color.id,
-				name=product_color.product.title,
-				price=product_color.product.get_price(),
+				name=product.title,
+				price=product.get_price(),
 				color=product_color.color,
-				quantity=item['quantity'],
-				size=product_color_quantity.product_size.name,
+				quantity=v['quantity'],
+				size=product_size.name,
 			)
 		)
 	stripe_payment_intent = create_stripe_payment_intent(order)
 	paypal_order_id = paypal_client.create_order(order).result['id']
-	reduce_stock(order)
+	reduce_stock.delay(order.id)
 	check_if_order_paid.apply_async(
 		(order.id, stripe_payment_intent.id, paypal_order_id), 
 		countdown=Setting.get_CHECKOUT_TIMEOUT())

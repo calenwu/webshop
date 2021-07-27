@@ -173,7 +173,7 @@ class BannerCarouselBlock(blocks.StructBlock):
 				('button_background_color', blocks.CharBlock(required=False, help_text=_('Button background_color'))),
 				('button_border_color', blocks.CharBlock(required=False, help_text=_('Button border color'))),
 				('page', blocks.PageChooserBlock(required=False, help_text=_('Page it redirects to on button click'))),
-				('url', blocks.CharBlock(required=False, help_text=_('Url it redirect to on button click'))),
+				('url', blocks.CharBlock(required=False, help_text=_('Url it redirects to on button click'))),
 			]
 		)
 	)

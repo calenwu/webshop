@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: newsletter/admin.py:11 newsletter/models.py:42
+msgid "Newsletter campaign"
+msgstr "Newsletter Kampagne"
+
+#: newsletter/admin.py:21
+msgid "Newsletter subscribers"
+msgstr "Newsletter Abonnenten"
+
+#: newsletter/forms.py:8
+msgid "Email"
+msgstr "Email"
+
+#: newsletter/models.py:28
+msgid "Title for the popup after subscribing"
+msgstr "Titel für das Popup nach dem abonnieren"
+
+#: newsletter/models.py:29
+msgid "Text for the popup after subscribing"
+msgstr "Text für das Popup nach dem abonnieren"
+
+#: newsletter/models.py:43
+msgid "Newsletter campaigns"
+msgstr "Newsletter Kampagne"
+
+#: newsletter/models.py:62
+msgid "Subscriber"
+msgstr "Abonnent"
+
+#: newsletter/models.py:63
+msgid "Subscribers"
+msgstr "Abonnenten"
+
+#: newsletter/templates/newsletter/popup.html:19
+msgid "Close"
+msgstr "Schliessen"
+
+#: newsletter/templates/newsletter/popup.html:47
+msgid "Subscribe"
+msgstr "Abonnieren"
+
+#: newsletter/templates/newsletter/unsubscribe.html:3
+msgid "Login"
+msgstr "Login"
+
+#: newsletter/templates/newsletter/unsubscribe.html:9
+msgid "Unsubscribed"
+msgstr "Abmelden"
+
+#: newsletter/templates/newsletter/unsubscribe.html:12
+msgid "You have unsubscribed from our newsletter"
+msgstr "Du hast dich von unserem Newsletter abgemeldet"

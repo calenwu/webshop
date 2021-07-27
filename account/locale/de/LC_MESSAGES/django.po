@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/forms.py:151
+#: account/templates/registration/password_reset_confirm.html:9
+#: account/templates/registration/password_reset_email.html:27
+msgid "Reset password"
+msgstr "Passwort zurücksetzen"
+
+#: account/forms.py:161 account/forms.py:181 account/forms.py:188
+msgid "Email"
+msgstr ""
+
+#: account/templates/account/change_address.html:6
+msgid "Edit address"
+msgstr "Adresse bearbeiten"
+
+#: account/templates/account/change_address.html:195
+#: account/templates/account/change_email.html:27
+#: account/templates/account/change_password.html:38
+#: account/templates/registration/password_reset_confirm.html:53
+msgid "Save"
+msgstr "Speichern"
+
+#: account/templates/account/change_address.html:202
+#: account/templates/account/change_email.html:34
+#: account/templates/account/change_password.html:45
+#: account/templates/account/orders.html:48
+msgid "Return to menu"
+msgstr "Zurück zum Menu"
+
+#: account/templates/account/change_email.html:6
+#: account/templates/account/menu.html:23
+msgid "Change email"
+msgstr "Email ändern"
+
+#: account/templates/account/change_password.html:6
+#: account/templates/account/menu.html:29
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: account/templates/account/menu.html:6
+msgid "My account"
+msgstr ""
+
+#: account/templates/account/menu.html:11
+#: account/templates/account/orders.html:6
+msgid "My orders"
+msgstr "Meine Bestellungen"
+
+#: account/templates/account/menu.html:17
+msgid "My address"
+msgstr "Meine Adresse"
+
+#: account/templates/account/menu.html:35
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: account/templates/account/orders.html:13
+msgid "Order"
+msgstr "Bestellung"
+
+#: account/templates/account/orders.html:14
+msgid "Date"
+msgstr "Datum"
+
+#: account/templates/account/orders.html:15
+msgid "Sum"
+msgstr "Summe"
+
+#: account/templates/account/orders.html:35
+msgid "Your order history is empty"
+msgstr "Dein Bestellverlauf ist leer"
+
+#: account/templates/account/orders.html:36
+msgid "It seems like you have not made a purchase yet"
+msgstr "Es scheint als hätten Sie noch keinen Einkauf getätigt"
+
+#: account/templates/account/orders.html:40
+msgid "View Shop"
+msgstr "Shop ansehen"
+
+#: account/templates/registration/password_reset_confirm.html:3
+msgid "Login"
+msgstr ""
+
+#: account/templates/registration/password_reset_done.html:3
+msgid "Contact"
+msgstr "Kontakt"
+
+#: account/templates/registration/password_reset_email.html:10
+msgid "Reset your password"
+msgstr "Setzen Sie ihr Passwort zurück"
+
+#: account/templates/registration/password_reset_email.html:12
+msgid ""
+"Would you like to reset your password? If that is not the case someone else "
+"has requested a password reset and you can ignore this email."
+msgstr ""
+
+#: account/views.py:61
+msgid ""
+"Please enter a correct email address and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+
+#: account/views.py:104
+msgid "Address updated"
+msgstr "Adresse geändert"
+
+#: account/views.py:105
+msgid "You updated your address successfully"
+msgstr "Sie haben Ihre Adresse erfolgreich geändert"
+
+#: account/views.py:129
+msgid "Email updated"
+msgstr "Email geändert"
+
+#: account/views.py:130
+msgid "You updated your email successfully"
+msgstr "Sie haben Ihre Email erfolgreich geändert"
+
+#: account/views.py:153
+msgid "Paasword changed"
+msgstr "Passwort geändert"
+
+#: account/views.py:154
+msgid "You changed your password successfully"
+msgstr "Sie haben Ihr passwort erfolgreich geändert"

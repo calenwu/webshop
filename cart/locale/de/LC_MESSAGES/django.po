@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cart/admin.py:11
+msgid "Cart settings"
+msgstr "Warenkorb Einstellungen"
+
+#: cart/cart.py:13
+#, python-format
+msgid "The maximum order quantity per item  is  %(quantity)s"
+msgstr "Die Maximalanzahl pro Artikel ist %(quantity)s"
+
+#: cart/cart.py:159
+msgid "Invalid quantity"
+msgstr "Ungültige Anzahl"
+
+#: cart/cart.py:160
+msgid "Please enter a valid quantity."
+msgstr "Bitte gib eine Anzahl ein."
+
+#: cart/cart.py:186 cart/templates/cart/details.html:60
+msgid "Out of stock"
+msgstr "Ausverkauft"
+
+#: cart/cart.py:187
+msgid "Sorry we are out of stock"
+msgstr "Tut uns leid, wir sind ausverkauft"
+
+#: cart/cart.py:203
+#, python-format
+msgid "Only  %(quantity)s left"
+msgstr "Nur noch %(quantity)s auf Lager"
+
+#: cart/cart.py:204
+#, python-format
+msgid "Sorry we only have  %(quantity)s left in stock"
+msgstr "Tut uns leid, wir haben nur noch %(quantity)s auf Lager"
+
+#: cart/cart.py:221
+msgid "Exceeded maximum order quantity"
+msgstr "Maximalanzahl überschritten"
+
+#: cart/forms.py:24
+msgid "Sold out"
+msgstr "Ausverkauft"
+
+#: cart/forms.py:31 cart/forms.py:42
+msgid "Enter a positive quantity"
+msgstr "Gib eine positive Anzahl ein"
+
+#: cart/models.py:34 cart/models.py:53
+msgid "Run python manage.py migrate"
+msgstr ""
+
+#: cart/templates/cart/cart_overlay.html:8
+#: cart/templates/cart/cart_overlay.html:121
+#: cart/templates/cart/details.html:14
+msgid "Your cart"
+msgstr "Dein Warenkorb"
+
+#: cart/templates/cart/cart_overlay.html:18 cart/templates/cart/details.html:23
+msgid "Product"
+msgstr "Produkt"
+
+#: cart/templates/cart/cart_overlay.html:35 cart/templates/cart/details.html:47
+msgid "Quantity"
+msgstr "Anzahl"
+
+#: cart/templates/cart/cart_overlay.html:38 cart/templates/cart/details.html:50
+#: cart/templates/cart/details.html:71
+msgid "Update quantity"
+msgstr "Anzahl aktualisieren"
+
+#: cart/templates/cart/cart_overlay.html:63 cart/templates/cart/details.html:85
+msgid "The code you entered seems to be invalid"
+msgstr "Der Code den Sie eingegeben haben scheint ungültig zu sein."
+
+#: cart/templates/cart/cart_overlay.html:68 cart/templates/cart/details.html:90
+msgid "Coupon"
+msgstr "Coupon"
+
+#: cart/templates/cart/cart_overlay.html:70 cart/templates/cart/details.html:92
+msgid "Apply"
+msgstr "Anwenden"
+
+#: cart/templates/cart/cart_overlay.html:79
+#: cart/templates/cart/details.html:101
+msgid "Subtotal"
+msgstr "Zwischensumme"
+
+#: cart/templates/cart/cart_overlay.html:103
+#: cart/templates/cart/details.html:125
+msgid "Total"
+msgstr "Summe"
+
+#: cart/templates/cart/cart_overlay.html:109 cart/templates/cart/details.html:8
+msgid "Cart"
+msgstr "Warenkorb"
+
+#: cart/templates/cart/cart_overlay.html:113
+#: cart/templates/cart/details.html:131
+msgid "Checkout"
+msgstr "Checkout"
+
+#: cart/templates/cart/cart_overlay.html:130
+#: cart/templates/cart/details.html:138
+msgid "Your cart is empty"
+msgstr "Dein Warenkorb ist leer"
+
+#: cart/templates/cart/cart_overlay.html:131
+#: cart/templates/cart/details.html:139
+msgid "It seems like you have not added any items to your cart"
+msgstr "Es scheint als wären keine Artikel in deinem Warenkorb"
+
+#: cart/templates/cart/cart_overlay.html:135
+#: cart/templates/cart/details.html:143
+msgid "View Shop"
+msgstr "Shop ansehen"
+
+#: cart/templates/cart/details.html:55
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t(Only %(stock)s left)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t(Nur %(stock)s auf Lager)\n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+
+#: cart/views.py:24 cart/views.py:41 cart/views.py:53 cart/views.py:64
+msgid "Error while adding to cart"
+msgstr "Fehler beim hinzufügen"
+
+#: cart/views.py:25 cart/views.py:85
+msgid "Please enter a number greater than 0"
+msgstr "Bitte gibt eine positive Zahl ein"
+
+#: cart/views.py:42 cart/views.py:102
+msgid "There is no product with the id %(product_color_quantity_id)"
+msgstr "Es gibt kein Produkt mit der id %(product_color_quantity_id)"
+
+#: cart/views.py:54 cart/views.py:114
+msgid "Please enter a valid number"
+msgstr "Bitte gib eine gültige Zahl ein"
+
+#: cart/views.py:84 cart/views.py:101 cart/views.py:113 cart/views.py:124
+msgid "Error while updating cart"
+msgstr "Fehler beim aktualisieren des Warenkorbs"
+
+#: cart/views.py:166
+msgid "Update cart"
+msgstr "Warenkorb aktualisieren"
+
+#: cart/views.py:167
+msgid ""
+"There is not enough stock available for your order, please update your cart."
+msgstr "Es gibt nicht genug auf Lager, bitte aktualisiere deinen Warenkorb."

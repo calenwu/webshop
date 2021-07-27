@@ -1,0 +1,753 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: order/admin.py:50
+msgid "Order settings"
+msgstr "Order Einstellungen"
+
+#: order/admin.py:86
+#, python-format
+msgid "Add %s"
+msgstr "%s hinzufügen"
+
+#: order/admin.py:88
+#, python-format
+msgid "Add a new %s"
+msgstr "Neues %s hinzufügen"
+
+#: order/admin.py:151
+msgid "Invoice sent"
+msgstr "Rechnung gesendet"
+
+#: order/admin.py:153
+msgid "Invoice could not be sent"
+msgstr "Rechnung konnte nicht gesendet werden"
+
+#: order/admin.py:163
+msgid "Shipping notification sent"
+msgstr "Versandbenachritigung gesendet"
+
+#: order/admin.py:165
+msgid "Shipping notification could not be sent"
+msgstr "Versandbenachritigung konnte nicht gesendet werden"
+
+#: order/admin.py:173
+msgid "Cant refund this order"
+msgstr "Diese Bestellung kann nicht Zurückerstattet werden"
+
+#: order/admin.py:175
+msgid "Maximum refund amount: "
+msgstr "Maximaler Erstattungsbetrag: "
+
+#: order/admin.py:177
+msgid "Minimum refund amount: 0"
+msgstr "Minimum Erstattungsbetrag: 0"
+
+#: order/admin.py:184
+msgid "Refunded"
+msgstr "Erstattet"
+
+#: order/admin.py:188
+msgid "Unknown error"
+msgstr "Unbekannter Fehler"
+
+#: order/admin.py:190
+msgid "Send an invoice"
+msgstr "Rechnung senden"
+
+#: order/admin.py:191
+msgid "Send an invoice via celery"
+msgstr "Rechnung senden via celery"
+
+#: order/admin.py:221
+msgid "Please enter a valid number"
+msgstr "Bitte gib eine gültige Nummer ein"
+
+#: order/forms.py:14 order/forms.py:150
+#: order/templates/order/invoice_pdf.html:53
+msgid "Email"
+msgstr "Email"
+
+#: order/forms.py:17 order/forms.py:153
+msgid "example@gmail.com"
+msgstr "example@gmail.com"
+
+#: order/forms.py:22 order/forms.py:158
+msgid "First name"
+msgstr "Vorname"
+
+#: order/forms.py:25 order/forms.py:161
+msgid "Luke"
+msgstr "Luke"
+
+#: order/forms.py:30 order/forms.py:166
+msgid "Last name"
+msgstr "Nachname"
+
+#: order/forms.py:33 order/forms.py:169
+msgid "Skywalker"
+msgstr "Skzwalker"
+
+#: order/forms.py:38 order/forms.py:42 order/forms.py:174 order/forms.py:178
+msgid "Company (optional)"
+msgstr "Firma (optional)"
+
+#: order/forms.py:47 order/forms.py:50 order/forms.py:183 order/forms.py:186
+msgid "Street and house number"
+msgstr "Hausnummer und Türnummer"
+
+#: order/forms.py:55 order/forms.py:58 order/forms.py:191 order/forms.py:194
+msgid "Additional address (optional)"
+msgstr "Zusätzliche Adresse"
+
+#: order/forms.py:64 order/forms.py:67 order/forms.py:200 order/forms.py:203
+msgid "City"
+msgstr "Stadt"
+
+#: order/forms.py:72 order/forms.py:75 order/forms.py:208 order/forms.py:211
+msgid "Country"
+msgstr "Land"
+
+#: order/forms.py:80 order/forms.py:83 order/forms.py:217 order/forms.py:220
+msgid "State"
+msgstr "Bundesstaat"
+
+#: order/forms.py:90 order/forms.py:93 order/forms.py:227 order/forms.py:230
+msgid "Postal code"
+msgstr "Postleitzahl"
+
+#: order/forms.py:98 order/forms.py:101 order/forms.py:235 order/forms.py:238
+msgid "Phone"
+msgstr "Telefon"
+
+#: order/forms.py:107
+msgid "Keep me up to date on news and exclusive offers"
+msgstr "Halte mich über Neuigkeiten und exklusive Angebote auf dem Laufenden"
+
+#: order/forms.py:111
+msgid "Comment (optional)"
+msgstr "Kommentar (optional)"
+
+#: order/forms.py:114 order/templates/order/view.html:165
+msgid "Comment"
+msgstr "Kommentar"
+
+#: order/forms.py:140 order/forms.py:265
+msgid "Please select a state"
+msgstr "Bitte wählen Sie ein Bundesstaat"
+
+#: order/models.py:49
+msgid "January"
+msgstr "Januar"
+
+#: order/models.py:50
+msgid "February"
+msgstr "Februar"
+
+#: order/models.py:51
+msgid "March"
+msgstr "März"
+
+#: order/models.py:52
+msgid "April"
+msgstr "April"
+
+#: order/models.py:53
+msgid "May"
+msgstr "Mai"
+
+#: order/models.py:54
+msgid "June"
+msgstr "Juni"
+
+#: order/models.py:55
+msgid "July"
+msgstr "July"
+
+#: order/models.py:56
+msgid "August"
+msgstr "August"
+
+#: order/models.py:57
+msgid "September"
+msgstr "September"
+
+#: order/models.py:58
+msgid "October"
+msgstr "Oktober"
+
+#: order/models.py:59
+msgid "November"
+msgstr "November"
+
+#: order/models.py:60
+msgid "December"
+msgstr "Dezember"
+
+#: order/models.py:97 order/models.py:113 order/models.py:128
+#: order/models.py:144 order/models.py:160 order/models.py:179
+#: order/models.py:195 order/models.py:211 order/models.py:227
+#: order/models.py:243 order/models.py:259 order/models.py:275
+#: order/models.py:291 order/models.py:306 order/models.py:322
+#: order/models.py:338 order/models.py:354 order/models.py:373
+#: order/models.py:392 order/models.py:411
+msgid "Run python manage.py migrate"
+msgstr ""
+
+#: order/models.py:482
+msgid "Name"
+msgstr "Name"
+
+#: order/models.py:483 order/templates/order/invoice_pdf.html:108
+msgid "Description"
+msgstr "Beschreibung"
+
+#: order/models.py:484
+msgid "Minimum weight"
+msgstr "Mindest Gewicht"
+
+#: order/models.py:485
+msgid "Maximum weight"
+msgstr "Maximales Gewicht"
+
+#: order/models.py:486 order/templates/order/admin/detail.html:53
+msgid "Price"
+msgstr "Preis"
+
+#: order/models.py:487
+msgid "Active"
+msgstr "Aktiv"
+
+#: order/models.py:552
+msgid "name"
+msgstr "Name"
+
+#: order/models.py:553
+msgid "label"
+msgstr "Beschriftung"
+
+#: order/models.py:615 order/templates/order/admin/detail.html:25
+msgid "Created"
+msgstr "Erstellt"
+
+#: order/models.py:616
+msgid "Processing"
+msgstr "In Bearbeitung"
+
+#: order/models.py:617
+msgid "Shipped"
+msgstr "Versendet"
+
+#: order/models.py:618
+msgid "Canceled"
+msgstr "Abgebrochen"
+
+#: order/models.py:619
+msgid "Returned"
+msgstr "Erstattet"
+
+#: order/models.py:631 order/models.py:859
+msgid "e-mail"
+msgstr "Email"
+
+#: order/models.py:632 order/models.py:856
+msgid "first name"
+msgstr "Vorname"
+
+#: order/models.py:633 order/models.py:857
+msgid "last name"
+msgstr "Nachname"
+
+#: order/models.py:634 order/models.py:858
+msgid "company"
+msgstr "Firma"
+
+#: order/models.py:635 order/models.py:860
+msgid "address"
+msgstr "Adresse"
+
+#: order/models.py:636 order/models.py:861
+msgid "address2"
+msgstr "Adresse2"
+
+#: order/models.py:637 order/models.py:862
+msgid "postal code"
+msgstr "Postleitzahl"
+
+#: order/models.py:638 order/models.py:863
+msgid "country"
+msgstr "Land"
+
+#: order/models.py:639 order/models.py:864
+msgid "city"
+msgstr "Stadt"
+
+#: order/models.py:640 order/models.py:865
+msgid "state"
+msgstr "Bundeststaat"
+
+#: order/models.py:641 order/models.py:866
+msgid "telephone"
+msgstr "Telefon"
+
+#: order/models.py:642
+msgid "comment"
+msgstr "Kommentar"
+
+#: order/models.py:651
+msgid "Shipping method name"
+msgstr "Versandmethodenname"
+
+#: order/models.py:652
+msgid "Shipping method price"
+msgstr "Versandmethodenpreis"
+
+#: order/models.py:661
+msgid "Coupon name"
+msgstr "Couponname"
+
+#: order/models.py:662
+msgid "Discount on order"
+msgstr "Rabatt auf der Bestellung"
+
+#: order/models.py:686 order/templates/order/view.html:126
+msgid "Customer information"
+msgstr "Kundeninformation"
+
+#: order/models.py:701
+msgid "Payment info"
+msgstr "Zahlungsinfo"
+
+#: order/models.py:799
+msgid "unique_paid_number has to be unique"
+msgstr "unique_paid_number muss einzigartig sein"
+
+#: order/models.py:801
+msgid "Cannot change unique_paid_number once set"
+msgstr "Kann unique_paid_number nicht ändern nach sie gesetzt wurde"
+
+#: order/models.py:803
+msgid "A paid order has to have a self.unique_paid_number"
+msgstr "Eine bezahlte Bestellung muss eine unique_paid_number haben"
+
+#: order/models.py:805
+msgid "An unpaid order cannot have a unique_paid_number"
+msgstr "Eine unbezahlte Bestellung kann keine unique_paid_number haben"
+
+#: order/templates/cart/cart_checkout_right.html:6
+#: order/templates/cart/cart_checkout_top.html:6
+#: order/templates/order/admin/detail.html:50
+#: order/templates/order/view.html:20 order/templates/order/view.html:178
+msgid "Product"
+msgstr "Proukt"
+
+#: order/templates/cart/cart_checkout_right.html:34
+#: order/templates/cart/cart_checkout_top.html:34
+msgid "The code you entered seems to be invalid"
+msgstr "Der Code den Sie eingegeben haben scheint ungültig zu sein."
+
+#: order/templates/cart/cart_checkout_right.html:39
+#: order/templates/cart/cart_checkout_top.html:39
+msgid "Coupon"
+msgstr "Coupon"
+
+#: order/templates/cart/cart_checkout_right.html:41
+#: order/templates/cart/cart_checkout_top.html:41
+msgid "Apply"
+msgstr "Anwenden"
+
+#: order/templates/cart/cart_checkout_right.html:50
+#: order/templates/cart/cart_checkout_top.html:50
+#: order/templates/order/view.html:45 order/templates/order/view.html:203
+msgid "Subtotal"
+msgstr "Zwischensumme"
+
+#: order/templates/cart/cart_checkout_right.html:77
+#: order/templates/cart/cart_checkout_top.html:77
+#: order/templates/order/information.html:30
+#: order/templates/order/payment.html:48 order/templates/order/shipping.html:30
+msgid "Shipping"
+msgstr "Versand"
+
+#: order/templates/cart/cart_checkout_right.html:88
+#: order/templates/cart/cart_checkout_top.html:88
+#: order/templates/order/view.html:70 order/templates/order/view.html:228
+msgid "Total"
+msgstr "Summe"
+
+#: order/templates/order/admin/admin_change_form.html:6
+msgid "View in web"
+msgstr "Im Web ansehen"
+
+#: order/templates/order/admin/admin_change_form.html:10
+msgid "Send invoice"
+msgstr "Rechnung senden"
+
+#: order/templates/order/admin/admin_change_form.html:14
+msgid "Send invoice via celery"
+msgstr "Rechnung via celery senden"
+
+#: order/templates/order/admin/admin_change_form.html:18
+msgid "Send shipping notification"
+msgstr "Versandbenachrichtigung senden"
+
+#: order/templates/order/admin/admin_change_form.html:22
+msgid "Send shipping notification via celery"
+msgstr "Versandbenachrichtigung via celery senden"
+
+#: order/templates/order/admin/admin_change_form.html:27
+msgid "Refund"
+msgstr "Erstatten"
+
+#: order/templates/order/admin/detail.html:11
+msgid "Home"
+msgstr "Home"
+
+#: order/templates/order/admin/detail.html:12
+msgid "Detail"
+msgstr "Detail"
+
+#: order/templates/order/admin/detail.html:29
+msgid "Customer"
+msgstr "Kunde"
+
+#: order/templates/order/admin/detail.html:33
+msgid "E-mail"
+msgstr "Email"
+
+#: order/templates/order/admin/detail.html:37
+msgid "Address"
+msgstr "Adresse"
+
+#: order/templates/order/admin/detail.html:41
+msgid "Total amount"
+msgstr "Gesamtsumme"
+
+#: order/templates/order/admin/detail.html:51
+msgid "Color"
+msgstr "Farbe"
+
+#: order/templates/order/admin/detail.html:52
+msgid "Size"
+msgstr "Grösse"
+
+#: order/templates/order/admin/detail.html:54
+#: order/templates/order/invoice_pdf.html:109
+msgid "Quantity"
+msgstr "Anzahl"
+
+#: order/templates/order/admin/detail.html:55
+#: order/templates/order/admin/detail.html:80
+#: order/templates/order/invoice_pdf.html:111
+#: order/templates/order/invoice_pdf.html:173
+msgid "Sum"
+msgstr "Summe"
+
+#: order/templates/order/email/order.html:10
+msgid "Thank you for your purchase!"
+msgstr "Danke für deine Bestellung!"
+
+#: order/templates/order/email/order.html:12
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\tHi %(f_name)s we are preparing your order. We will notify you when "
+"its shipped.\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\tHi %(f_name)s wir bereiten deine Bestellung. Wir werden dich "
+"benachrichtigen wenn sie versand wurde.\n"
+"\t\t\t\t"
+
+#: order/templates/order/email/order.html:16
+msgid "Your invoice is attached"
+msgstr ""
+
+#: order/templates/order/email/order.html:33
+#: order/templates/order/email/shipping.html:47
+#, fuzzy
+#| msgid "Show order"
+msgid "View order"
+msgstr "Bestellung anzeigen"
+
+#: order/templates/order/email/order.html:49
+msgid "Visit our store"
+msgstr ""
+
+#: order/templates/order/email/shipping.html:10
+msgid "Your order has been shipped!"
+msgstr "Deine Bestellung wurde versand!"
+
+#: order/templates/order/email/shipping.html:12
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\tHi %(f_name)s your order has been shipped. Click on the link below "
+"to track your order.\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\tHi %(f_name)s deine Bestellung wurde verand. Klick auf den Link "
+"unten um deine Bestellung zu verfolgen.\n"
+"\t\t\t\t"
+
+#: order/templates/order/email/shipping.html:31
+msgid "Track order"
+msgstr "Bestellung verfolgen"
+
+#: order/templates/order/information.html:7
+#: order/templates/order/payment.html:24 order/templates/order/shipping.html:7
+#: order/templates/order/view.html:8
+msgid "Show order"
+msgstr "Bestellung anzeigen"
+
+#: order/templates/order/information.html:25
+#: order/templates/order/payment.html:40 order/templates/order/shipping.html:23
+msgid "Cart"
+msgstr "Warenkorb"
+
+#: order/templates/order/information.html:28
+#: order/templates/order/payment.html:44 order/templates/order/shipping.html:27
+msgid "Information"
+msgstr "Informationen"
+
+#: order/templates/order/information.html:32
+#: order/templates/order/payment.html:51 order/templates/order/shipping.html:32
+msgid "Payment"
+msgstr "Zahlung"
+
+#: order/templates/order/information.html:45
+#: order/templates/order/shipping.html:132
+msgid "Contact information"
+msgstr "Kontaktinformationen"
+
+#: order/templates/order/information.html:48
+msgid "Logged in as"
+msgstr "Eingeloggt als"
+
+#: order/templates/order/information.html:50
+msgid "Already have account?"
+msgstr "Bereit einen Account?"
+
+#: order/templates/order/information.html:52
+msgid "Log in"
+msgstr "Einloggen"
+
+#: order/templates/order/information.html:85
+#: order/templates/order/view.html:130
+msgid "Shipping address"
+msgstr "Versandadresse"
+
+#: order/templates/order/information.html:273
+msgid "Back to cart"
+msgstr "Zurück zum Warenkorb"
+
+#: order/templates/order/information.html:278
+#: order/templates/order/shipping.html:70 order/templates/order/view.html:152
+msgid "Shipping method"
+msgstr "Versandmethode"
+
+#: order/templates/order/invoice_pdf.html:5
+#: order/templates/order/invoice_pdf.html:91
+msgid "Invoice"
+msgstr "Rechnung"
+
+#: order/templates/order/invoice_pdf.html:15
+msgid "Logo"
+msgstr "Logo"
+
+#: order/templates/order/invoice_pdf.html:23
+msgid "Client"
+msgstr "Kunde"
+
+#: order/templates/order/invoice_pdf.html:45
+msgid "You can reach us here"
+msgstr "So sind wir erreichbar"
+
+#: order/templates/order/invoice_pdf.html:50
+msgid "Internet"
+msgstr "Internet"
+
+#: order/templates/order/invoice_pdf.html:56
+msgid "UStID-Nr"
+msgstr ""
+
+#: order/templates/order/invoice_pdf.html:59
+msgid "Date"
+msgstr "Datum"
+
+#: order/templates/order/invoice_pdf.html:62
+msgid "Invoice number"
+msgstr "Rechnungsnummer"
+
+#: order/templates/order/invoice_pdf.html:88
+msgid "Your order nr."
+msgstr "Deine Bestellnummer"
+
+#: order/templates/order/invoice_pdf.html:88
+msgid "from"
+msgstr "vom"
+
+#: order/templates/order/invoice_pdf.html:94
+msgid "The invoice date corresponds to the performance date"
+msgstr "Das Rechnungsdatum entspricht dem Leistungsdatum"
+
+#: order/templates/order/invoice_pdf.html:106
+msgid "Pos"
+msgstr "Pos"
+
+#: order/templates/order/invoice_pdf.html:107
+msgid "SKU"
+msgstr "SKU"
+
+#: order/templates/order/invoice_pdf.html:110
+msgid "Unit price"
+msgstr "Einzelpreis"
+
+#: order/templates/order/invoice_pdf.html:142
+msgid "Discount"
+msgstr "Rabatt"
+
+#: order/templates/order/invoice_pdf.html:157
+msgid "Net amount"
+msgstr "Netto-Betrag"
+
+#: order/templates/order/invoice_pdf.html:165
+msgid "Tax"
+msgstr "Steuer"
+
+#: order/templates/order/payment.html:12
+msgid "Thank you for your purchase"
+msgstr "Danke für deinen Einkauf"
+
+#: order/templates/order/payment.html:14
+msgid "We are confirming your payment, please dont refresh the page"
+msgstr "Wir bestätigen Ihre Zahlung, bitte aktualisieren Sie die Seite nicht"
+
+#: order/templates/order/payment.html:58 order/templates/order/shipping.html:39
+msgid "Contact"
+msgstr "Kontakt"
+
+#: order/templates/order/payment.html:65 order/templates/order/payment.html:83
+#: order/templates/order/payment.html:96 order/templates/order/shipping.html:46
+#: order/templates/order/shipping.html:64
+msgid "Change"
+msgstr "Ändern"
+
+#: order/templates/order/payment.html:71 order/templates/order/shipping.html:52
+msgid "Ship to"
+msgstr "Versand an"
+
+#: order/templates/order/payment.html:89
+msgid "Method"
+msgstr "Methode"
+
+#: order/templates/order/payment.html:102
+#: order/templates/order/shipping.html:138 order/templates/order/view.html:158
+msgid "Payment method"
+msgstr "Zahlungsmethode"
+
+#: order/templates/order/payment.html:118
+msgid "Credit card"
+msgstr "Kreditkarte"
+
+#: order/templates/order/payment.html:134
+msgid "and more .."
+msgstr "und mehr .."
+
+#: order/templates/order/payment.html:171
+msgid "Back to shipping method"
+msgstr "Zurück zur Versandmethode"
+
+#: order/templates/order/payment.html:189
+msgid ""
+"There has been an error while trying to process your payment, please refresh "
+"the page and try again or contact our support"
+msgstr ""
+"Beim Versuch, Ihre Zahlung zu verarbeiten, ist ein Fehler aufgetreten, bitte "
+"aktualisierendie Seite und versuchen Sie es erneut oder kontaktieren Sie "
+"unseren Support"
+
+#: order/templates/order/payment.html:259
+msgid "Your checkout session has expired. Please reload the page."
+msgstr "Ihre Checkout-Sitzung ist abgelaufen. Bitte laden Sie die Seite neu."
+
+#: order/templates/order/payment.html:286
+#: order/templates/order/payment.html:290
+msgid "Error"
+msgstr "Fehler"
+
+#: order/templates/order/shipping.html:122
+msgid ""
+"We currently cannot provide shipping for the products in your cart to your "
+"address. Please "
+msgstr ""
+"Wir können deryeit keinen Versand für die Produkte in Ihrem Warenkorb zu "
+"Ihrer Adresse anbieten. Bitte"
+
+#: order/templates/order/shipping.html:123
+msgid "contact us"
+msgstr "kontaktieren Sie uns"
+
+#: order/templates/order/view.html:85
+msgid "Order"
+msgstr "Bestellung"
+
+#: order/templates/order/view.html:88
+msgid "Thank you"
+msgstr "Danke"
+
+#: order/templates/order/view.html:96
+msgid "Your shipment is confirmed"
+msgstr "Ihre Sendung ist bestätigt"
+
+#: order/templates/order/view.html:98
+msgid "Your order is confirmed"
+msgstr "Deine Bestellung ist bestätigt"
+
+#: order/templates/order/view.html:103
+msgid "We've accepted your order, and we're getting it ready."
+msgstr "Wir haben ihre Bestellung akzeptiert und bereiten sie gerade."
+
+#: order/templates/order/view.html:104
+msgid "A confirmation email has been sent to"
+msgstr "Eine Bestätigungs-EMail wurde gesendet an"
+
+#: order/templates/order/view.html:106
+msgid "Come back to this page for updates on your shipment status."
+msgstr ""
+"Kehren Sie zu dieser Seite zurück, um Informationen zu Ihrem Sendungsstatus "
+"zu erhalten."
+
+#: order/templates/order/view.html:113
+msgid "Your order has been shipped"
+msgstr "Deine Bestellung wurde versand"
+
+#: order/templates/order/view.html:117
+msgid "You can track your order here: "
+msgstr "Du kannst deine Bestelulng hier verfolgen: "
+
+#: order/templates/order/view.html:141
+msgid "Billing address"
+msgstr "Rechnungsadresse"
+
+#~ msgid "Rechnung"
+#~ msgstr "Rechnung"

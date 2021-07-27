@@ -39,7 +39,7 @@ MIDDLEWARE += [
 ]
 
 DEBUG_TOOLBAR_CONFIG = {
-	# 'SHOW_TOOLBAR_CALLBACK': lambda request: True,
+	#'SHOW_TOOLBAR_CALLBACK': lambda request: True,
 }
 
 ip = socket.gethostbyname(socket.gethostname())

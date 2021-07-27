@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-05 01:39+0000\n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,31 +20,31 @@ msgstr ""
 
 #: winwheel/admin.py:12
 msgid "Winwheel parameters"
-msgstr ""
+msgstr "Winwheel Paramter"
 
 #: winwheel/admin.py:22
 msgid "Winwheel sections"
-msgstr ""
+msgstr "Winwheel Abschnitte"
 
 #: winwheel/models.py:17
 msgid "Text on the wheel"
-msgstr ""
+msgstr "Text auf dem Rad"
 
 #: winwheel/models.py:18
 msgid "Title after the spin"
-msgstr ""
+msgstr "Titel nach dem Drehen"
 
 #: winwheel/models.py:19
 msgid "Text after the win"
-msgstr ""
+msgstr "Test nach dem Gewinn"
 
 #: winwheel/models.py:20
 msgid "Text color on the wheel (#ffffff)"
-msgstr ""
+msgstr "Textfarbe auf dem Rad (#ffffff)"
 
 #: winwheel/models.py:21
 msgid "Background color (#ffffff)"
-msgstr ""
+msgstr "Hintergrundfarbe (#ffffff)"
 
 #: winwheel/models.py:23
 msgid "Percentage of it landing on this section (in percent, full number)"
@@ -53,33 +53,36 @@ msgstr ""
 #: winwheel/templates/winwheel/winwheel.html:10
 msgid "Win a special prize"
 msgstr ""
+"Prozentsatz davon, der auf diesem Abschnitt landet (in Prozent, ganze Zahl)"
 
 #: winwheel/templates/winwheel/winwheel.html:15
 msgid ""
 "Enter your email to subscribe to our newsletter and spin the wheel for a "
 "chance to win."
 msgstr ""
+"Geben Sie Ihre E-Mail-Adresse ein, um unseren Newsletter zu abonnieren und "
+"am Rad zu drehen."
 
 #: winwheel/templates/winwheel/winwheel.html:20
 msgid "I have read the "
-msgstr ""
+msgstr "Ich habe die "
 
 #: winwheel/templates/winwheel/winwheel.html:22
 msgid "Terms of service"
-msgstr ""
+msgstr "AGB"
 
 #: winwheel/templates/winwheel/winwheel.html:24
 msgid " and agree with them."
-msgstr ""
+msgstr "gelsen und bin mit denen Einverstanden."
 
 #: winwheel/templates/winwheel/winwheel.html:43
 msgid "Try your luck"
-msgstr ""
+msgstr "Versuch dein Glück"
 
 #: winwheel/templates/winwheel/winwheel.html:48
 msgid "Close"
-msgstr ""
+msgstr "Schliessen"
 
 #: winwheel/templates/winwheel/winwheel_js.html:94
 msgid "Coupon code"
-msgstr ""
+msgstr "Coupon Code"

@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 21:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: shop/admin.py:30
+msgid "Shop settings"
+msgstr ""
+
+#: shop/forms.py:8 shop/forms.py:13
+msgid "Search"
+msgstr ""
+
+#: shop/forms.py:18
+msgid "Category"
+msgstr ""
+
+#: shop/forms.py:23 shop/models.py:226
+msgid "Show all"
+msgstr ""
+
+#: shop/models.py:66 shop/models.py:85 shop/models.py:104 shop/models.py:123
+msgid "Run python manage.py migrate"
+msgstr ""
+
+#: shop/models.py:377
+msgid "Use the smallest unit possible (e.g. cents for EUR/USD)"
+msgstr ""
+
+#: shop/models.py:382
+msgid "Use the smallest unit possible (e.g. gram)"
+msgstr ""
+
+#: shop/models.py:420
+msgid "Images"
+msgstr ""
+
+#: shop/models.py:429
+msgid "Product color"
+msgstr ""
+
+#: shop/templates/shop/details.html:5 shop/templates/shop/details.html:6
+#: shop/templates/shop/details.html:7 shop/templates/shop/details.html:8
+#: shop/templates/shop/details.html:9 shop/templates/shop/details.html:10
+#: shop/templates/shop/details.html:11 shop/templates/shop/details.html:12
+#: shop/templates/shop/details.html:13 shop/templates/shop/details.html:14
+#: shop/templates/shop/details.html:15 shop/templates/shop/details.html:16
+#: shop/templates/shop/details.html:17 shop/templates/shop/details.html:18
+#: shop/templates/shop/details.html:19 shop/templates/shop/details.html:20
+#: shop/templates/shop/details.html:21 shop/templates/shop/details.html:22
+#: shop/templates/shop/details.html:23 shop/templates/shop/details.html:24
+#: shop/templates/shop/details.html:117 shop/templates/shop/details.html:194
+#: shop/templates/shop/details.html:296
+msgid "Add to cart"
+msgstr ""
+
+#: shop/templates/shop/details.html:81
+msgid "Quantity"
+msgstr ""
+
+#: shop/templates/shop/details.html:129
+msgid "Details"
+msgstr ""
+
+#: shop/templates/shop/details.html:192
+msgid "Added"
+msgstr ""
+
+#: shop/templates/shop/details.html:203 shop/templates/shop/details.html:210
+#: shop/templates/shop/details.html:212
+msgid "Error"
+msgstr ""
+
+#: shop/templates/shop/details.html:242 shop/templates/shop/details.html:292
+msgid "Sold out"
+msgstr ""
+
+#: shop/templates/shop/listing.html:21 shop/templates/shop/listing.html:72
+#: shop/templates/shop/listing.html:95
+msgid "Filter"
+msgstr ""
+
+#: shop/templates/shop/listing.html:68
+msgid "Reset filter"
+msgstr ""
+
+#: shop/templates/shop/listing.html:128
+msgid "No products found"
+msgstr ""
+
+#: shop/templates/shop/listing.html:132
+msgid "There are no products matching youre search critia."
+msgstr ""
+
+#: shop/templates/shop/listing.html:134
+msgid "Remove a few tags and try again."
+msgstr ""
+
+#: shop/templates/shop/listing.html:138
+msgid "We havent added any products yet."
+msgstr ""
+
+#: shop/templates/shop/listing.html:140
+msgid "Check back later!"
+msgstr ""

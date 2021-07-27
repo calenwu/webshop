@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 23:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: contact/admin.py:13
+msgid "Contact settings"
+msgstr "Kontakt Einstellungen"
+
+#: contact/admin.py:24 contact/templates/contact/contact.html:3
+#: contact/templates/contact/contact.html:8
+msgid "Contact"
+msgstr "Einstellungen"
+
+#: contact/forms.py:17 contact/forms.py:20
+#: contact/templates/contact/contact.html:23
+#: contact/templates/contact/contact.html:27
+msgid "Name"
+msgstr "Name"
+
+#: contact/forms.py:25 contact/templates/contact/contact.html:41
+#: contact/templates/contact/contact.html:45
+msgid "Email"
+msgstr "Email"
+
+#: contact/forms.py:34 contact/templates/contact/contact.html:60
+#: contact/templates/contact/contact.html:64
+msgid "Message"
+msgstr "Nachricht"
+
+#: contact/forms.py:50
+msgid "New message from webshop"
+msgstr "Neue nachricht vom Webshop"
+
+#: contact/forms.py:57
+msgid "New contact: "
+msgstr "Neuer Kontakt: "
+
+#: contact/models.py:39 contact/models.py:57
+msgid "Run python manage.py migrate"
+msgstr ""
+
+#: contact/templates/contact/contact.html:81
+msgid "Send message"
+msgstr "Nachricht senden"
+
+#: contact/templates/contact/contact_page.html:31
+msgid "Hello"
+msgstr "Hallo"
+
+#: contact/views.py:24 contact/views.py:45 contact/views.py:73
+msgid "Message not sent"
+msgstr "Nachricht nicht gesendet"
+
+#: contact/views.py:25
+msgid "Please complete the captcha"
+msgstr "Bitte vervollständige das Captcha"
+
+#: contact/views.py:46
+msgid "We think that you are a robot"
+msgstr "Wir denken du bist ein Roboter"
+
+#: contact/views.py:62
+msgid "Message sent"
+msgstr "Nachricht gesendet"
+
+#: contact/views.py:63
+msgid "We received your message and will respond as soon as possible"
+msgstr "Wir haben deine Nachricht gesendet"
