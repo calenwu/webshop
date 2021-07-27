@@ -28,4 +28,4 @@ msgstr "Ungültiger Code"
 
 #: coupon/views.py:33
 msgid "The code you entered seems to be invalid"
-msgstr "Der code scheint ungültig zu sein"
+msgstr "Der Code scheint ungültig zu sein"
