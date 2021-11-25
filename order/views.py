@@ -445,7 +445,6 @@ def order_processed(order, stripe_payment_id=None, paypal_order_id=None):
 	order.save()
 	reduce_coupon(order)
 	save_invoice.delay(order.id)
-	send_invoice.delay(order.id)
 
 def set_stripe_api_key():
 	if stripe.api_key != Setting.get_STRIPE_SECRET_KEY():
