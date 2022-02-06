@@ -14,11 +14,11 @@ function createFancyAlert(tag, title, innerHTML, mSecVisible) {
   let thirdDiv = setAttributes(document.createElement('div'), {
     'class': '',
   });
-  if (tag == 'success') {
+  if (tag === 'success') {
 		firstDiv.classList.add('border-green-400');
 		icon.classList.add('text-green-400');
 		icon.classList.add('fa-check-circle');
-  } else if (tag =='warning') {
+  } else if (tag ==='warning') {
 		firstDiv.classList.add('border-yellow-400');
 		icon.classList.add('text-yellow-400');
 		icon.classList.add('fa-exclamation-circle');
